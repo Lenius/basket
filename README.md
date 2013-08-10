@@ -1,6 +1,6 @@
 # Shopping Basket Package
 
-[![Build Status](https://secure.travis-ci.org/lenius/basket.png)](http://travis-ci.org/lenius/basket)
+[![Build Status](https://travis-ci.org/Lenius/basket.png?branch=master)](http://travis-ci.org/lenius/basket)
 
 * [Website](http://www.lenius.dk)
 * [License](https://github.com/lenius/basket/master/LICENSE)
