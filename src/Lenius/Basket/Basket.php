@@ -21,7 +21,6 @@
 namespace Lenius\Basket;
 
 use InvalidArgumentException;
-use Lenius\Currency\Currency;
 
 class Basket
 {
@@ -41,7 +40,7 @@ class Basket
     );
 
     /**
-     * Cart constructor
+     * Basket constructor
      * 
      * @param StorageInterface    $store      The interface for storing the cart data
      * @param IdentifierInterface $identifier The interface for storing the identifier
@@ -62,7 +61,7 @@ class Basket
     }
 
     /**
-     * Retrieve the cart contents
+     * Retrieve the basket contents
      * 
      * @return array An array of Item objects
      */
@@ -72,7 +71,7 @@ class Basket
     }
 
     /**
-     * Insert an item into the cart
+     * Insert an item into the basket
      * 
      * @param  array  $item An array of item data
      * @return string       A unique item identifier
@@ -118,7 +117,7 @@ class Basket
     }
 
     /**
-     * Remove an item from the cart
+     * Remove an item from the basket
      * 
      * @param  string $identifier Unique item identifier
      * @return void
@@ -129,7 +128,7 @@ class Basket
     }
 
     /**
-     * Destroy/empty the cart
+     * Destroy/empty the basket
      * 
      * @return void
      */
@@ -139,7 +138,7 @@ class Basket
     }
 
     /**
-     * Check if the cart has a specific item
+     * Check if the basket has a specific item
      * 
      * @param  string  $itemIdentifier The unique item identifier
      * @return boolean                 Yes or no?
@@ -172,7 +171,7 @@ class Basket
     }
 
     /**
-     * The total tax value for the cart
+     * The total tax value for the basket
      * 
      * @return float The total tax value
      */
@@ -186,7 +185,7 @@ class Basket
     }
 
     /**
-     * The total weight value for the cart
+     * The total weight value for the basket
      * 
      * @return float The total weight value
      */
@@ -200,10 +199,10 @@ class Basket
     }
 
     /**
-     * The total value of the cart
+     * The total value of the basket
      * 
      * @param  boolean $includeTax Include tax on the total?
-     * @return float               The total cart value
+     * @return float               The total basket value
      */
     public function total($includeTax = true)
     {
@@ -215,7 +214,7 @@ class Basket
     }
 
     /**
-     * The total number of items in the cart
+     * The total number of items in the basket
      * 
      * @param  boolean $unique Just return unique items?
      * @return int             Total number of items
@@ -230,31 +229,9 @@ class Basket
 
         return $total;
     }
-
-    /**
-     * Set the currency object
-     * 
-     * @param \Moltin\Currency\Currency $currency The currency object
-     */
-    public function setCurrency(Currency $currency)
-    {
-        $this->currency = $currency;
-
-        return $this;
-    }
-
-    /**
-     * Get the currency object
-     * 
-     * @return Currency The currency object for this cart
-     */
-    public function currency()
-    {
-        return $this->currency;
-    }
     
     /**
-     * Set the cart identifier, useful if restoring a saved cart
+     * Set the basket identifier, useful if restoring a saved basket
      * 
      * @param  mixed The identifier
      * @return void
@@ -280,7 +257,7 @@ class Basket
     }
 
     /**
-     * Check if a cart item has the required parameters
+     * Check if a basket item has the required parameters
      * 
      * @param  array  $item An array of item data
      * @return void
