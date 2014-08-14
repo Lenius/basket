@@ -269,4 +269,37 @@ class BasketTest extends \PHPUnit_Framework_TestCase
         // Test that the total method can also return the pre-tax price if false is passed
         $this->assertEquals($this->basket->total(false), 100);
     }
+
+    public function testTaxUpdate()
+    {
+        $this->basket->insert(array(
+            'id' => 'foo',
+            'name' => 'bar',
+            'price' => 100,
+            'quantity' => 1,
+            'tax' => 20,
+            'weight' => 200
+        ));
+
+        $identifier = md5( 'foo'.serialize( array() ) );
+
+        $item = $this->basket->item($identifier);
+
+        // Test that the tax is being calculated successfully
+        $item->tax = 0;
+        $this->assertEquals($item->total(), 100);
+        $this->assertEquals($item->total(false), 100);
+
+        $item->tax = 20;
+        $this->assertEquals($item->total(), 120);
+        $this->assertEquals($item->total(false), 100);
+
+        $item->update('tax',0);
+        $this->assertEquals($item->total(), 100);
+        $this->assertEquals($item->total(false), 100);
+
+        $item->update('tax',20);
+        $this->assertEquals($item->total(), 120);
+        $this->assertEquals($item->total(false), 100);
+    }
 }

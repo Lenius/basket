@@ -67,6 +67,9 @@ class Item
     public function __set($param, $value)
     {
         $this->data[$param] = $value;
+        if ($param == 'tax') {
+            $this->tax = new Tax($value);
+        }
     }
 
     /**
@@ -140,16 +143,15 @@ class Item
     public function update($key, $value = null)
     {
         if (is_array($key)) {
-
             foreach ($key as $updateKey => $updateValue) {
                 $this->update($updateKey, $updateValue);
             }
-
         } else {
-
             // Update the item
             $this->data[$key] = $value;
-
+            if ($key == 'tax') {
+                $this->tax = new Tax($value);
+            }
         }
     }
     
