@@ -29,7 +29,7 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
     /**
      * Add or update an item in the cart
-     * 
+     *
      * @param  Item   $item The item to insert or update
      * @return void
      */
@@ -40,14 +40,16 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
     /**
      * Retrieve the cart data
-     * 
+     *
      * @return array
      */
     public function &data($asArray = false)
     {
         $cart =& static::$cart[$this->id];
 
-        if ( ! $asArray) return $cart;
+        if (! $asArray) {
+            return $cart;
+        }
 
         $data = $cart;
 
@@ -60,16 +62,16 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
     /**
      * Check if the item exists in the cart
-     * 
+     *
      * @param  mixed  $id
      * @return boolean
      */
     public function has($identifier)
     {
         foreach (static::$cart[$this->id] as $item) {
-
-            if ($item->identifier == $identifier) return true;
-
+            if ($item->identifier == $identifier) {
+                return true;
+            }
         }
 
         return false;
@@ -77,16 +79,16 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
     /**
      * Get a single cart item by id
-     * 
+     *
      * @param  mixed $id The item id
      * @return Item  The item class
      */
     public function item($identifier)
     {
         foreach (static::$cart[$this->id] as $item) {
-
-            if ($item->identifier == $identifier) return $item;
-
+            if ($item->identifier == $identifier) {
+                return $item;
+            }
         }
 
         return false;
@@ -94,16 +96,16 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
     /**
      * Returns the first occurance of an item with a given id
-     * 
+     *
      * @param  string $id The item id
      * @return Item       Item object
      */
     public function find($id)
     {
         foreach (static::$cart[$this->id] as $item) {
-
-            if ($item->id == $id) return $item;
-
+            if ($item->id == $id) {
+                return $item;
+            }
         }
 
         return false;
@@ -111,7 +113,7 @@ class Runtime implements \Lenius\Basket\StorageInterface
     
     /**
      * Remove an item from the cart
-     * 
+     *
      * @param  mixed $id
      * @return void
      */
@@ -122,7 +124,7 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
     /**
      * Destroy the cart
-     * 
+     *
      * @return void
      */
     public function destroy()
@@ -132,21 +134,21 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
     /**
      * Set the cart identifier
-     * 
+     *
      * @param string $identifier
      */
     public function setIdentifier($id)
     {
         $this->id = $id;
 
-        if ( ! array_key_exists($this->id, static::$cart)) {
+        if (! array_key_exists($this->id, static::$cart)) {
             static::$cart[$this->id] = array();
         }
     }
 
     /**
      * Return the current cart identifier
-     * 
+     *
      * @return void
      */
     public function getIdentifier()

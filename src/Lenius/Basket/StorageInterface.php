@@ -24,7 +24,7 @@ interface StorageInterface
 {
     /**
      * Add or update an item in the cart
-     * 
+     *
      * @param  Item   $item The item to insert or update
      * @return void
      */
@@ -32,14 +32,14 @@ interface StorageInterface
 
     /**
      * Retrieve the cart data
-     * 
+     *
      * @return array
      */
     public function &data($asArray = false);
 
     /**
      * Check if the item exists in the cart
-     * 
+     *
      * @param  mixed  $id
      * @return boolean
      */
@@ -47,7 +47,7 @@ interface StorageInterface
 
     /**
      * Get a single cart item by id
-     * 
+     *
      * @param  mixed $id The item id
      * @return Item  The item class
      */
@@ -55,7 +55,7 @@ interface StorageInterface
 
     /**
      * Returns the first occurance of an item with a given id
-     * 
+     *
      * @param  string $id The item id
      * @return Item       Item object
      */
@@ -63,7 +63,7 @@ interface StorageInterface
 
     /**
      * Remove an item from the cart
-     * 
+     *
      * @param  mixed $id
      * @return void
      */
@@ -71,21 +71,21 @@ interface StorageInterface
 
     /**
      * Destroy the cart
-     * 
+     *
      * @return void
      */
     public function destroy();
     
     /**
      * Set the cart identifier
-     * 
+     *
      * @param string $identifier
      */
     public function setIdentifier($identifier);
     
     /**
      * Return the current cart identifier
-     * 
+     *
      * @return void
      */
     public function getIdentifier();

@@ -31,7 +31,7 @@ class Tax
      * pass in a percentage, or a price before and after
      * tax and have the library work out the tax rate
      * automatically.
-     * 
+     *
      * @param float $value The percentage of your tax (or price before tax)
      * @param float $after The value after tax
      */
@@ -49,7 +49,7 @@ class Tax
 
     /**
      * Deduct tax from a specified price
-     * 
+     *
      * @param  float $price The price you want to deduct tax from
      * @return float        $price - tax
      */
@@ -60,7 +60,7 @@ class Tax
 
     /**
      * Add tax to a specified price
-     * 
+     *
      * @param  float $price The value you want to add tax to
      * @return float        $price + tax
      */
@@ -71,7 +71,7 @@ class Tax
 
     /**
      * Calculate the tax rate from a price
-     * 
+     *
      * @param  float $price The price (after tax)
      * @return float        The tax rate
      */
@@ -82,7 +82,7 @@ class Tax
 
     /**
      * Return the value of protected properties
-     * 
+     *
      * @param  mixed $property The property
      * @return mixed           The value of the property
      */

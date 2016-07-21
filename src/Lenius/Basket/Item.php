@@ -30,7 +30,7 @@ class Item
 
     /**
      * Construct the item
-     * 
+     *
      * @param string           $identifier
      * @param array            $item
      * @param StorageInterface $store
@@ -40,7 +40,9 @@ class Item
         $this->identifier = $identifier;
         $this->store = $store;
 
-        foreach ($item as $key => $value) $this->data[$key] = $value;
+        foreach ($item as $key => $value) {
+            $this->data[$key] = $value;
+        }
 
         $item['tax'] = isset($item['tax']) ? $item['tax'] : 0;
 
@@ -49,7 +51,7 @@ class Item
 
     /**
      * Return the value of protected methods
-     * 
+     *
      * @param  any $param
      * @return mixed
      */
@@ -60,7 +62,7 @@ class Item
 
     /**
      * Update data array using set magic method
-     * 
+     *
      * @param string $param The key to set
      * @param mixed $value The value to set $param to
      */
@@ -74,7 +76,7 @@ class Item
 
     /**
      * Removes the current item from the cart
-     * 
+     *
      * @return void
      */
     public function remove()
@@ -84,7 +86,7 @@ class Item
 
     /**
      * Return the total tax for this item
-     * 
+     *
      * @return float
      */
     public function tax()
@@ -94,7 +96,7 @@ class Item
 
     /**
      * Return the total of the item, with or without tax
-     * 
+     *
      * @param  boolean $includeTax Whether or not to include tax
      * @return float              The total, as a float
      */
@@ -102,14 +104,16 @@ class Item
     {
         $price = $this->price;
 
-        if ($includeTax) $price = $this->tax->add($price);
+        if ($includeTax) {
+            $price = $this->tax->add($price);
+        }
 
         return (float)($price * $this->quantity);
     }
 
     /**
      * Return the total weight of the item
-     * 
+     *
      * @return float              The weight, as a float
      */
     public function weight()
@@ -121,7 +125,7 @@ class Item
 
         /**
      * Return the total of the item, with or without tax
-     * 
+     *
      * @param  boolean $includeTax Whether or not to include tax
      * @return float              The total, as a float
      */
@@ -129,14 +133,16 @@ class Item
     {
         $price = $this->price;
 
-        if ($includeTax) $price = $this->tax->add($price);
+        if ($includeTax) {
+            $price = $this->tax->add($price);
+        }
 
         return (float)$price;
     }
 
     /**
      * Update a single key for this item, or multiple
-     * 
+     *
      * @param  array|string  $key The array key to update, or an array of key-value pairs to update
      * @return void
      */
@@ -157,7 +163,7 @@ class Item
     
     /**
      * Check if this item has options
-     * 
+     *
      * @return boolean Yes or no?
      */
     public function hasOptions()
@@ -167,7 +173,7 @@ class Item
 
     /**
      * Convert the item into an array
-     * 
+     *
      * @return array The item data
      */
     public function toArray()

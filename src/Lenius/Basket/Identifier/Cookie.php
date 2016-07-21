@@ -24,19 +24,21 @@ class Cookie implements \Lenius\Basket\IdentifierInterface
 {
     /**
      * Get the current or new unique identifier
-     * 
+     *
      * @return string The identifier
      */
     public function get()
     {
-        if (isset($_COOKIE['cart_identifier'])) return $_COOKIE['cart_identifier'];
+        if (isset($_COOKIE['cart_identifier'])) {
+            return $_COOKIE['cart_identifier'];
+        }
 
         return $this->regenerate();
     }
 
     /**
      * Regenerate the identifier
-     * 
+     *
      * @return string The identifier
      */
     public function regenerate()
@@ -50,7 +52,7 @@ class Cookie implements \Lenius\Basket\IdentifierInterface
 
     /**
      * Forget the identifier
-     * 
+     *
      * @return void
      */
     public function forget()

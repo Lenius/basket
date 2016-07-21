@@ -41,7 +41,7 @@ class Basket
 
     /**
      * Basket constructor
-     * 
+     *
      * @param StorageInterface    $store      The interface for storing the cart data
      * @param IdentifierInterface $identifier The interface for storing the identifier
      */
@@ -54,7 +54,9 @@ class Basket
         $this->id = $this->identifier->get();
 
         // Restore the cart from a saved version
-        if (method_exists($this->store, 'restore')) $this->store->restore();
+        if (method_exists($this->store, 'restore')) {
+            $this->store->restore();
+        }
 
         // Let our storage class know which cart we're talking about
         $this->store->setIdentifier($this->id);
@@ -62,7 +64,7 @@ class Basket
 
     /**
      * Retrieve the basket contents
-     * 
+     *
      * @return array An array of Item objects
      */
     public function &contents($asArray = false)
@@ -72,7 +74,7 @@ class Basket
 
     /**
      * Insert an item into the basket
-     * 
+     *
      * @param  array  $item An array of item data
      * @return string       A unique item identifier
      */
@@ -98,7 +100,7 @@ class Basket
 
     /**
      * Update an item
-     * 
+     *
      * @param  string $itemIdentifier The unique item identifier
      * @param  string|int|array $key  The key to update, or an array of key-value pairs
      * @param  mixed $value           The value to set $key to
@@ -107,18 +109,16 @@ class Basket
     public function update($itemIdentifier, $key, $value = null)
     {
         foreach ($this->contents() as $item) {
-
             if ($item->identifier == $itemIdentifier) {
                 $item->update($key, $value);
                 break;
             }
-
         }
     }
 
     /**
      * Remove an item from the basket
-     * 
+     *
      * @param  string $identifier Unique item identifier
      * @return void
      */
@@ -129,7 +129,7 @@ class Basket
 
     /**
      * Destroy/empty the basket
-     * 
+     *
      * @return void
      */
     public function destroy()
@@ -139,7 +139,7 @@ class Basket
 
     /**
      * Check if the basket has a specific item
-     * 
+     *
      * @param  string  $itemIdentifier The unique item identifier
      * @return boolean                 Yes or no?
      */
@@ -150,7 +150,7 @@ class Basket
 
     /**
      * Return a specific item object by identifier
-     * 
+     *
      * @param  string $itemIdentifier The unique item identifier
      * @return Item                   Item object
      */
@@ -161,7 +161,7 @@ class Basket
 
     /**
      * Returns the first occurance of an item with a given id
-     * 
+     *
      * @param  string $id The item id
      * @return Item       Item object
      */
@@ -172,35 +172,39 @@ class Basket
 
     /**
      * The total tax value for the basket
-     * 
+     *
      * @return float The total tax value
      */
     public function tax()
     {
         $total = 0;
 
-        foreach ($this->contents() as $item) $total += (float)$item->tax();
+        foreach ($this->contents() as $item) {
+            $total += (float)$item->tax();
+        }
 
         return $total;
     }
 
     /**
      * The total weight value for the basket
-     * 
+     *
      * @return float The total weight value
      */
     public function weight()
     {
         $weight = 0;
 
-        foreach ($this->contents() as $item) $weight += (float)$item->weight();
+        foreach ($this->contents() as $item) {
+            $weight += (float)$item->weight();
+        }
 
         return $weight;
     }
 
     /**
      * The total value of the basket
-     * 
+     *
      * @param  boolean $includeTax Include tax on the total?
      * @return float               The total basket value
      */
@@ -208,14 +212,16 @@ class Basket
     {
         $total = 0;
 
-        foreach ($this->contents() as $item) $total += (float)$item->total($includeTax);
+        foreach ($this->contents() as $item) {
+            $total += (float)$item->total($includeTax);
+        }
 
         return (float)$total;
     }
 
     /**
      * The total number of items in the basket
-     * 
+     *
      * @param  boolean $unique Just return unique items?
      * @return int             Total number of items
      */
@@ -232,7 +238,7 @@ class Basket
     
     /**
      * Set the basket identifier, useful if restoring a saved basket
-     * 
+     *
      * @param  mixed The identifier
      * @return void
      */
@@ -243,13 +249,15 @@ class Basket
 
     /**
      * Create a unique item identifier
-     * 
+     *
      * @param  array  $item An array of item data
      * @return string       An md5 hash of item
      */
     protected function createItemIdentifier(array $item)
     {
-        if ( ! array_key_exists('options', $item)) $item['options'] = array();
+        if (! array_key_exists('options', $item)) {
+            $item['options'] = array();
+        }
 
         ksort($item['options']);
 
@@ -258,18 +266,16 @@ class Basket
 
     /**
      * Check if a basket item has the required parameters
-     * 
+     *
      * @param  array  $item An array of item data
      * @return void
      */
     protected function checkArgs(array $item)
     {
         foreach ($this->requiredParams as $param) {
-
-            if ( ! array_key_exists($param, $item)) {
+            if (! array_key_exists($param, $item)) {
                 throw new InvalidArgumentException("The '{$param}' field is required");
             }
-
         }
     }
 }

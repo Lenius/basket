@@ -31,7 +31,9 @@ class Session extends Runtime implements \Lenius\Basket\StorageInterface
     {
         session_id() or session_start();
 
-        if (isset($_SESSION['cart'])) static::$cart = unserialize($_SESSION['cart']);
+        if (isset($_SESSION['cart'])) {
+            static::$cart = unserialize($_SESSION['cart']);
+        }
     }
 
     /**

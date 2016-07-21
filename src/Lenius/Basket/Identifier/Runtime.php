@@ -26,19 +26,21 @@ class Runtime implements \Lenius\Basket\IdentifierInterface
 
     /**
      * Get the current or new unique identifier
-     * 
+     *
      * @return string The identifier
      */
     public function get()
     {
-        if (isset(static::$identifier)) return static::$identifier;
+        if (isset(static::$identifier)) {
+            return static::$identifier;
+        }
 
         return $this->regenerate();
     }
 
     /**
      * Regenerate the identifier
-     * 
+     *
      * @return string The identifier
      */
     public function regenerate()
@@ -52,7 +54,7 @@ class Runtime implements \Lenius\Basket\IdentifierInterface
 
     /**
      * Forget the identifier
-     * 
+     *
      * @return void
      */
     public function forget()
