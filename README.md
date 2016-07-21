@@ -1,11 +1,11 @@
 # Shopping Basket Package
 
-[![Build Status](https://travis-ci.org/Lenius/basket.png?branch=master)](http://travis-ci.org/Lenius/basket)
-[![Total Downloads](https://poser.pugx.org/lenius/basket/downloads.svg)](https://packagist.org/packages/lenius/basket)
+[![Build Status](https://travis-ci.org/Lenius/basket.svg)](https://travis-ci.org/Lenius/lenius/basket) [![Code Coverage](https://scrutinizer-ci.com/g/Lenius/basket/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Lenius/basket/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Lenius/basket/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Lenius/basket/?branch=master) [![Latest Stable Version](https://poser.pugx.org/Lenius/basket/v/stable)](https://packagist.org/packages/Lenius/basket) [![Total Downloads](https://poser.pugx.org/Lenius/basket/downloads)](https://packagist.org/packages/Lenius/basket) [![License](https://poser.pugx.org/Lenius/basket/license)](https://packagist.org/packages/Lenius/basket)
+
 
 * [Website](http://www.lenius.dk)
 * [License](https://github.com/lenius/basket/master/LICENSE)
-* Version: dev
+* Version: production
 
 The Lenius shopping basket composer package makes it easy to implement a shopping basket into your application and
 store the basket data using one of the numerous data stores provided. You can also inject your own data store if you
