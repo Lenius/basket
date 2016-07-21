@@ -1,6 +1,9 @@
 {
     "name": "lenius/basket",
     "description": "Shopping basket package",
+    "homepage": "https://github.com/lenius/basket",
+    "keywords": ["e-commerce", "shopping"],
+    "license": "MIT",
     "authors": [
         {
             "name": "Lenius",
