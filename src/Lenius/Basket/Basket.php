@@ -65,6 +65,7 @@ class Basket
     /**
      * Retrieve the basket contents
      *
+     * @param bool $asArray
      * @return array An array of Item objects
      */
     public function &contents($asArray = false)

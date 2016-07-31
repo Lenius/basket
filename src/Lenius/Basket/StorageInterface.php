@@ -33,6 +33,7 @@ interface StorageInterface
     /**
      * Retrieve the cart data
      *
+     * @param bool $asArray
      * @return array
      */
     public function &data($asArray = false);
@@ -40,7 +41,7 @@ interface StorageInterface
     /**
      * Check if the item exists in the cart
      *
-     * @param  mixed  $id
+     * @param  mixed  $identifier
      * @return boolean
      */
     public function has($identifier);
@@ -48,7 +49,7 @@ interface StorageInterface
     /**
      * Get a single cart item by id
      *
-     * @param  mixed $id The item id
+     * @param  mixed $identifier The item id
      * @return Item  The item class
      */
     public function item($identifier);

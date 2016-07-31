@@ -20,9 +20,9 @@
 
 namespace Lenius\Basket\Storage;
 
-use Lenius\Basket\Item;
+use Lenius\Basket\StorageInterface;
 
-class Session extends Runtime implements \Lenius\Basket\StorageInterface
+class Session extends Runtime implements StorageInterface
 {
     /**
      * The Session store constructor
