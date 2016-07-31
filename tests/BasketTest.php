@@ -183,15 +183,13 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testItemRemoval()
     {
-        $actualId = $this->basket->insert([
+        $this->basket->insert([
             'id'       => 'foo',
             'name'     => 'bar',
             'price'    => 100,
             'quantity' => 1,
             'weight'   => 200,
         ]);
-
-        $identifier = md5('foo'.serialize([]));
 
         $contents = &$this->basket->contents();
 
@@ -206,15 +204,13 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testAlternateItemRemoval()
     {
-        $actualId = $this->basket->insert([
+        $this->basket->insert([
             'id'       => 'foo',
             'name'     => 'bar',
             'price'    => 100,
             'quantity' => 1,
             'weight'   => 200,
         ]);
-
-        $identifier = md5('foo'.serialize([]));
 
         $contents = &$this->basket->contents();
 
@@ -242,7 +238,7 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testbasketToArray()
     {
-        $actualId = $this->basket->insert([
+        $this->basket->insert([
             'id'       => 'foo',
             'name'     => 'bar',
             'price'    => 100,
