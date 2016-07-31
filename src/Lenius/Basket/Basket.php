@@ -1,6 +1,6 @@
 <?php
 
- /**
+/**
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
@@ -10,14 +10,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 namespace Lenius\Basket;
 
 use InvalidArgumentException;
@@ -25,22 +24,22 @@ use InvalidArgumentException;
 class Basket
 {
     protected $id;
-    
+
     protected $identifier;
     protected $store;
-    
+
     protected $currency;
 
-    protected $requiredParams = array(
+    protected $requiredParams = [
         'id',
         'name',
         'quantity',
         'price',
-        'weight'
-    );
+        'weight',
+    ];
 
     /**
-     * Basket constructor
+     * Basket constructor.
      *
      * @param StorageInterface    $store      The interface for storing the cart data
      * @param IdentifierInterface $identifier The interface for storing the identifier
@@ -63,9 +62,10 @@ class Basket
     }
 
     /**
-     * Retrieve the basket contents
+     * Retrieve the basket contents.
      *
      * @param bool $asArray
+     *
      * @return array An array of Item objects
      */
     public function &contents($asArray = false)
@@ -74,10 +74,11 @@ class Basket
     }
 
     /**
-     * Insert an item into the basket
+     * Insert an item into the basket.
      *
-     * @param  array  $item An array of item data
-     * @return string       A unique item identifier
+     * @param array $item An array of item data
+     *
+     * @return string A unique item identifier
      */
     public function insert(array $item)
     {
@@ -100,11 +101,12 @@ class Basket
     }
 
     /**
-     * Update an item
+     * Update an item.
      *
-     * @param  string $itemIdentifier The unique item identifier
-     * @param  string|int|array $key  The key to update, or an array of key-value pairs
-     * @param  mixed $value           The value to set $key to
+     * @param string           $itemIdentifier The unique item identifier
+     * @param string|int|array $key            The key to update, or an array of key-value pairs
+     * @param mixed            $value          The value to set $key to
+     *
      * @return void
      */
     public function update($itemIdentifier, $key, $value = null)
@@ -118,9 +120,10 @@ class Basket
     }
 
     /**
-     * Remove an item from the basket
+     * Remove an item from the basket.
      *
-     * @param  string $identifier Unique item identifier
+     * @param string $identifier Unique item identifier
+     *
      * @return void
      */
     public function remove($identifier)
@@ -129,7 +132,7 @@ class Basket
     }
 
     /**
-     * Destroy/empty the basket
+     * Destroy/empty the basket.
      *
      * @return void
      */
@@ -139,10 +142,11 @@ class Basket
     }
 
     /**
-     * Check if the basket has a specific item
+     * Check if the basket has a specific item.
      *
-     * @param  string  $itemIdentifier The unique item identifier
-     * @return boolean                 Yes or no?
+     * @param string $itemIdentifier The unique item identifier
+     *
+     * @return bool Yes or no?
      */
     public function has($itemIdentifier)
     {
@@ -150,10 +154,11 @@ class Basket
     }
 
     /**
-     * Return a specific item object by identifier
+     * Return a specific item object by identifier.
      *
-     * @param  string $itemIdentifier The unique item identifier
-     * @return Item                   Item object
+     * @param string $itemIdentifier The unique item identifier
+     *
+     * @return Item Item object
      */
     public function item($itemIdentifier)
     {
@@ -161,10 +166,11 @@ class Basket
     }
 
     /**
-     * Returns the first occurance of an item with a given id
+     * Returns the first occurance of an item with a given id.
      *
-     * @param  string $id The item id
-     * @return Item       Item object
+     * @param string $id The item id
+     *
+     * @return Item Item object
      */
     public function find($id)
     {
@@ -172,7 +178,7 @@ class Basket
     }
 
     /**
-     * The total tax value for the basket
+     * The total tax value for the basket.
      *
      * @return float The total tax value
      */
@@ -181,14 +187,14 @@ class Basket
         $total = 0;
 
         foreach ($this->contents() as $item) {
-            $total += (float)$item->tax();
+            $total += (float) $item->tax();
         }
 
         return $total;
     }
 
     /**
-     * The total weight value for the basket
+     * The total weight value for the basket.
      *
      * @return float The total weight value
      */
@@ -197,34 +203,36 @@ class Basket
         $weight = 0;
 
         foreach ($this->contents() as $item) {
-            $weight += (float)$item->weight();
+            $weight += (float) $item->weight();
         }
 
         return $weight;
     }
 
     /**
-     * The total value of the basket
+     * The total value of the basket.
      *
-     * @param  boolean $includeTax Include tax on the total?
-     * @return float               The total basket value
+     * @param bool $includeTax Include tax on the total?
+     *
+     * @return float The total basket value
      */
     public function total($includeTax = true)
     {
         $total = 0;
 
         foreach ($this->contents() as $item) {
-            $total += (float)$item->total($includeTax);
+            $total += (float) $item->total($includeTax);
         }
 
-        return (float)$total;
+        return (float) $total;
     }
 
     /**
-     * The total number of items in the basket
+     * The total number of items in the basket.
      *
-     * @param  boolean $unique Just return unique items?
-     * @return int             Total number of items
+     * @param bool $unique Just return unique items?
+     *
+     * @return int Total number of items
      */
     public function totalItems($unique = false)
     {
@@ -236,11 +244,12 @@ class Basket
 
         return $total;
     }
-    
+
     /**
-     * Set the basket identifier, useful if restoring a saved basket
+     * Set the basket identifier, useful if restoring a saved basket.
      *
      * @param  mixed The identifier
+     *
      * @return void
      */
     public function setIdentifier($identifier)
@@ -249,15 +258,16 @@ class Basket
     }
 
     /**
-     * Create a unique item identifier
+     * Create a unique item identifier.
      *
-     * @param  array  $item An array of item data
-     * @return string       An md5 hash of item
+     * @param array $item An array of item data
+     *
+     * @return string An md5 hash of item
      */
     protected function createItemIdentifier(array $item)
     {
-        if (! array_key_exists('options', $item)) {
-            $item['options'] = array();
+        if (!array_key_exists('options', $item)) {
+            $item['options'] = [];
         }
 
         ksort($item['options']);
@@ -266,15 +276,16 @@ class Basket
     }
 
     /**
-     * Check if a basket item has the required parameters
+     * Check if a basket item has the required parameters.
      *
-     * @param  array  $item An array of item data
+     * @param array $item An array of item data
+     *
      * @return void
      */
     protected function checkArgs(array $item)
     {
         foreach ($this->requiredParams as $param) {
-            if (! array_key_exists($param, $item)) {
+            if (!array_key_exists($param, $item)) {
                 throw new InvalidArgumentException("The '{$param}' field is required");
             }
         }

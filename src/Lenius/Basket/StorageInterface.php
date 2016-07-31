@@ -1,6 +1,6 @@
 <?php
 
- /**
+/**
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
@@ -10,82 +10,87 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 namespace Lenius\Basket;
 
 interface StorageInterface
 {
     /**
-     * Add or update an item in the cart
+     * Add or update an item in the cart.
      *
-     * @param  Item   $item The item to insert or update
+     * @param Item $item The item to insert or update
+     *
      * @return void
      */
     public function insertUpdate(Item $item);
 
     /**
-     * Retrieve the cart data
+     * Retrieve the cart data.
      *
      * @param bool $asArray
+     *
      * @return array
      */
     public function &data($asArray = false);
 
     /**
-     * Check if the item exists in the cart
+     * Check if the item exists in the cart.
      *
-     * @param  mixed  $identifier
-     * @return boolean
+     * @param mixed $identifier
+     *
+     * @return bool
      */
     public function has($identifier);
 
     /**
-     * Get a single cart item by id
+     * Get a single cart item by id.
      *
-     * @param  mixed $identifier The item id
-     * @return Item  The item class
+     * @param mixed $identifier The item id
+     *
+     * @return Item The item class
      */
     public function item($identifier);
 
     /**
-     * Returns the first occurance of an item with a given id
+     * Returns the first occurance of an item with a given id.
      *
-     * @param  string $id The item id
-     * @return Item       Item object
+     * @param string $id The item id
+     *
+     * @return Item Item object
      */
     public function find($id);
 
     /**
-     * Remove an item from the cart
+     * Remove an item from the cart.
      *
-     * @param  mixed $id
+     * @param mixed $id
+     *
      * @return void
      */
     public function remove($id);
 
     /**
-     * Destroy the cart
+     * Destroy the cart.
      *
      * @return void
      */
     public function destroy();
-    
+
     /**
-     * Set the cart identifier
+     * Set the cart identifier.
      *
      * @param string $identifier
      */
     public function setIdentifier($identifier);
-    
+
     /**
-     * Return the current cart identifier
+     * Return the current cart identifier.
      *
      * @return void
      */

@@ -10,20 +10,19 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 namespace Lenius\Basket\Identifier;
 
 class Cookie implements \Lenius\Basket\IdentifierInterface
 {
     /**
-     * Get the current or new unique identifier
+     * Get the current or new unique identifier.
      *
      * @return string The identifier
      */
@@ -37,7 +36,7 @@ class Cookie implements \Lenius\Basket\IdentifierInterface
     }
 
     /**
-     * Regenerate the identifier
+     * Regenerate the identifier.
      *
      * @return string The identifier
      */
@@ -45,18 +44,18 @@ class Cookie implements \Lenius\Basket\IdentifierInterface
     {
         $identifier = md5(uniqid(null, true));
 
-        setcookie('cart_identifier', $identifier, 0, "/");
+        setcookie('cart_identifier', $identifier, 0, '/');
 
         return $identifier;
     }
 
     /**
-     * Forget the identifier
+     * Forget the identifier.
      *
      * @return void
      */
     public function forget()
     {
-        return setcookie('cart_identifier', null, time()-3600);
+        return setcookie('cart_identifier', null, time() - 3600);
     }
 }

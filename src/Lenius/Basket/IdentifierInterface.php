@@ -1,6 +1,6 @@
 <?php
 
- /**
+/**
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
@@ -10,34 +10,33 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 namespace Lenius\Basket;
 
 interface IdentifierInterface
 {
     /**
-     * Get the current or new unique identifier
+     * Get the current or new unique identifier.
      *
      * @return string The identifier
      */
     public function get();
 
     /**
-     * Regenerate the identifier
+     * Regenerate the identifier.
      *
      * @return string The identifier
      */
     public function regenerate();
 
     /**
-     * Forget the identifier
+     * Forget the identifier.
      *
      * @return void
      */

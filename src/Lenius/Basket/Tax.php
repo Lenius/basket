@@ -1,6 +1,6 @@
 <?php
 
- /**
+/**
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
@@ -10,14 +10,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 namespace Lenius\Basket;
 
 class Tax
@@ -25,7 +24,7 @@ class Tax
     protected $percentage;
     protected $deductModifier;
     protected $addModifier;
-    
+
     /**
      * When constructing the tax class, you can either
      * pass in a percentage, or a price before and after
@@ -48,10 +47,11 @@ class Tax
     }
 
     /**
-     * Deduct tax from a specified price
+     * Deduct tax from a specified price.
      *
-     * @param  float $price The price you want to deduct tax from
-     * @return float        $price - tax
+     * @param float $price The price you want to deduct tax from
+     *
+     * @return float $price - tax
      */
     public function deduct($price)
     {
@@ -59,10 +59,11 @@ class Tax
     }
 
     /**
-     * Add tax to a specified price
+     * Add tax to a specified price.
      *
-     * @param  float $price The value you want to add tax to
-     * @return float        $price + tax
+     * @param float $price The value you want to add tax to
+     *
+     * @return float $price + tax
      */
     public function add($price)
     {
@@ -70,10 +71,11 @@ class Tax
     }
 
     /**
-     * Calculate the tax rate from a price
+     * Calculate the tax rate from a price.
      *
-     * @param  float $price The price (after tax)
-     * @return float        The tax rate
+     * @param float $price The price (after tax)
+     *
+     * @return float The tax rate
      */
     public function rate($price)
     {
@@ -81,10 +83,11 @@ class Tax
     }
 
     /**
-     * Return the value of protected properties
+     * Return the value of protected properties.
      *
-     * @param  mixed $property The property
-     * @return mixed           The value of the property
+     * @param mixed $property The property
+     *
+     * @return mixed The value of the property
      */
     public function __get($property)
     {

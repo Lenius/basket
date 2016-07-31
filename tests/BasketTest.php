@@ -10,23 +10,22 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 use Lenius\Basket\Basket;
-use Lenius\Basket\Storage\Runtime as RuntimeStore;
 use Lenius\Basket\Identifier\Runtime as RuntimeIdentifier;
+use Lenius\Basket\Storage\Runtime as RuntimeStore;
 
 class BasketTest extends \PHPUnit_Framework_TestCase
 {
     public function setUp()
     {
-        $this->basket = new Basket(new RuntimeStore, new RuntimeIdentifier);
+        $this->basket = new Basket(new RuntimeStore(), new RuntimeIdentifier());
     }
 
     public function tearDown()
@@ -36,51 +35,51 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testInsert()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
-        $identifier = md5('foo'.serialize(array()));
+        $identifier = md5('foo'.serialize([]));
 
         $this->assertEquals($identifier, $actualId);
     }
 
     public function testInsertIncrements()
     {
-        $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 150,
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 150,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         $this->assertEquals($this->basket->total(), 150);
 
-        $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 150,
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 150,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         $this->assertEquals($this->basket->total(), 300);
     }
 
     public function testUpdate()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         $this->basket->update($actualId, 'name', 'baz');
 
@@ -89,13 +88,13 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testMagicUpdate()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         foreach ($this->basket->contents() as $item) {
             $item->name = 'bim';
@@ -103,40 +102,40 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($this->basket->item($actualId)->name, 'bim');
     }
-    
+
     public function testOptions()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200,
-            'options' => array(
-                'size' => 'L'
-            )
-        ));
-        
+            'weight'   => 200,
+            'options'  => [
+                'size' => 'L',
+            ],
+        ]);
+
         $item = $this->basket->item($actualId);
-        
+
         $this->assertTrue($item->hasOptions());
         $this->assertNotEmpty($item->options);
-        
-        $item->options = array();
-        
+
+        $item->options = [];
+
         $this->assertFalse($item->hasOptions());
         $this->assertEmpty($item->options);
     }
 
     public function testFind()
     {
-        $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         $this->assertInstanceOf('\Lenius\Basket\Item', $this->basket->find('foo'));
     }
@@ -147,16 +146,16 @@ class BasketTest extends \PHPUnit_Framework_TestCase
         $price = rand(20, 99999);
         $quantity = rand(1, 10);
 
-        $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => $price,
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => $price,
             'quantity' => $quantity,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         // Test that the total is being calculated successfully
-        $this->assertEquals($this->basket->total(), $price*$quantity);
+        $this->assertEquals($this->basket->total(), $price * $quantity);
     }
 
     public function testTotalItems()
@@ -166,15 +165,15 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
         for ($i = 1; $i <= $adding; $i++) {
             $quantity = rand(1, 20);
-            
-            $this->basket->insert(array(
-                'id' => uniqid(),
-                'name' => 'bar',
-                'price' => 100,
+
+            $this->basket->insert([
+                'id'       => uniqid(),
+                'name'     => 'bar',
+                'price'    => 100,
                 'quantity' => $quantity,
-                'weight' => 200
-            ));
-            
+                'weight'   => 200,
+            ]);
+
             $actualTotal += $quantity;
         }
 
@@ -184,68 +183,72 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testItemRemoval()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
-        $identifier = md5('foo'.serialize(array()));
+        $identifier = md5('foo'.serialize([]));
 
-        $contents =& $this->basket->contents();
+        $contents = &$this->basket->contents();
 
         $this->assertNotEmpty($contents);
 
-        foreach ($contents as $item) $item->remove();
+        foreach ($contents as $item) {
+            $item->remove();
+        }
 
         $this->assertEmpty($contents);
     }
 
     public function testAlternateItemRemoval()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
-        $identifier = md5('foo'.serialize(array()));
+        $identifier = md5('foo'.serialize([]));
 
-        $contents =& $this->basket->contents();
+        $contents = &$this->basket->contents();
 
         $this->assertNotEmpty($contents);
 
-        foreach ($contents as $identifier => $item) $this->basket->remove($identifier);
+        foreach ($contents as $identifier => $item) {
+            $this->basket->remove($identifier);
+        }
 
         $this->assertEmpty($contents);
     }
 
     public function testItemToArray()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         $this->assertTrue(is_array($this->basket->item($actualId)->toArray()));
     }
 
     public function testbasketToArray()
     {
-        $actualId = $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $actualId = $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'weight' => 200
-        ));
+            'weight'   => 200,
+        ]);
 
         foreach ($this->basket->contents(true) as $item) {
             $this->assertTrue(is_array($item));
@@ -254,14 +257,14 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testTax()
     {
-        $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'tax' => 20,
-            'weight' => 200
-        ));
+            'tax'      => 20,
+            'weight'   => 200,
+        ]);
 
         // Test that the tax is being calculated successfully
         $this->assertEquals($this->basket->total(), 120);
@@ -272,16 +275,16 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testTaxUpdate()
     {
-        $this->basket->insert(array(
-            'id' => 'foo',
-            'name' => 'bar',
-            'price' => 100,
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
             'quantity' => 1,
-            'tax' => 20,
-            'weight' => 200
-        ));
+            'tax'      => 20,
+            'weight'   => 200,
+        ]);
 
-        $identifier = md5( 'foo'.serialize( array() ) );
+        $identifier = md5('foo'.serialize([]));
 
         $item = $this->basket->item($identifier);
 
@@ -294,11 +297,11 @@ class BasketTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($item->total(), 120);
         $this->assertEquals($item->total(false), 100);
 
-        $item->update('tax',0);
+        $item->update('tax', 0);
         $this->assertEquals($item->total(), 100);
         $this->assertEquals($item->total(false), 100);
 
-        $item->update('tax',20);
+        $item->update('tax', 20);
         $this->assertEquals($item->total(), 120);
         $this->assertEquals($item->total(false), 100);
     }

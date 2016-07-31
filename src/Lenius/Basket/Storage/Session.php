@@ -10,14 +10,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 namespace Lenius\Basket\Storage;
 
 use Lenius\Basket\StorageInterface;
@@ -25,7 +24,7 @@ use Lenius\Basket\StorageInterface;
 class Session extends Runtime implements StorageInterface
 {
     /**
-     * The Session store constructor
+     * The Session store constructor.
      */
     public function restore()
     {

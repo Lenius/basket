@@ -10,14 +10,13 @@
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
- * @package lenius/basket
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2013 Lenius.
- * @version dev
- * @link http://github.com/lenius/basket
  *
+ * @version dev
+ *
+ * @link http://github.com/lenius/basket
  */
-
 namespace Lenius\Basket\Storage;
 
 use Lenius\Basket\Item;
@@ -25,12 +24,13 @@ use Lenius\Basket\Item;
 class Runtime implements \Lenius\Basket\StorageInterface
 {
     protected $identifier;
-    protected static $cart = array();
+    protected static $cart = [];
 
     /**
-     * Add or update an item in the cart
+     * Add or update an item in the cart.
      *
-     * @param  Item   $item The item to insert or update
+     * @param Item $item The item to insert or update
+     *
      * @return void
      */
     public function insertUpdate(Item $item)
@@ -39,15 +39,15 @@ class Runtime implements \Lenius\Basket\StorageInterface
     }
 
     /**
-     * Retrieve the cart data
+     * Retrieve the cart data.
      *
      * @return array
      */
     public function &data($asArray = false)
     {
-        $cart =& static::$cart[$this->id];
+        $cart = &static::$cart[$this->id];
 
-        if (! $asArray) {
+        if (!$asArray) {
             return $cart;
         }
 
@@ -61,10 +61,11 @@ class Runtime implements \Lenius\Basket\StorageInterface
     }
 
     /**
-     * Check if the item exists in the cart
+     * Check if the item exists in the cart.
      *
-     * @param  mixed  $id
-     * @return boolean
+     * @param mixed $id
+     *
+     * @return bool
      */
     public function has($identifier)
     {
@@ -78,10 +79,11 @@ class Runtime implements \Lenius\Basket\StorageInterface
     }
 
     /**
-     * Get a single cart item by id
+     * Get a single cart item by id.
      *
-     * @param  mixed $id The item id
-     * @return Item  The item class
+     * @param mixed $id The item id
+     *
+     * @return Item The item class
      */
     public function item($identifier)
     {
@@ -95,10 +97,11 @@ class Runtime implements \Lenius\Basket\StorageInterface
     }
 
     /**
-     * Returns the first occurance of an item with a given id
+     * Returns the first occurance of an item with a given id.
      *
-     * @param  string $id The item id
-     * @return Item       Item object
+     * @param string $id The item id
+     *
+     * @return Item Item object
      */
     public function find($id)
     {
@@ -110,11 +113,12 @@ class Runtime implements \Lenius\Basket\StorageInterface
 
         return false;
     }
-    
+
     /**
-     * Remove an item from the cart
+     * Remove an item from the cart.
      *
-     * @param  mixed $id
+     * @param mixed $id
+     *
      * @return void
      */
     public function remove($id)
@@ -123,17 +127,17 @@ class Runtime implements \Lenius\Basket\StorageInterface
     }
 
     /**
-     * Destroy the cart
+     * Destroy the cart.
      *
      * @return void
      */
     public function destroy()
     {
-        static::$cart[$this->id] = array();
+        static::$cart[$this->id] = [];
     }
 
     /**
-     * Set the cart identifier
+     * Set the cart identifier.
      *
      * @param string $identifier
      */
@@ -141,13 +145,13 @@ class Runtime implements \Lenius\Basket\StorageInterface
     {
         $this->id = $id;
 
-        if (! array_key_exists($this->id, static::$cart)) {
-            static::$cart[$this->id] = array();
+        if (!array_key_exists($this->id, static::$cart)) {
+            static::$cart[$this->id] = [];
         }
     }
 
     /**
-     * Return the current cart identifier
+     * Return the current cart identifier.
      *
      * @return void
      */
