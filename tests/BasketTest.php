@@ -22,7 +22,6 @@ use Lenius\Basket\Identifier\Runtime as RuntimeIdentifier;
 use Lenius\Basket\Storage\Runtime as RuntimeStore;
 use PHPUnit\Framework\TestCase;
 
-
 class BasketTest extends TestCase
 {
     public function setUp()

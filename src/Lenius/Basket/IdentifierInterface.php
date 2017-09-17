@@ -17,6 +17,7 @@
  *
  * @link http://github.com/lenius/basket
  */
+
 namespace Lenius\Basket;
 
 interface IdentifierInterface
