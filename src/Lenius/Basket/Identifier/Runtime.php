@@ -61,6 +61,6 @@ class Runtime implements IdentifierInterface
      */
     public function forget()
     {
-        unset(static::$identifier);
+        static::$identifier = '';
     }
 }
