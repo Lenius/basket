@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2013 Lenius.
+ * Copyright (c) 2017 Lenius.
  * http://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2013 Lenius.
+ * @copyright 2017 Lenius.
  *
  * @version dev
  *
@@ -20,8 +20,10 @@
 use Lenius\Basket\Basket;
 use Lenius\Basket\Identifier\Runtime as RuntimeIdentifier;
 use Lenius\Basket\Storage\Runtime as RuntimeStore;
+use PHPUnit\Framework\TestCase;
 
-class BasketTest extends \PHPUnit_Framework_TestCase
+
+class BasketTest extends TestCase
 {
     public function setUp()
     {

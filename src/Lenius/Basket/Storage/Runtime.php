@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2013 Lenius.
+ * Copyright (c) 2017 Lenius.
  * http://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2013 Lenius.
+ * @copyright 2017 Lenius.
  *
  * @version dev
  *
@@ -20,8 +20,9 @@
 namespace Lenius\Basket\Storage;
 
 use Lenius\Basket\Item;
+use Lenius\Basket\StorageInterface;
 
-class Runtime implements \Lenius\Basket\StorageInterface
+class Runtime implements StorageInterface
 {
     protected $identifier;
     protected static $cart = [];
