@@ -130,7 +130,7 @@ class BasketTest extends TestCase
 
     public function testWeight()
     {
-        $weight = 200;
+        $weight = rand(200, 300);
 
         $this->basket->insert([
             'id'       => 'foo',
@@ -149,14 +149,15 @@ class BasketTest extends TestCase
 
     public function testWeightOption()
     {
-        $weight = 200;
-        $weight_option = 50;
+        $weight = rand(200, 300);
+        $weight_option = rand(50, 800);
+        $quantity = rand(1, 10);
 
         $this->basket->insert([
             'id'       => 'foo',
             'name'     => 'bar',
             'price'    => 100,
-            'quantity' => 1,
+            'quantity' => $quantity ,
             'weight'   => $weight,
             'options'  => [
                 'size'   => 'L',
@@ -165,7 +166,29 @@ class BasketTest extends TestCase
         ]);
 
         // Test that the total weight is being calculated successfully
-        $this->assertEquals($this->basket->weight(), $weight + $weight_option);
+        $this->assertEquals($this->basket->weight(), ($weight + $weight_option) * $quantity );
+    }
+
+    public function testPriceOption()
+    {
+        $weight = rand(200, 300);
+        $weight_option = rand(50, 800);
+        $quantity = rand(1, 10);
+
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
+            'quantity' => $quantity ,
+            'weight'   => $weight,
+            'options'  => [
+                'size'   => 'L',
+                'weight' => $weight_option,
+            ],
+        ]);
+
+        // Test that the total weight is being calculated successfully
+        $this->assertEquals($this->basket->weight(), ($weight + $weight_option) * $quantity );
     }
 
     public function testFind()
@@ -308,6 +331,24 @@ class BasketTest extends TestCase
 
         // Test that the total method can also return the pre-tax price if false is passed
         $this->assertEquals($this->basket->total(false), 100);
+    }
+
+    public function testTaxMultiply()
+    {
+        $this->basket->insert([
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
+            'quantity' => 2,
+            'tax'      => 20,
+            'weight'   => 200,
+        ]);
+
+        // Test that the tax is being calculated successfully
+        $this->assertEquals($this->basket->total(), 240);
+
+        // Test that the total method can also return the pre-tax price if false is passed
+        $this->assertEquals($this->basket->total(false), 200);
     }
 
     public function testTaxUpdate()

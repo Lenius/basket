@@ -92,7 +92,7 @@ class Item
      */
     public function tax()
     {
-        return $this->tax->rate($this->price);
+        return $this->tax->rate($this->price * $this->quantity);
     }
 
     /**
