@@ -32,15 +32,31 @@ $basket = new Basket(new Session, new Cookie);
 Inserting an item into the basket is easy. The required keys are id, name, price and quantity, although you can pass
 over any custom data that you like.
 ```php
-$basket->insert(array(
+$basket->insert([
     'id'       => 'foo',
     'name'     => 'bar',
     'price'    => 100,
     'quantity' => 2,
     'weight' => 300
-));
+]);
 ```
 
+### Inserting items with options into the basket
+Inserting an item into the basket is easy. The required keys are id, name, price and quantity, although you can pass
+over any custom data that you like.
+```php
+$basket->insert([
+    'id'       => 'foo',
+    'name'     => 'bar',
+    'price'    => 100,
+    'quantity' => 2,
+    'weight' => 300,
+    'options'  => [
+      'size' => 'L',
+      'weight' => 50
+     ],
+]);
+```
 
 ### Updating items in the basket
 You can update items in your basket by updating any property on a basket item. For example, if you were within a

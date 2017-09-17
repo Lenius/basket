@@ -122,12 +122,12 @@ class Item
     {
         $weight = $this->weight;
 
-        if($this->hasOptions()){
-          foreach($this->data['options'] as $key => $value){
-            if($key == 'weight'){
-              $weight +=  $value;
+        if ($this->hasOptions()) {
+            foreach ($this->data['options'] as $key => $value) {
+                if ($key == 'weight') {
+                    $weight += $value;
+                }
             }
-          }
         }
 
         return (float) ($weight * $this->quantity);
