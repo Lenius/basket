@@ -157,7 +157,7 @@ class BasketTest extends TestCase
             'id'       => 'foo',
             'name'     => 'bar',
             'price'    => 100,
-            'quantity' => $quantity ,
+            'quantity' => $quantity,
             'weight'   => $weight,
             'options'  => [
                 'size'   => 'L',
@@ -166,7 +166,7 @@ class BasketTest extends TestCase
         ]);
 
         // Test that the total weight is being calculated successfully
-        $this->assertEquals($this->basket->weight(), ($weight + $weight_option) * $quantity );
+        $this->assertEquals($this->basket->weight(), ($weight + $weight_option) * $quantity);
     }
 
     public function testPriceOption()
@@ -179,7 +179,7 @@ class BasketTest extends TestCase
             'id'       => 'foo',
             'name'     => 'bar',
             'price'    => 100,
-            'quantity' => $quantity ,
+            'quantity' => $quantity,
             'weight'   => $weight,
             'options'  => [
                 'size'   => 'L',
@@ -188,7 +188,7 @@ class BasketTest extends TestCase
         ]);
 
         // Test that the total weight is being calculated successfully
-        $this->assertEquals($this->basket->weight(), ($weight + $weight_option) * $quantity );
+        $this->assertEquals($this->basket->weight(), ($weight + $weight_option) * $quantity);
     }
 
     public function testFind()
