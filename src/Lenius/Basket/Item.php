@@ -20,6 +20,10 @@
 
 namespace Lenius\Basket;
 
+/**
+ * @property mixed price
+ * @property mixed quantity
+ */
 class Item
 {
     protected $identifier;
