@@ -66,9 +66,10 @@ class Runtime implements StorageInterface
      * Check if the item exists in the cart.
      *
      * @param mixed $identifier
-     * @return bool
-     * @internal param mixed $id
      *
+     * @return bool
+     *
+     * @internal param mixed $id
      */
     public function has($identifier)
     {
@@ -85,9 +86,10 @@ class Runtime implements StorageInterface
      * Get a single cart item by id.
      *
      * @param mixed $identifier
-     * @return Item The item class
-     * @internal param mixed $id The item id
      *
+     * @return Item The item class
+     *
+     * @internal param mixed $id The item id
      */
     public function item($identifier)
     {
@@ -144,6 +146,7 @@ class Runtime implements StorageInterface
      * Set the cart identifier.
      *
      * @param string $id
+     *
      * @internal param string $identifier
      */
     public function setIdentifier($id)
