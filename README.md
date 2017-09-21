@@ -39,6 +39,7 @@ $basket->insert([
     'quantity' => 2,
     'weight' => 300
 ]);
+
 ```
 
 ### Inserting items with options into the basket

@@ -23,6 +23,7 @@ namespace Lenius\Basket;
 /**
  * @property mixed price
  * @property mixed quantity
+ * @property mixed weight
  */
 class Item
 {
@@ -160,6 +161,7 @@ class Item
      *
      * @param array|string $key The array key to update, or an array of key-value pairs to update
      *
+     * @param null $value
      * @return void
      */
     public function update($key, $value = null)
