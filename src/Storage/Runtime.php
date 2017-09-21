@@ -23,6 +23,9 @@ namespace Lenius\Basket\Storage;
 use Lenius\Basket\Item;
 use Lenius\Basket\StorageInterface;
 
+/**
+ * @property  id
+ */
 class Runtime implements StorageInterface
 {
     protected $identifier;
@@ -87,7 +90,7 @@ class Runtime implements StorageInterface
      *
      * @param mixed $identifier
      *
-     * @return Item The item class
+     * @return bool|Item
      *
      * @internal param mixed $id The item id
      */
@@ -107,7 +110,7 @@ class Runtime implements StorageInterface
      *
      * @param string $id The item id
      *
-     * @return Item Item object
+     * @return bool|Item
      */
     public function find($id)
     {
