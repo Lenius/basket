@@ -159,9 +159,9 @@ class Item
     /**
      * Update a single key for this item, or multiple.
      *
-     * @param array|string $key The array key to update, or an array of key-value pairs to update
+     * @param array|string $key   The array key to update, or an array of key-value pairs to update
+     * @param null         $value
      *
-     * @param null $value
      * @return void
      */
     public function update($key, $value = null)
