@@ -111,6 +111,14 @@ class Item
     {
         $price = $this->price;
 
+        if ($this->hasOptions()) {
+            foreach ($this->data['options'] as $item) {
+                if(array_key_exists('price',$item)){
+                    $price += $item['price'];
+                }
+            }
+        }
+
         if ($includeTax) {
             $price = $this->tax->add($price);
         }
@@ -128,9 +136,9 @@ class Item
         $weight = $this->weight;
 
         if ($this->hasOptions()) {
-            foreach ($this->data['options'] as $key => $value) {
-                if ($key == 'weight') {
-                    $weight += $value;
+            foreach ($this->data['options'] as $item) {
+                if(array_key_exists('weight',$item)){
+                    $weight += $item['weight'];
                 }
             }
         }
@@ -148,6 +156,14 @@ class Item
     public function single($includeTax = true)
     {
         $price = $this->price;
+
+        if ($this->hasOptions()) {
+            foreach ($this->data['options'] as $item) {
+                if(array_key_exists('price',$item)){
+                    $price += $item['price'];
+                }
+            }
+        }
 
         if ($includeTax) {
             $price = $this->tax->add($price);

@@ -53,8 +53,12 @@ $basket->insert([
     'quantity' => 2,
     'weight' => 300,
     'options'  => [
-      'size' => 'L',
-      'weight' => 50
+       [
+        'name' => 'Size',
+        'value' => 'L'
+        'weight' => 50,
+        'price' => 10
+       ],
      ],
 ]);
 ```
