@@ -113,7 +113,7 @@ class Item
 
         if ($this->hasOptions()) {
             foreach ($this->data['options'] as $item) {
-                if(array_key_exists('price',$item)){
+                if (array_key_exists('price', $item)) {
                     $price += $item['price'];
                 }
             }
@@ -137,7 +137,7 @@ class Item
 
         if ($this->hasOptions()) {
             foreach ($this->data['options'] as $item) {
-                if(array_key_exists('weight',$item)){
+                if (array_key_exists('weight', $item)) {
                     $weight += $item['weight'];
                 }
             }
@@ -159,7 +159,7 @@ class Item
 
         if ($this->hasOptions()) {
             foreach ($this->data['options'] as $item) {
-                if(array_key_exists('price',$item)){
+                if (array_key_exists('price', $item)) {
                     $price += $item['price'];
                 }
             }

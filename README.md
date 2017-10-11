@@ -44,7 +44,7 @@ $basket->insert([
 
 ### Inserting items with options into the basket
 Inserting an item into the basket is easy. The required keys are id, name, price and quantity, although you can pass
-over any custom data that you like.
+over any custom data that you like. If option items contains price or weight there values are added to the total weight / price of the product.
 ```php
 $basket->insert([
     'id'       => 'foo',

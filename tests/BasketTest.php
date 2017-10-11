@@ -18,12 +18,10 @@
  *
  * @link http://github.com/lenius/basket
  */
-
 use Lenius\Basket\Basket;
 use Lenius\Basket\Identifier\Runtime as RuntimeIdentifier;
 use Lenius\Basket\Storage\Runtime as RuntimeStore;
 use PHPUnit\Framework\TestCase;
-
 
 class BasketTest extends TestCase
 {
@@ -117,10 +115,10 @@ class BasketTest extends TestCase
             'weight'   => 200,
             'options'  => [
                 [
-                    'name' => 'size',
-                    'price' => 50,
-                    'weight' => 100
-                ]
+                    'name'   => 'size',
+                    'price'  => 50,
+                    'weight' => 100,
+                ],
             ],
         ]);
 
@@ -147,9 +145,9 @@ class BasketTest extends TestCase
             'weight'   => $weight,
             'options'  => [
                 [
-                    'name' => 'size',
-                    'price' => 50
-                ]
+                    'name'  => 'size',
+                    'price' => 50,
+                ],
             ],
         ]);
 
@@ -171,10 +169,10 @@ class BasketTest extends TestCase
             'weight'   => $weight,
             'options'  => [
                 [
-                    'name' => 'size',
-                    'price' => 50,
-                    'weight' => $weight_option
-                ]
+                    'name'   => 'size',
+                    'price'  => 50,
+                    'weight' => $weight_option,
+                ],
             ],
         ]);
 
@@ -197,15 +195,15 @@ class BasketTest extends TestCase
             'weight'   => $weight,
             'options'  => [
                 [
-                    'name' => 'size',
-                    'price' => 50,
-                    'weight' => $weight_option
+                    'name'   => 'size',
+                    'price'  => 50,
+                    'weight' => $weight_option,
                 ],
                 [
-                    'name' => 'color',
-                    'price' => 50,
-                    'weight' => $weight_option
-                ]
+                    'name'   => 'color',
+                    'price'  => 50,
+                    'weight' => $weight_option,
+                ],
             ],
         ]);
 
@@ -229,15 +227,15 @@ class BasketTest extends TestCase
             'weight'   => $weight,
             'options'  => [
                 [
-                    'name' => 'size',
-                    'price' => -20,
-                    'weight' => $weight_option
+                    'name'   => 'size',
+                    'price'  => -20,
+                    'weight' => $weight_option,
                 ],
                 [
-                    'name' => 'color',
-                    'price' => 50,
-                    'weight' => $weight_option
-                ]
+                    'name'   => 'color',
+                    'price'  => 50,
+                    'weight' => $weight_option,
+                ],
             ],
         ]);
 
