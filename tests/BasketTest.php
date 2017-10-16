@@ -381,7 +381,6 @@ class BasketTest extends TestCase
 
         // Test that the tax is being calculated successfully
         $this->assertEquals(20, $this->basket->tax());
-
     }
 
     public function testTaxOptions()
@@ -395,17 +394,16 @@ class BasketTest extends TestCase
             'weight'   => 200,
             'options'  => [
                 [
-                    'name' => 'Size',
-                    'value' => 'L',
+                    'name'   => 'Size',
+                    'value'  => 'L',
                     'weight' => 50,
-                    'price' => 100
+                    'price'  => 100,
                    ],
-                 ]
+                 ],
         ]);
 
         // Test that the tax is being calculated successfully
         $this->assertEquals(40, $this->basket->tax());
-
     }
 
     public function testTaxMultiply()
