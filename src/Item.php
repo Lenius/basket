@@ -97,7 +97,17 @@ class Item
      */
     public function tax()
     {
-        return $this->tax->rate($this->price * $this->quantity);
+        $price = $this->price;
+
+        if ($this->hasOptions()) {
+            foreach ($this->data['options'] as $item) {
+                if (array_key_exists('price', $item)) {
+                    $price += $item['price'];
+                }
+            }
+        }
+
+        return $this->tax->rate($price * $this->quantity);
     }
 
     /**
