@@ -172,7 +172,7 @@ class Runtime implements StorageInterface
      */
     public function getIdentifier()
     {
-        return $this->identifier;
+        return $this->id;
     }
 
     /**
