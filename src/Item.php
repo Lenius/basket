@@ -97,6 +97,18 @@ class Item
      */
     public function tax()
     {
+        $price = $this->totalPrice();;
+
+        return $this->tax->rate($price * $this->quantity);
+    }
+
+    /**
+     * Return the total price for this item.
+     *
+     * @return float
+     */
+    private function totalPrice()
+    {
         $price = $this->price;
 
         if ($this->hasOptions()) {
@@ -107,7 +119,7 @@ class Item
             }
         }
 
-        return $this->tax->rate($price * $this->quantity);
+        return $price;
     }
 
     /**
@@ -119,15 +131,7 @@ class Item
      */
     public function total($includeTax = true)
     {
-        $price = $this->price;
-
-        if ($this->hasOptions()) {
-            foreach ($this->data['options'] as $item) {
-                if (array_key_exists('price', $item)) {
-                    $price += $item['price'];
-                }
-            }
-        }
+        $price = $this->totalPrice();
 
         if ($includeTax) {
             $price = $this->tax->add($price);
@@ -212,7 +216,7 @@ class Item
      */
     public function hasOptions()
     {
-        return array_key_exists('options', $this->data) and !empty($this->data['options']);
+        return array_key_exists('options', $this->data) && !empty($this->data['options']);
     }
 
     /**
