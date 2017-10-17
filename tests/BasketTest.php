@@ -1,5 +1,6 @@
 <?php
 
+namespace Tests;
 
 /**
  * This file is part of Lenius Basket, a PHP package to handle
@@ -25,6 +26,9 @@ use PHPUnit\Framework\TestCase;
 
 class BasketTest extends TestCase
 {
+
+    private $basket;
+
     public function setUp()
     {
         $this->basket = new Basket(new RuntimeStore(), new RuntimeIdentifier());
@@ -216,7 +220,6 @@ class BasketTest extends TestCase
     {
         $weight = rand(200, 300);
         $weight_option = rand(50, 800);
-        $quantity = rand(1, 10);
 
         $this->basket->insert([
             'id'       => 'foo',
