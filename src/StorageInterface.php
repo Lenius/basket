@@ -54,7 +54,7 @@ interface StorageInterface
      *
      * @param mixed $identifier The item id
      *
-     * @return Item The item class
+     * @return bool|Item
      */
     public function item($identifier);
 
@@ -63,7 +63,7 @@ interface StorageInterface
      *
      * @param string $id The item id
      *
-     * @return Item Item object
+     * @return bool|Item
      */
     public function find($id);
 
