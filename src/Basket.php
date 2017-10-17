@@ -249,7 +249,7 @@ class Basket
     /**
      * Set the basket identifier, useful if restoring a saved basket.
      *
-     * @param  mixed The identifier
+     * @param  string The identifier
      *
      * @return void
      */

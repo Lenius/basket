@@ -13,7 +13,7 @@
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2017 Lenius.
  *
- * @version dev
+ * @version production
  *
  * @link http://github.com/lenius/basket
  */
@@ -164,7 +164,7 @@ class Runtime implements StorageInterface
     /**
      * Return the current cart identifier.
      *
-     * @return void
+     * @return string The identifier
      */
     public function getIdentifier()
     {
