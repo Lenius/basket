@@ -29,7 +29,7 @@ class Session extends Runtime implements StorageInterface
      */
     public function restore()
     {
-        session_id() or session_start();
+        session_id() || session_start();
 
         if (isset($_SESSION['cart'])) {
             static::$cart = unserialize($_SESSION['cart']);

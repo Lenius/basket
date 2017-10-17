@@ -249,7 +249,7 @@ class Basket
     /**
      * Set the basket identifier, useful if restoring a saved basket.
      *
-     * @param  string The identifier
+     * @param  string $identifier
      *
      * @return void
      */

@@ -94,11 +94,11 @@ class BasketTest extends TestCase
     public function testMagicUpdate()
     {
         $actualId = $this->basket->insert([
-            'id'       => 'foo',
-            'name'     => 'bar',
-            'price'    => 100,
-            'quantity' => 1,
-            'weight'   => 200,
+            'id'       => 'zxy',
+            'name'     => 'dolly',
+            'price'    => 120,
+            'quantity' => 3,
+            'weight'   => 400,
         ]);
 
         foreach ($this->basket->contents() as $item) {
@@ -158,8 +158,7 @@ class BasketTest extends TestCase
     public function testPriceOption()
     {
         $weight = rand(200, 300);
-        $weight_option = rand(50, 800);
-        $quantity = rand(1, 10);
+        $weight_option = rand(50, 100);
 
         $this->basket->insert([
             'id'       => 'foo',
@@ -189,19 +188,19 @@ class BasketTest extends TestCase
 
     public function testPriceDistractOption()
     {
-        $weight = rand(200, 300);
-        $weight_option = rand(50, 800);
+        $weight = rand(400, 500);
+        $weight_option = rand(200, 300);
 
         $this->basket->insert([
-            'id'       => 'foo',
-            'name'     => 'bar',
+            'id'       => 'zxy',
+            'name'     => 'pink',
             'price'    => 100,
             'tax'      => 25,
             'quantity' => 1,
             'weight'   => $weight,
             'options'  => [
                 [
-                    'name'   => 'size',
+                    'name'   => 'type',
                     'price'  => -20,
                     'weight' => $weight_option,
                 ],
@@ -317,11 +316,11 @@ class BasketTest extends TestCase
     public function testItemToArray()
     {
         $actualId = $this->basket->insert([
-            'id'       => 'foo',
-            'name'     => 'bar',
-            'price'    => 100,
-            'quantity' => 1,
-            'weight'   => 200,
+            'id'       => 'ase',
+            'name'     => 'fly',
+            'price'    => 160,
+            'quantity' => 12,
+            'weight'   => 123,
         ]);
 
         $this->assertTrue(is_array($this->basket->item($actualId)->toArray()));
@@ -330,11 +329,11 @@ class BasketTest extends TestCase
     public function testbasketToArray()
     {
         $this->basket->insert([
-            'id'       => 'foo',
-            'name'     => 'bar',
-            'price'    => 100,
-            'quantity' => 1,
-            'weight'   => 200,
+            'id'       => 'asb',
+            'name'     => 'shuttle',
+            'price'    => 130,
+            'quantity' => 11,
+            'weight'   => 60,
         ]);
 
         foreach ($this->basket->contents(true) as $item) {
