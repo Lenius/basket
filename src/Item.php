@@ -21,9 +21,11 @@
 namespace Lenius\Basket;
 
 /**
+ * @property mixed name
  * @property mixed price
  * @property mixed quantity
  * @property mixed weight
+ * @property mixed options
  */
 class Item
 {

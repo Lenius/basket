@@ -443,17 +443,17 @@ class BasketTest extends TestCase
         $item = $this->basket->item($identifier);
 
         // Test that the tax is being calculated successfully
-        $item->tax = 0;
+        $item->update('tax', 0);
         $this->assertEquals(100, $item->total());
         $this->assertEquals(100, $item->total(false));
 
-        $item->tax = 20;
+        $item->update('tax', 20);
         $this->assertEquals(120, $item->total());
         $this->assertEquals(100, $item->total(false));
 
         $item->update('tax', 0);
         $this->assertEquals(100, $item->total());
-        $this->assertEquals($item->total(false), 100);
+        $this->assertEquals(100, $item->total(false));
 
         $item->update('tax', 20);
         $this->assertEquals(120, $item->total());
