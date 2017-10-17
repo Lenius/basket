@@ -15,7 +15,7 @@ namespace Tests;
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2017 Lenius.
  *
- * @version dev
+ * @version production
  *
  * @link http://github.com/lenius/basket
  */

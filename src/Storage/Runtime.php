@@ -170,4 +170,17 @@ class Runtime implements StorageInterface
     {
         return $this->identifier;
     }
+
+    /**
+     * Restore the cart.
+     *
+     * @return void
+     */
+    public function restore()
+    {
+        if (isset($_SESSION['cart'])) {
+            static::$cart = unserialize($_SESSION['cart']);
+        }
+    }
+
 }

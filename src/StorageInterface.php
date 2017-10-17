@@ -84,6 +84,13 @@ interface StorageInterface
     public function destroy();
 
     /**
+     * Restore the cart.
+     *
+     * @return void
+     */
+    public function restore();
+
+    /**
      * Set the cart identifier.
      *
      * @param string $identifier

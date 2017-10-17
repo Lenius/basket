@@ -59,6 +59,6 @@ class Cookie implements IdentifierInterface
      */
     public function forget()
     {
-        return setcookie('cart_identifier', null, time() - 3600);
+        setcookie('cart_identifier', null, time() - 3600);
     }
 }
