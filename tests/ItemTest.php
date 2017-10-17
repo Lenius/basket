@@ -20,7 +20,6 @@ namespace Tests;
  * @link http://github.com/lenius/basket
  */
 use Lenius\Basket\Basket;
-use Lenius\Basket\Identifier\Runtime as RuntimeIdentifier;
 use Lenius\Basket\Item;
 use Lenius\Basket\Storage\Runtime as RuntimeStore;
 use PHPUnit\Framework\TestCase;
@@ -31,7 +30,6 @@ class ItemTest extends TestCase
 
     public function setUp()
     {
-
     }
 
     public function tearDown()
@@ -50,7 +48,6 @@ class ItemTest extends TestCase
             'quantity' => 1,
             'weight'   => 200,
         ];
-
 
         $this->item = new Item($identifier, $item, new RuntimeStore());
 
@@ -132,7 +129,6 @@ class ItemTest extends TestCase
 
         $this->item = new Item($identifier, $item, new RuntimeStore());
         $this->assertTrue($this->item->hasOptions());
-
     }
 
     public function testHasNotOption()
@@ -158,5 +154,4 @@ class ItemTest extends TestCase
         $this->item = new Item($identifier, $item, new RuntimeStore());
         $this->assertEquals(250, $this->item->weight());
     }
-
 }
