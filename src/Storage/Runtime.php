@@ -182,5 +182,4 @@ class Runtime implements StorageInterface
             static::$cart = unserialize($_SESSION['cart']);
         }
     }
-
 }
