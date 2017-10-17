@@ -2,7 +2,7 @@
 
 namespace Tests;
 
-/**
+/*
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
@@ -26,7 +26,6 @@ use PHPUnit\Framework\TestCase;
 
 class BasketTest extends TestCase
 {
-
     private $basket;
 
     public function setUp()
