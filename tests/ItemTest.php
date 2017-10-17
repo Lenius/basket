@@ -84,7 +84,8 @@ class ItemTest extends TestCase
         $identifier = 1;
 
         $weight = rand(200, 300);
-        $weight_option = rand(50, 800);
+        $weight_option_one = rand(50, 100);
+        $weight_option_two = rand(150, 200);
         $quantity = rand(1, 10);
 
         $item = [
@@ -97,14 +98,20 @@ class ItemTest extends TestCase
                 [
                     'name'   => 'Size',
                     'value'  => 'L',
-                    'weight' => $weight_option,
+                    'weight' => $weight_option_one,
+                    'price'  => 100,
+                ],
+                [
+                    'name'   => 'Color',
+                    'value'  => 'Black',
+                    'weight' => $weight_option_two,
                     'price'  => 100,
                 ],
             ],
         ];
 
         $this->item = new Item($identifier, $item, new RuntimeStore());
-        $this->assertEquals(($weight + $weight_option) * $quantity, $this->item->weight());
+        $this->assertEquals(($weight + ($weight_option_one + $weight_option_two)) * $quantity, $this->item->weight());
     }
 
     public function testHasOption()
@@ -131,7 +138,7 @@ class ItemTest extends TestCase
         $this->assertTrue($this->item->hasOptions());
     }
 
-    public function testHasNotOption()
+    public function testHasNoOption()
     {
         $identifier = 1;
 
@@ -141,17 +148,9 @@ class ItemTest extends TestCase
             'price'    => 100,
             'quantity' => 1,
             'weight'   => 200,
-            'options'  => [
-                [
-                    'name'   => 'Size',
-                    'value'  => 'L',
-                    'weight' => 50,
-                    'price'  => 100,
-                ],
-            ],
         ];
 
         $this->item = new Item($identifier, $item, new RuntimeStore());
-        $this->assertEquals(250, $this->item->weight());
+        $this->assertFalse($this->item->hasOptions());
     }
 }
