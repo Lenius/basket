@@ -108,34 +108,6 @@ class BasketTest extends TestCase
         $this->assertEquals('bim', $this->basket->item($actualId)->name);
     }
 
-    public function testOptions()
-    {
-        $actualId = $this->basket->insert([
-            'id'       => 'foo',
-            'name'     => 'bar',
-            'price'    => 100,
-            'quantity' => 1,
-            'weight'   => 200,
-            'options'  => [
-                [
-                    'name'   => 'size',
-                    'price'  => 50,
-                    'weight' => 100,
-                ],
-            ],
-        ]);
-
-        $item = $this->basket->item($actualId);
-
-        $this->assertTrue($item->hasOptions());
-        $this->assertNotEmpty($item->options);
-
-        $item->options = [];
-
-        $this->assertFalse($item->hasOptions());
-        $this->assertEmpty($item->options);
-    }
-
     public function testWeight()
     {
         $weight = rand(200, 300);
