@@ -159,7 +159,7 @@ class Basket
      *
      * @param string $itemIdentifier The unique item identifier
      *
-     * @return Item Item object
+     * @return bool|Item
      */
     public function item($itemIdentifier)
     {
@@ -171,7 +171,7 @@ class Basket
      *
      * @param string $id The item id
      *
-     * @return Item Item object
+     * @return bool|Item
      */
     public function find($id)
     {
