@@ -26,6 +26,7 @@ namespace Lenius\Basket;
  * @property mixed quantity
  * @property mixed weight
  * @property mixed options
+ * @property-read string identifier
  */
 class Item
 {

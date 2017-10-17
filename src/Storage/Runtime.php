@@ -31,6 +31,7 @@ class Runtime implements StorageInterface
 {
     protected $identifier;
     protected static $cart = [];
+    protected $id = 'basket';
 
     /**
      * Add or update an item in the cart.
@@ -47,6 +48,7 @@ class Runtime implements StorageInterface
     /**
      * Retrieve the cart data.
      *
+     * @param bool $asArray
      * @return array
      */
     public function &data($asArray = false)
