@@ -13,7 +13,7 @@
  * @author Carsten Jonstrup<info@lenius.dk>
  * @copyright 2017 Lenius.
  *
- * @version dev
+ * @version production
  *
  * @link http://github.com/lenius/basket
  */
@@ -172,15 +172,7 @@ class Item
      */
     public function single($includeTax = true)
     {
-        $price = $this->price;
-
-        if ($this->hasOptions()) {
-            foreach ($this->data['options'] as $item) {
-                if (array_key_exists('price', $item)) {
-                    $price += $item['price'];
-                }
-            }
-        }
+        $price = $this->totalPrice();
 
         if ($includeTax) {
             $price = $this->tax->add($price);
