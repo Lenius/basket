@@ -98,8 +98,9 @@ class Item
     public function tax()
     {
         $price = $this->totalPrice();
+        $quantity = $this->quantity;
 
-        return $this->tax->rate($price * $this->quantity);
+        return $this->tax->rate($price * $quantity);
     }
 
     /**
