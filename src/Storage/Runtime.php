@@ -49,6 +49,7 @@ class Runtime implements StorageInterface
      * Retrieve the cart data.
      *
      * @param bool $asArray
+     *
      * @return array
      */
     public function &data($asArray = false)
