@@ -153,4 +153,40 @@ class ItemTest extends TestCase
         $this->item = new Item($identifier, $item, new RuntimeStore());
         $this->assertFalse($this->item->hasOptions());
     }
+
+    public function testItemTotalPrice()
+    {
+        $identifier = 1;
+
+        $item = [
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
+            'quantity' => 1,
+            'weight'   => 200,
+        ];
+
+        $this->item = new Item($identifier, $item, new RuntimeStore());
+
+        $this->assertEquals(100, $this->item->single());
+    }
+
+    public function testItemSetTax()
+    {
+        $identifier = 1;
+
+        $item = [
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
+            'quantity' => 1,
+            'weight'   => 200,
+        ];
+
+        $this->item = new Item($identifier, $item, new RuntimeStore());
+
+        $this->item->tax = 25;
+
+        $this->assertEquals(25, $this->item->tax());
+    }
 }
