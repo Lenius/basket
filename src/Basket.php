@@ -250,7 +250,6 @@ class Basket
      * Set the basket identifier, useful if restoring a saved basket.
      *
      * @codeCoverageIgnore
-     * 
      * @param string $identifier
      *
      * @return void
