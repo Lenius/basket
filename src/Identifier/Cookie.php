@@ -5,7 +5,7 @@
  * your shopping basket.
  *
  * Copyright (c) 2017 Lenius.
- * http://github.com/lenius/basket
+ * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link http://github.com/lenius/basket
+ * @link https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket\Identifier;
