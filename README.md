@@ -40,7 +40,7 @@ $basket->insert([
     'name'     => 'bar',
     'price'    => 100,
     'quantity' => 2,
-    'weight' => 300
+    'weight'   => 300
 ]);
 
 ```
