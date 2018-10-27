@@ -21,6 +21,7 @@ namespace Tests;
  */
 use Lenius\Basket\Basket;
 use Lenius\Basket\Identifier\Runtime as RuntimeIdentifier;
+use Lenius\Basket\Item;
 use Lenius\Basket\Storage\Runtime as RuntimeStore;
 use PHPUnit\Framework\TestCase;
 
@@ -410,6 +411,7 @@ class BasketTest extends TestCase
 
         $identifier = md5('foo'.serialize([]));
 
+        /** @var Item $item */
         $item = $this->basket->item($identifier);
 
         // Test that the tax is being calculated successfully

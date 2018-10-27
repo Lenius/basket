@@ -208,7 +208,7 @@ class Item
         } else {
             // Update the item
             $this->data[$key] = $value;
-            if ($key == 'tax' && !empty($value)) {
+            if ($key == 'tax' && is_numeric($value)) {
                 $this->tax = new Tax($value);
             }
         }
