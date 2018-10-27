@@ -21,19 +21,27 @@
 namespace Lenius\Basket;
 
 /**
- * @property mixed name
- * @property mixed price
- * @property mixed quantity
- * @property mixed weight
- * @property mixed options
- * @property-read string identifier
+ * Class Item
+ *
+ * @property-read string $identifier
+ * @property-read float $price
+ * @property-read int $quantity
+ * @property-read float $weight
+ *
+ * @package Lenius\Basket
  */
 class Item
 {
+    /** @var string $identifier */
     protected $identifier;
+
+    /** @var StorageInterface $store */
     protected $store;
+
+    /** @var Tax $tax */
     protected $tax;
 
+    /** @var array $data*/
     protected $data = [];
 
     /**
@@ -46,6 +54,7 @@ class Item
     public function __construct($identifier, array $item, StorageInterface $store)
     {
         $this->identifier = $identifier;
+
         $this->store = $store;
 
         foreach ($item as $key => $value) {
@@ -60,7 +69,7 @@ class Item
     /**
      * Return the value of protected methods.
      *
-     * @param any $param
+     * @param string $param
      *
      * @return mixed
      */
@@ -141,7 +150,7 @@ class Item
             $price = $this->tax->add($price);
         }
 
-        return (float) ($price * $this->quantity);
+        return ($price * $this->quantity);
     }
 
     /**
@@ -161,7 +170,7 @@ class Item
             }
         }
 
-        return (float) ($weight * $this->quantity);
+        return ($weight * $this->quantity);
     }
 
     /**
@@ -179,7 +188,7 @@ class Item
             $price = $this->tax->add($price);
         }
 
-        return (float) $price;
+        return $price;
     }
 
     /**
@@ -199,7 +208,7 @@ class Item
         } else {
             // Update the item
             $this->data[$key] = $value;
-            if ($key == 'tax') {
+            if ($key == 'tax' && !empty($value)) {
                 $this->tax = new Tax($value);
             }
         }

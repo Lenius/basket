@@ -22,6 +22,11 @@ namespace Lenius\Basket\Identifier;
 
 use Lenius\Basket\IdentifierInterface;
 
+/**
+ * Class Runtime
+ *
+ * @package Lenius\Basket\Identifier
+ */
 class Runtime implements IdentifierInterface
 {
     protected static $identifier;
@@ -47,7 +52,7 @@ class Runtime implements IdentifierInterface
      */
     public function regenerate()
     {
-        $identifier = md5(uniqid(null, true));
+        $identifier = md5(uniqid('', true));
 
         static::$identifier = $identifier;
 

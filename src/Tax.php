@@ -20,6 +20,11 @@
 
 namespace Lenius\Basket;
 
+/**
+ * Class Tax
+ *
+ * @package Lenius\Basket
+ */
 class Tax
 {
     protected $percentage;

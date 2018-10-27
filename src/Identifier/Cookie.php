@@ -22,6 +22,11 @@ namespace Lenius\Basket\Identifier;
 
 use Lenius\Basket\IdentifierInterface;
 
+/**
+ * Class Cookie
+ *
+ * @package Lenius\Basket\Identifier
+ */
 class Cookie implements IdentifierInterface
 {
     /**
@@ -45,7 +50,7 @@ class Cookie implements IdentifierInterface
      */
     public function regenerate()
     {
-        $identifier = md5(uniqid(null, true));
+        $identifier = md5(uniqid('', true));
 
         setcookie('cart_identifier', $identifier, 0, '/');
 
@@ -59,6 +64,6 @@ class Cookie implements IdentifierInterface
      */
     public function forget()
     {
-        setcookie('cart_identifier', null, time() - 3600);
+        setcookie('cart_identifier', '', time() - 3600);
     }
 }

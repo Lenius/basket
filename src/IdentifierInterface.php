@@ -20,6 +20,11 @@
 
 namespace Lenius\Basket;
 
+/**
+ * Interface IdentifierInterface
+ *
+ * @package Lenius\Basket
+ */
 interface IdentifierInterface
 {
     /**

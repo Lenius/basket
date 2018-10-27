@@ -22,14 +22,17 @@ namespace Lenius\Basket;
 
 use InvalidArgumentException;
 
+/**
+ * Class Basket
+ *
+ * @package Lenius\Basket
+ */
 class Basket
 {
     protected $id;
 
     protected $identifier;
     protected $store;
-
-    protected $currency;
 
     protected $requiredParams = [
         'id',
@@ -87,7 +90,7 @@ class Basket
 
         $itemIdentifier = $this->createItemIdentifier($item);
 
-        if ($this->has($itemIdentifier)) {
+        if ($this->has($itemIdentifier) && $this->item($itemIdentifier) instanceof Item) {
             $item['quantity'] = $this->item($itemIdentifier)->quantity + $item['quantity'];
             $this->update($itemIdentifier, $item);
 
@@ -105,13 +108,14 @@ class Basket
      * Update an item.
      *
      * @param string           $itemIdentifier The unique item identifier
-     * @param string|int|array $key            The key to update, or an array of key-value pairs
+     * @param string|array $key            The key to update, or an array of key-value pairs
      * @param mixed            $value          The value to set $key to
      *
      * @return void
      */
     public function update($itemIdentifier, $key, $value = null)
     {
+        /** @var Item $item */
         foreach ($this->contents() as $item) {
             if ($item->identifier == $itemIdentifier) {
                 $item->update($key, $value);
@@ -159,7 +163,7 @@ class Basket
      *
      * @param string $itemIdentifier The unique item identifier
      *
-     * @return bool|Item
+     * @return Item|bool
      */
     public function item($itemIdentifier)
     {
@@ -187,8 +191,9 @@ class Basket
     {
         $total = 0;
 
+        /** @var Item $item */
         foreach ($this->contents() as $item) {
-            $total += (float) $item->tax();
+            $total += $item->tax();
         }
 
         return $total;
@@ -203,8 +208,9 @@ class Basket
     {
         $weight = 0;
 
+        /** @var Item $item */
         foreach ($this->contents() as $item) {
-            $weight += (float) $item->weight();
+            $weight += $item->weight();
         }
 
         return $weight;
@@ -221,8 +227,9 @@ class Basket
     {
         $total = 0;
 
+        /** @var Item $item */
         foreach ($this->contents() as $item) {
-            $total += (float) $item->total($includeTax);
+            $total += $item->total($includeTax);
         }
 
         return (float) $total;
@@ -239,6 +246,7 @@ class Basket
     {
         $total = 0;
 
+        /** @var Item $item */
         foreach ($this->contents() as $item) {
             $total += $unique ? 1 : $item->quantity;
         }
