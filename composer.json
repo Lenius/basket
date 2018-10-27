@@ -15,10 +15,11 @@
         "php": ">=7.0.0"
     },
     "require-dev": {
-        "php": ">=7.0.0",
+        "php": "~7.1",
         "phpunit/phpunit": "~6.0",
         "squizlabs/php_codesniffer": "3.*",
-        "php-coveralls/php-coveralls": "2.1.*"
+        "php-coveralls/php-coveralls": "2.1.*",
+        "phpstan/phpstan": "^0.10.0@dev"
     },
     "autoload": {
         "psr-4": {
