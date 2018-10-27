@@ -23,9 +23,7 @@ namespace Lenius\Basket\Identifier;
 use Lenius\Basket\IdentifierInterface;
 
 /**
- * Class Cookie
- *
- * @package Lenius\Basket\Identifier
+ * Class Cookie.
  */
 class Cookie implements IdentifierInterface
 {

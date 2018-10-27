@@ -23,9 +23,7 @@ namespace Lenius\Basket;
 use InvalidArgumentException;
 
 /**
- * Class Basket
- *
- * @package Lenius\Basket
+ * Class Basket.
  */
 class Basket
 {
@@ -107,9 +105,9 @@ class Basket
     /**
      * Update an item.
      *
-     * @param string           $itemIdentifier The unique item identifier
+     * @param string       $itemIdentifier The unique item identifier
      * @param string|array $key            The key to update, or an array of key-value pairs
-     * @param mixed            $value          The value to set $key to
+     * @param mixed        $value          The value to set $key to
      *
      * @return void
      */

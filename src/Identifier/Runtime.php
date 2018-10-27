@@ -23,9 +23,7 @@ namespace Lenius\Basket\Identifier;
 use Lenius\Basket\IdentifierInterface;
 
 /**
- * Class Runtime
- *
- * @package Lenius\Basket\Identifier
+ * Class Runtime.
  */
 class Runtime implements IdentifierInterface
 {

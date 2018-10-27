@@ -24,9 +24,7 @@ use Lenius\Basket\Item;
 use Lenius\Basket\StorageInterface;
 
 /**
- * Class Runtime
- *
- * @package Lenius\Basket\Storage
+ * Class Runtime.
  */
 class Runtime implements StorageInterface
 {

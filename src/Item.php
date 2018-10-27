@@ -21,14 +21,12 @@
 namespace Lenius\Basket;
 
 /**
- * Class Item
+ * Class Item.
  *
  * @property-read string $identifier
  * @property-read float $price
  * @property-read int $quantity
  * @property-read float $weight
- *
- * @package Lenius\Basket
  */
 class Item
 {
@@ -41,7 +39,7 @@ class Item
     /** @var Tax $tax */
     protected $tax;
 
-    /** @var array $data*/
+    /** @var array $data */
     protected $data = [];
 
     /**
@@ -150,7 +148,7 @@ class Item
             $price = $this->tax->add($price);
         }
 
-        return ($price * $this->quantity);
+        return $price * $this->quantity;
     }
 
     /**
@@ -170,7 +168,7 @@ class Item
             }
         }
 
-        return ($weight * $this->quantity);
+        return $weight * $this->quantity;
     }
 
     /**

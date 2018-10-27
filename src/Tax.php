@@ -21,9 +21,7 @@
 namespace Lenius\Basket;
 
 /**
- * Class Tax
- *
- * @package Lenius\Basket
+ * Class Tax.
  */
 class Tax
 {

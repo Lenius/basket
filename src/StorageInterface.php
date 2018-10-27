@@ -21,9 +21,7 @@
 namespace Lenius\Basket;
 
 /**
- * Interface StorageInterface
- *
- * @package Lenius\Basket
+ * Interface StorageInterface.
  */
 interface StorageInterface
 {
