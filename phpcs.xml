@@ -3,4 +3,6 @@
 <ruleset name="PHP-SDK">
  <description>The Basket ruleset based on the PSR-2 coding standard.</description>
  <rule ref="PSR2"/>
+ <file>src/</file>
+ <file>tests/</file>
 </ruleset>

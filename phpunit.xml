@@ -5,7 +5,8 @@
         </testsuite>
     </testsuites>
     <logging>
-      <log type="coverage-html" target="./build/coverage" charset="UTF-8"/>
+        <log type="coverage-clover" target="build/logs/clover.xml" charset="UTF-8"/>
+        <log type="coverage-html" target="build/logs/phpunit-html/" charset="UTF-8"/>
     </logging>
     <filter>
         <whitelist>
