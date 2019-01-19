@@ -89,7 +89,6 @@ class Basket
         $itemIdentifier = $this->createItemIdentifier($item);
 
         if ($this->has($itemIdentifier) && $this->item($itemIdentifier) instanceof ItemInterface) {
-
             $this->item($itemIdentifier)->quantity;
 
             $item->quantity = $this->item($itemIdentifier)->quantity + $item->quantity;
