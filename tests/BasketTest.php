@@ -352,8 +352,8 @@ class BasketTest extends TestCase
                     'value'  => 'L',
                     'weight' => 50,
                     'price'  => 100,
-                   ],
-                 ],
+                ],
+            ],
         ]));
 
         // test that the tax is being calculated successfully

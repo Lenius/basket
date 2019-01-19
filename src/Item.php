@@ -89,6 +89,7 @@ class Item implements ItemInterface
     public function __set($param, $value)
     {
         $this->data[$param] = $value;
+
         if ($param == 'tax') {
             $this->tax = new Tax($value);
         }
@@ -200,6 +201,7 @@ class Item implements ItemInterface
         } else {
             // Update the item
             $this->data[$key] = $value;
+
             if ($key == 'tax' && is_numeric($value)) {
                 $this->tax = new Tax($value);
             }
