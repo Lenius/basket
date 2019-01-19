@@ -28,11 +28,11 @@ interface StorageInterface
     /**
      * Add or update an item in the cart.
      *
-     * @param Item $item The item to insert or update
+     * @param ItemInterface $item The item to insert or update
      *
      * @return void
      */
-    public function insertUpdate(Item $item);
+    public function insertUpdate(ItemInterface $item);
 
     /**
      * Retrieve the cart data.

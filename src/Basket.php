@@ -78,24 +78,27 @@ class Basket
     /**
      * Insert an item into the basket.
      *
-     * @param array $item An array of item data
+     * @param ItemInterface $item
      *
      * @return string A unique item identifier
      */
-    public function insert(array $item)
+    public function insert(ItemInterface $item)
     {
         $this->checkArgs($item);
 
         $itemIdentifier = $this->createItemIdentifier($item);
 
-        if ($this->has($itemIdentifier) && $this->item($itemIdentifier) instanceof Item) {
-            $item['quantity'] = $this->item($itemIdentifier)->quantity + $item['quantity'];
+        if ($this->has($itemIdentifier) && $this->item($itemIdentifier) instanceof ItemInterface) {
+
+            $this->item($itemIdentifier)->quantity;
+
+            $item->quantity = $this->item($itemIdentifier)->quantity + $item->quantity;
             $this->update($itemIdentifier, $item);
 
             return $itemIdentifier;
         }
 
-        $item = new Item($itemIdentifier, $item, $this->store);
+        $item->setIdentifier($itemIdentifier);
 
         $this->store->insertUpdate($item);
 
@@ -106,7 +109,7 @@ class Basket
      * Update an item.
      *
      * @param string       $itemIdentifier The unique item identifier
-     * @param string|array $key            The key to update, or an array of key-value pairs
+     * @param object $key            The key to update, or an array of key-value pairs
      * @param mixed        $value          The value to set $key to
      *
      * @return void
@@ -269,32 +272,36 @@ class Basket
     /**
      * Create a unique item identifier.
      *
-     * @param array $item An array of item data
+     * @param ItemInterface $item
      *
      * @return string An md5 hash of item
      */
-    protected function createItemIdentifier(array $item)
+    protected function createItemIdentifier(ItemInterface $item)
     {
-        if (!array_key_exists('options', $item)) {
-            $item['options'] = [];
+        if (!array_key_exists('options', $item->toArray())) {
+            $item->options = [];
         }
 
-        ksort($item['options']);
+        $options = $item->options;
 
-        return md5($item['id'].serialize($item['options']));
+        ksort($options);
+
+        $item->options = $options;
+
+        return md5($item->id.serialize($item->options));
     }
 
     /**
      * Check if a basket item has the required parameters.
      *
-     * @param array $item An array of item data
+     * @param ItemInterface $item
      *
      * @return void
      */
-    protected function checkArgs(array $item)
+    protected function checkArgs(ItemInterface $item)
     {
         foreach ($this->requiredParams as $param) {
-            if (!array_key_exists($param, $item)) {
+            if (!array_key_exists($param, $item->toArray())) {
                 throw new InvalidArgumentException("The '{$param}' field is required");
             }
         }

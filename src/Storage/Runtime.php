@@ -21,6 +21,7 @@
 namespace Lenius\Basket\Storage;
 
 use Lenius\Basket\Item;
+use Lenius\Basket\ItemInterface;
 use Lenius\Basket\StorageInterface;
 
 /**
@@ -35,11 +36,11 @@ class Runtime implements StorageInterface
     /**
      * Add or update an item in the cart.
      *
-     * @param Item $item The item to insert or update
+     * @param ItemInterface $item The item to insert or update
      *
      * @return void
      */
-    public function insertUpdate(Item $item)
+    public function insertUpdate(ItemInterface $item)
     {
         static::$cart[$this->id][$item->identifier] = $item;
     }

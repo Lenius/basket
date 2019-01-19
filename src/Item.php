@@ -28,7 +28,7 @@ namespace Lenius\Basket;
  * @property-read int $quantity
  * @property-read float $weight
  */
-class Item
+class Item implements ItemInterface
 {
     /** @var string $identifier */
     protected $identifier;
@@ -49,11 +49,11 @@ class Item
      * @param array            $item
      * @param StorageInterface $store
      */
-    public function __construct($identifier, array $item, StorageInterface $store)
+    public function __construct(array $item)
     {
-        $this->identifier = $identifier;
+        //$this->identifier = $identifier;
 
-        $this->store = $store;
+        //$this->store = $store;
 
         foreach ($item as $key => $value) {
             $this->data[$key] = $value;
@@ -62,6 +62,11 @@ class Item
         $item['tax'] = isset($item['tax']) ? $item['tax'] : 0;
 
         $this->tax = new Tax($item['tax']);
+    }
+
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
     }
 
     /**
@@ -88,16 +93,6 @@ class Item
         if ($param == 'tax') {
             $this->tax = new Tax($value);
         }
-    }
-
-    /**
-     * Removes the current item from the cart.
-     *
-     * @return void
-     */
-    public function remove()
-    {
-        $this->store->remove($this->identifier);
     }
 
     /**
@@ -199,8 +194,8 @@ class Item
      */
     public function update($key, $value = null)
     {
-        if (is_array($key)) {
-            foreach ($key as $updateKey => $updateValue) {
+        if ($key instanceof ItemInterface) {
+            foreach ($key->toArray() as $updateKey => $updateValue) {
                 $this->update($updateKey, $updateValue);
             }
         } else {
