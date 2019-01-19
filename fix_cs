@@ -1,0 +1,60 @@
+#!/bin/bash -e
+
+# Directory or file - Should be relative path
+PROJECT_PATH="${1}"
+
+# Default
+if [[ ${PROJECT_PATH} = "" ]]; then
+
+	DEFAULT_DIRS=(src tests)
+
+	echo "Running $0 on default directories: ${DEFAULT_DIRS[@]}"
+
+	for dir_to_check in "${DEFAULT_DIRS[@]}"; do
+		$0 "${dir_to_check}"
+	done
+
+	exit 0
+fi
+
+# Sanity check
+if [[ ! -e ${PROJECT_PATH} ]]; then
+	echo "Doesn't seem to exist: ${PROJECT_PATH}" >&2
+	exit 1
+fi
+
+PROJECT_DIR=${PROJECT_PATH}
+
+if [[ -f ${PROJECT_PATH} ]]; then
+	PROJECT_DIR=$(dirname ${PROJECT_PATH})
+fi
+
+echo "Fixing: ${PROJECT_PATH}"
+
+docker run \
+	--rm \
+	-v "$(pwd)/${PROJECT_DIR}":/source/${PROJECT_DIR} \
+	docker.lenius.dk/csfixer \
+	/root/.composer/vendor/bin/php-cs-fixer \
+	--verbose \
+	--using-cache=yes \
+	--cache-file=/source/${PROJECT_DIR}/.php_cs.cache \
+	--rules='
+	{
+		"@PSR2": true,
+		"binary_operator_spaces": {
+			"align_double_arrow": true
+		},
+		"no_blank_lines_after_phpdoc": true,
+		"no_empty_phpdoc": true,
+		"no_unused_imports": true,
+		"phpdoc_indent": true,
+		"phpdoc_scalar": true,
+		"phpdoc_order": true,
+		"phpdoc_separation": true,
+		"whitespace_after_comma_in_array": true,
+		"concat_space": {
+			"spacing": "one"
+		}
+	}' \
+	fix /source/${PROJECT_PATH}

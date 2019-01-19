@@ -1,0 +1,6 @@
+version: '2'
+
+services: # sorted alphabetically
+  csfixer:
+    build: ./docker/csfixer
+    image: docker.lenius.dk/csfixer
