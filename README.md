@@ -35,13 +35,13 @@ $basket = new Basket(new Session, new Cookie);
 Inserting an item into the basket is easy. The required keys are id, name, price, weight and quantity, although you can pass
 over any custom data that you like.
 ```php
-$basket->insert([
+$basket->insert(new Item([
     'id'       => 'foo',
     'name'     => 'bar',
     'price'    => 100,
     'quantity' => 2,
     'weight'   => 300
-]);
+]));
 
 ```
 
@@ -49,7 +49,7 @@ $basket->insert([
 Inserting an item into the basket is easy. The required keys are id, name, price and quantity, although you can pass
 over any custom data that you like. If option items contains price or weight there values are added to the total weight / price of the product.
 ```php
-$basket->insert([
+$basket->insert(new Item([
     'id'         => 'foo',
     'name'       => 'bar',
     'price'      => 100,
@@ -63,7 +63,7 @@ $basket->insert([
         'price'  => 10
        ],
      ],
-]);
+]));
 ```
 
 ### Setting the tax rate for an item
@@ -73,14 +73,14 @@ the price of the item.
 In the below example we will use 25% for the tax rate.
 
 ```php
-$basket->insert([
+$basket->insert(new Item([
     'id'       => 'mouseid',
     'name'     => 'Mouse',
     'price'    => 100,
     'quantity' => 1,
     'tax'      => 25,
     'weight'   => 200
-]);
+]));
 ```
 
 ### Updating items in the basket
@@ -90,14 +90,6 @@ basket loop then you can update a specific item using the below example.
 foreach ($basket->contents() as $item) {
     $item->name = 'Foo';
     $item->quantity = 1;
-}
-```
-
-### Removing basket items
-You can remove any items in your basket by using the ```remove()``` method on any basket item.
-```php
-foreach ($basket->contents() as $item) {
-    $item->remove();
 }
 ```
 
@@ -140,6 +132,11 @@ $basket->total(false);
 $basket->has($itemIdentifier);
 ```
 
+### Remove an item from the Basket
+```php
+$basket->remove($identifier)
+```
+
 ### Retrieve an item object by identifier
 ```php
 $basket->item($itemIdentifier);
@@ -157,11 +154,6 @@ foreach ($basket->contents() as $item) {
         // We have options
     }
 }
-```
-
-### Remove an item from the Basket
-```php
-$item->remove();
 ```
 
 ### You can also get the total weight for a single item
