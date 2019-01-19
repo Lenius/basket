@@ -42,16 +42,28 @@ docker run \
 	--rules='
 	{
 		"@PSR2": true,
+		"array_indentation": true,
 		"binary_operator_spaces": {
-			"align_double_arrow": true
+			"operators": {"=>": "align_single_space"}
 		},
+		"blank_line_after_opening_tag": false,
+		"blank_line_before_statement": {"statements": ["do", "for", "foreach", "if", "switch", "throw", "while", "return"]},
+		"concat_space": {"spacing": "one"},
 		"no_blank_lines_after_phpdoc": true,
+		"no_blank_lines_after_class_opening": true,
+		"no_whitespace_in_blank_line": true,
+		"no_trailing_comma_in_singleline_array": true,
+		"no_trailing_comma_in_list_call": true,
+		"no_extra_blank_lines": true,
 		"no_empty_phpdoc": true,
 		"no_unused_imports": true,
+		"method_argument_space": true,
+		"method_separation": true,
 		"phpdoc_indent": true,
 		"phpdoc_scalar": true,
 		"phpdoc_order": true,
 		"phpdoc_separation": true,
+		"single_quote": {"strings_containing_single_quote_chars": true},
 		"whitespace_after_comma_in_array": true,
 		"concat_space": {
 			"spacing": "one"
