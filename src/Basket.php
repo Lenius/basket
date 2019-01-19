@@ -17,7 +17,6 @@
  *
  * @link https://github.com/lenius/basket
  */
-
 namespace Lenius\Basket;
 
 use InvalidArgumentException;
@@ -287,7 +286,7 @@ class Basket
 
         $item->options = $options;
 
-        return md5($item->id.serialize($item->options));
+        return md5($item->id . serialize($item->options));
     }
 
     /**

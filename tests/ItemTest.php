@@ -21,8 +21,6 @@ namespace Tests;
  */
 use Lenius\Basket\Basket;
 use Lenius\Basket\Item;
-use Lenius\Basket\ItemInterface;
-use Lenius\Basket\Storage\Runtime as RuntimeStore;
 use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase

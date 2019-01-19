@@ -17,7 +17,6 @@
  *
  * @link https://github.com/lenius/basket
  */
-
 namespace Lenius\Basket;
 
 /**
@@ -25,7 +24,6 @@ namespace Lenius\Basket;
  */
 interface ItemInterface
 {
-
     public function setIdentifier($identifier);
 
     /**
@@ -89,6 +87,7 @@ interface ItemInterface
      *
      * @param $param
      * @param $value
+     *
      * @return mixed
      */
     public function __set($param, $value);
@@ -97,6 +96,7 @@ interface ItemInterface
      * Return the value of protected methods.
      *
      * @param $param
+     *
      * @return mixed
      */
     public function __get($param);

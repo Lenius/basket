@@ -17,7 +17,6 @@
  *
  * @link https://github.com/lenius/basket
  */
-
 namespace Lenius\Basket\Storage;
 
 use Lenius\Basket\Item;

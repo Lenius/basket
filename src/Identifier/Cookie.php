@@ -17,7 +17,6 @@
  *
  * @link https://github.com/lenius/basket
  */
-
 namespace Lenius\Basket\Identifier;
 
 use Lenius\Basket\IdentifierInterface;
