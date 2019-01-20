@@ -17,6 +17,7 @@
  *
  * @link https://github.com/lenius/basket
  */
+
 namespace Lenius\Basket;
 
 /**
@@ -32,9 +33,6 @@ class Item implements ItemInterface
     /** @var string $identifier */
     protected $identifier;
 
-    /** @var StorageInterface $store */
-    protected $store;
-
     /** @var Tax $tax */
     protected $tax;
 
@@ -44,16 +42,10 @@ class Item implements ItemInterface
     /**
      * Construct the item.
      *
-     * @param string           $identifier
-     * @param array            $item
-     * @param StorageInterface $store
+     * @param array $item
      */
     public function __construct(array $item)
     {
-        //$this->identifier = $identifier;
-
-        //$this->store = $store;
-
         foreach ($item as $key => $value) {
             $this->data[$key] = $value;
         }
@@ -187,8 +179,8 @@ class Item implements ItemInterface
     /**
      * Update a single key for this item, or multiple.
      *
-     * @param array|string $key   The array key to update, or an array of key-value pairs to update
-     * @param null         $value
+     * @param mixed $key   The array key to update, or an array of key-value pairs to update
+     * @param null  $value
      *
      * @return void
      */
@@ -199,7 +191,7 @@ class Item implements ItemInterface
                 $this->update($updateKey, $updateValue);
             }
         } else {
-            // Update the item
+            // update the item
             $this->data[$key] = $value;
 
             if ($key == 'tax' && is_numeric($value)) {

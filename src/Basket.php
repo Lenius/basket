@@ -106,9 +106,9 @@ class Basket
     /**
      * Update an item.
      *
-     * @param string       $itemIdentifier The unique item identifier
-     * @param object $key            The key to update, or an array of key-value pairs
-     * @param mixed        $value          The value to set $key to
+     * @param string $itemIdentifier The unique item identifier
+     * @param mixed  $key            The key to update, or an array of key-value pairs
+     * @param mixed  $value          The value to set $key to
      *
      * @return void
      */
@@ -286,7 +286,7 @@ class Basket
 
         $item->options = $options;
 
-        return md5($item->id . serialize($item->options));
+        return md5($item->id.serialize($item->options));
     }
 
     /**

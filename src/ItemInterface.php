@@ -21,9 +21,19 @@ namespace Lenius\Basket;
 
 /**
  * Interface ItemInterface.
+ *
+ * @property string $id
+ * @property string $identifier
+ * @property int $quantity
+ * @property array $options
  */
 interface ItemInterface
 {
+    /**
+     * @param mixed $identifier
+     *
+     * @return mixed
+     */
     public function setIdentifier($identifier);
 
     /**
@@ -61,8 +71,8 @@ interface ItemInterface
     /**
      * Update a single key for this item, or multiple.
      *
-     * @param array|string $key   The array key to update, or an array of key-value pairs to update
-     * @param null         $value
+     * @param mixed $key   The array key to update, or an array of key-value pairs to update
+     * @param null  $value
      *
      * @return void
      */
@@ -85,8 +95,8 @@ interface ItemInterface
     /**
      * Update data array using set magic method.
      *
-     * @param $param
-     * @param $value
+     * @param mixed $param
+     * @param mixed $value
      *
      * @return mixed
      */
@@ -95,7 +105,7 @@ interface ItemInterface
     /**
      * Return the value of protected methods.
      *
-     * @param $param
+     * @param mixed $param
      *
      * @return mixed
      */
