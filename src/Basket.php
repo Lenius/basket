@@ -33,7 +33,7 @@ class Basket
     /** @var IdentifierInterface $identifier */
     protected $identifier;
 
-    /** @var StorageInterface $store*/
+    /** @var StorageInterface $store */
     protected $store;
 
     /** @var array $requiredParams */
