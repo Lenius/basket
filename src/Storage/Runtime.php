@@ -29,8 +29,13 @@ use Lenius\Basket\StorageInterface;
  */
 class Runtime implements StorageInterface
 {
+    /** @var null|string $identifier */
     protected $identifier;
+
+    /** @var array $cart */
     protected static $cart = [];
+
+    /** @var string $id */
     protected $id = 'basket';
 
     /**
@@ -155,6 +160,8 @@ class Runtime implements StorageInterface
      * @param string $id
      *
      * @internal param string $identifier
+     *
+     * @return void
      */
     public function setIdentifier($id)
     {

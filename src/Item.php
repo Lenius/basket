@@ -55,6 +55,13 @@ class Item implements ItemInterface
         $this->tax = new Tax($item['tax']);
     }
 
+    /**
+     * Set identifier.
+     *
+     * @param mixed $identifier
+     *
+     * @return mixed|void
+     */
     public function setIdentifier($identifier)
     {
         $this->identifier = $identifier;
@@ -63,7 +70,7 @@ class Item implements ItemInterface
     /**
      * Return the value of protected methods.
      *
-     * @param string $param
+     * @param mixed $param
      *
      * @return mixed
      */
@@ -180,7 +187,7 @@ class Item implements ItemInterface
      * Update a single key for this item, or multiple.
      *
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
-     * @param null  $value
+     * @param mixed $value
      *
      * @return void
      */
@@ -191,11 +198,11 @@ class Item implements ItemInterface
                 $this->update($updateKey, $updateValue);
             }
         } else {
-            // update the item
-            $this->data[$key] = $value;
-
             if ($key == 'tax' && is_numeric($value)) {
                 $this->tax = new Tax($value);
+            } else {
+                // update the item
+                $this->data[$key] = $value;
             }
         }
     }

@@ -103,7 +103,7 @@ interface StorageInterface
     /**
      * Return the current cart identifier.
      *
-     * @return void
+     * @return string
      */
     public function getIdentifier();
 }

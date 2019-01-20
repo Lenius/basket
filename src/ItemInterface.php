@@ -98,8 +98,6 @@ interface ItemInterface
      *
      * @param mixed $param
      * @param mixed $value
-     *
-     * @return mixed
      */
     public function __set($param, $value);
 

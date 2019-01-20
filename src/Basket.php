@@ -27,11 +27,16 @@ use InvalidArgumentException;
  */
 class Basket
 {
+    /** @var string $id */
     protected $id;
 
+    /** @var IdentifierInterface $identifier */
     protected $identifier;
+
+    /** @var StorageInterface $store*/
     protected $store;
 
+    /** @var array $requiredParams */
     protected $requiredParams = [
         'id',
         'name',
