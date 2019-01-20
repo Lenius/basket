@@ -1,4 +1,5 @@
 <?php
+
 namespace Tests;
 
 /*
@@ -26,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 
 class BasketTest extends TestCase
 {
-    /** @var Basket  */
+    /** @var Basket */
     private $basket;
 
     public function setUp()
