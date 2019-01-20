@@ -16,6 +16,7 @@
                 <directory>./vendor</directory>
                 <file>./src/IdentifierInterface.php</file>
                 <file>./src/StorageInterface.php</file>
+                <file>./src/ItemInterface.php</file>
             </exclude>
         </whitelist>
     </filter>
