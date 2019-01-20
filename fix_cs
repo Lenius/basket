@@ -49,7 +49,7 @@ docker run \
 		"blank_line_after_opening_tag": false,
 		"blank_line_before_statement": {"statements": ["do", "for", "foreach", "if", "switch", "throw", "while", "return"]},
 		"concat_space": {"spacing": "one"},
-		"no_blank_lines_after_phpdoc": true,
+		"no_blank_lines_after_phpdoc": false,
 		"no_blank_lines_after_class_opening": true,
 		"no_whitespace_in_blank_line": true,
 		"no_trailing_comma_in_singleline_array": true,
@@ -62,11 +62,20 @@ docker run \
 		"phpdoc_indent": true,
 		"phpdoc_scalar": true,
 		"phpdoc_order": true,
+		"phpdoc_align": true,
 		"phpdoc_separation": true,
+		"phpdoc_inline_tag": true,
+		"phpdoc_no_access": true,
+		"phpdoc_no_package": true,
+		"phpdoc_separation": true,
+		"phpdoc_summary": true,
+		"phpdoc_to_comment": true,
+		"phpdoc_trim": true,
+		"phpdoc_order": true,
 		"single_quote": {"strings_containing_single_quote_chars": true},
 		"whitespace_after_comma_in_array": true,
 		"concat_space": {
-			"spacing": "one"
+			"spacing": "none"
 		}
 	}' \
 	fix /source/${PROJECT_PATH}
