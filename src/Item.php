@@ -199,7 +199,7 @@ class Item implements ItemInterface
             }
         } else {
             if ($key == 'tax' && is_numeric($value)) {
-                $this->tax = new Tax($value);
+                $this->tax = new Tax(floatval($value));
             } else {
                 // update the item
                 $this->data[$key] = $value;
