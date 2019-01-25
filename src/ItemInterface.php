@@ -73,7 +73,7 @@ interface ItemInterface
      * Update a single key for this item, or multiple.
      *
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
-     * @param null  $value
+     * @param mixed $value
      *
      * @return void
      */
