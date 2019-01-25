@@ -1,0 +1,81 @@
+#!/bin/bash -e
+
+# Directory or file - Should be relative path
+PROJECT_PATH="${1}"
+
+# Default
+if [[ ${PROJECT_PATH} = "" ]]; then
+
+	DEFAULT_DIRS=(src tests)
+
+	echo "Running $0 on default directories: ${DEFAULT_DIRS[@]}"
+
+	for dir_to_check in "${DEFAULT_DIRS[@]}"; do
+		$0 "${dir_to_check}"
+	done
+
+	exit 0
+fi
+
+# Sanity check
+if [[ ! -e ${PROJECT_PATH} ]]; then
+	echo "Doesn't seem to exist: ${PROJECT_PATH}" >&2
+	exit 1
+fi
+
+PROJECT_DIR=${PROJECT_PATH}
+
+if [[ -f ${PROJECT_PATH} ]]; then
+	PROJECT_DIR=$(dirname ${PROJECT_PATH})
+fi
+
+echo "Fixing: ${PROJECT_PATH}"
+
+docker run \
+	--rm \
+	-v "$(pwd)/${PROJECT_DIR}":/source/${PROJECT_DIR} \
+	docker.lenius.dk/csfixer \
+	/root/.composer/vendor/bin/php-cs-fixer \
+	--verbose \
+	--using-cache=yes \
+	--cache-file=/source/${PROJECT_DIR}/.php_cs.cache \
+	--rules='
+	{
+		"@PSR2": true,
+		"array_indentation": true,
+		"binary_operator_spaces": {
+			"operators": {"=>": "align_single_space"}
+		},
+		"blank_line_after_opening_tag": false,
+		"blank_line_before_statement": {"statements": ["do", "for", "foreach", "if", "switch", "throw", "while", "return"]},
+		"concat_space": {"spacing": "one"},
+		"no_blank_lines_after_phpdoc": false,
+		"no_blank_lines_after_class_opening": true,
+		"no_whitespace_in_blank_line": true,
+		"no_trailing_comma_in_singleline_array": true,
+		"no_trailing_comma_in_list_call": true,
+		"no_extra_blank_lines": true,
+		"no_empty_phpdoc": true,
+		"no_unused_imports": true,
+		"method_argument_space": true,
+		"method_separation": true,
+		"phpdoc_indent": true,
+		"phpdoc_scalar": true,
+		"phpdoc_order": true,
+		"phpdoc_align": true,
+		"phpdoc_separation": true,
+		"phpdoc_inline_tag": true,
+		"phpdoc_no_access": true,
+		"phpdoc_no_package": true,
+		"phpdoc_separation": true,
+		"phpdoc_summary": true,
+		"phpdoc_to_comment": true,
+		"phpdoc_trim": true,
+		"phpdoc_order": true,
+		"single_quote": {"strings_containing_single_quote_chars": true},
+		"whitespace_after_comma_in_array": true,
+		"concat_space": {
+			"spacing": "none"
+		}
+	}' \
+	fix /source/${PROJECT_PATH}

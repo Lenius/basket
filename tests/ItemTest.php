@@ -21,7 +21,6 @@ namespace Tests;
  */
 use Lenius\Basket\Basket;
 use Lenius\Basket\Item;
-use Lenius\Basket\Storage\Runtime as RuntimeStore;
 use PHPUnit\Framework\TestCase;
 
 class ItemTest extends TestCase
@@ -39,8 +38,6 @@ class ItemTest extends TestCase
 
     public function testTaxUpdate()
     {
-        $identifier = 1;
-
         $item = [
             'id'       => 'foo',
             'name'     => 'bar',
@@ -49,7 +46,7 @@ class ItemTest extends TestCase
             'weight'   => 200,
         ];
 
-        $this->item = new Item($identifier, $item, new RuntimeStore());
+        $this->item = new Item($item);
 
         $this->item->update('tax', 0);
         $this->assertEquals(100, $this->item->total());
@@ -62,8 +59,6 @@ class ItemTest extends TestCase
 
     public function testWeight()
     {
-        $identifier = 1;
-
         $weight = rand(200, 300);
         $quantity = rand(1, 10);
 
@@ -75,14 +70,12 @@ class ItemTest extends TestCase
             'weight'   => $weight,
         ];
 
-        $this->item = new Item($identifier, $item, new RuntimeStore());
+        $this->item = new Item($item);
         $this->assertEquals(($weight * $quantity), $this->item->weight());
     }
 
     public function testWeightWithOption()
     {
-        $identifier = 1;
-
         $weight = rand(200, 300);
         $weight_option_one = rand(50, 100);
         $weight_option_two = rand(150, 200);
@@ -110,14 +103,12 @@ class ItemTest extends TestCase
             ],
         ];
 
-        $this->item = new Item($identifier, $item, new RuntimeStore());
+        $this->item = new Item($item);
         $this->assertEquals(($weight + ($weight_option_one + $weight_option_two)) * $quantity, $this->item->weight());
     }
 
     public function testHasOption()
     {
-        $identifier = 1;
-
         $item = [
             'id'       => 'foo',
             'name'     => 'bar',
@@ -134,14 +125,12 @@ class ItemTest extends TestCase
             ],
         ];
 
-        $this->item = new Item($identifier, $item, new RuntimeStore());
+        $this->item = new Item($item);
         $this->assertTrue($this->item->hasOptions());
     }
 
     public function testHasNoOption()
     {
-        $identifier = 1;
-
         $item = [
             'id'       => 'foo',
             'name'     => 'bar',
@@ -150,14 +139,12 @@ class ItemTest extends TestCase
             'weight'   => 200,
         ];
 
-        $this->item = new Item($identifier, $item, new RuntimeStore());
+        $this->item = new Item($item);
         $this->assertFalse($this->item->hasOptions());
     }
 
     public function testItemTotalPrice()
     {
-        $identifier = 1;
-
         $item = [
             'id'       => 'foo',
             'name'     => 'bar',
@@ -166,15 +153,13 @@ class ItemTest extends TestCase
             'weight'   => 200,
         ];
 
-        $this->item = new Item($identifier, $item, new RuntimeStore());
+        $this->item = new Item($item);
 
         $this->assertEquals(100, $this->item->single());
     }
 
     public function testItemSetTax()
     {
-        $identifier = 1;
-
         $item = [
             'id'       => 'foo',
             'name'     => 'bar',
@@ -183,7 +168,7 @@ class ItemTest extends TestCase
             'weight'   => 200,
         ];
 
-        $this->item = new Item($identifier, $item, new RuntimeStore());
+        $this->item = new Item($item);
 
         $this->item->tax = 25;
 

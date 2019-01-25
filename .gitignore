@@ -5,3 +5,4 @@ composer.phar
 composer.lock
 priv-test.php
 .idea
+.php_cs.cache

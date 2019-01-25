@@ -27,6 +27,7 @@ use Lenius\Basket\IdentifierInterface;
  */
 class Runtime implements IdentifierInterface
 {
+    /** @var string $identifier */
     protected static $identifier;
 
     /**

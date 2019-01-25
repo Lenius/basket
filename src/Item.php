@@ -28,13 +28,10 @@ namespace Lenius\Basket;
  * @property-read int $quantity
  * @property-read float $weight
  */
-class Item
+class Item implements ItemInterface
 {
     /** @var string $identifier */
     protected $identifier;
-
-    /** @var StorageInterface $store */
-    protected $store;
 
     /** @var Tax $tax */
     protected $tax;
@@ -45,16 +42,10 @@ class Item
     /**
      * Construct the item.
      *
-     * @param string           $identifier
-     * @param array            $item
-     * @param StorageInterface $store
+     * @param array $item
      */
-    public function __construct($identifier, array $item, StorageInterface $store)
+    public function __construct(array $item)
     {
-        $this->identifier = $identifier;
-
-        $this->store = $store;
-
         foreach ($item as $key => $value) {
             $this->data[$key] = $value;
         }
@@ -65,9 +56,21 @@ class Item
     }
 
     /**
+     * Set identifier.
+     *
+     * @param mixed $identifier
+     *
+     * @return mixed|void
+     */
+    public function setIdentifier($identifier)
+    {
+        $this->identifier = $identifier;
+    }
+
+    /**
      * Return the value of protected methods.
      *
-     * @param string $param
+     * @param mixed $param
      *
      * @return mixed
      */
@@ -85,19 +88,10 @@ class Item
     public function __set($param, $value)
     {
         $this->data[$param] = $value;
+
         if ($param == 'tax') {
             $this->tax = new Tax($value);
         }
-    }
-
-    /**
-     * Removes the current item from the cart.
-     *
-     * @return void
-     */
-    public function remove()
-    {
-        $this->store->remove($this->identifier);
     }
 
     /**
@@ -192,22 +186,23 @@ class Item
     /**
      * Update a single key for this item, or multiple.
      *
-     * @param array|string $key   The array key to update, or an array of key-value pairs to update
-     * @param null         $value
+     * @param mixed $key   The array key to update, or an array of key-value pairs to update
+     * @param mixed $value
      *
      * @return void
      */
     public function update($key, $value = null)
     {
-        if (is_array($key)) {
-            foreach ($key as $updateKey => $updateValue) {
+        if ($key instanceof ItemInterface) {
+            foreach ($key->toArray() as $updateKey => $updateValue) {
                 $this->update($updateKey, $updateValue);
             }
         } else {
-            // Update the item
-            $this->data[$key] = $value;
             if ($key == 'tax' && is_numeric($value)) {
-                $this->tax = new Tax($value);
+                $this->tax = new Tax(floatval($value));
+            } else {
+                // update the item
+                $this->data[$key] = $value;
             }
         }
     }
