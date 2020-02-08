@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket;
@@ -36,7 +36,7 @@ class Basket
     /** @var StorageInterface $store */
     protected $store;
 
-    /** @var array $requiredParams */
+    /** @var array<string> $requiredParams */
     protected $requiredParams = [
         'id',
         'name',
@@ -94,8 +94,6 @@ class Basket
         $itemIdentifier = $this->createItemIdentifier($item);
 
         if ($this->has($itemIdentifier) && $this->item($itemIdentifier) instanceof ItemInterface) {
-            $this->item($itemIdentifier)->quantity;
-
             $item->quantity = $this->item($itemIdentifier)->quantity + $item->quantity;
             $this->update($itemIdentifier, $item);
 
@@ -115,8 +113,6 @@ class Basket
      * @param string $itemIdentifier The unique item identifier
      * @param mixed  $key            The key to update, or an array of key-value pairs
      * @param mixed  $value          The value to set $key to
-     *
-     * @return void
      */
     public function update($itemIdentifier, $key, $value = null)
     {
@@ -133,8 +129,6 @@ class Basket
      * Remove an item from the basket.
      *
      * @param string $identifier Unique item identifier
-     *
-     * @return void
      */
     public function remove($identifier)
     {
@@ -143,8 +137,6 @@ class Basket
 
     /**
      * Destroy/empty the basket.
-     *
-     * @return void
      */
     public function destroy()
     {
@@ -265,8 +257,6 @@ class Basket
      * @codeCoverageIgnore
      *
      * @param string $identifier
-     *
-     * @return void
      */
     public function setIdentifier($identifier)
     {
@@ -282,7 +272,7 @@ class Basket
      */
     protected function createItemIdentifier(ItemInterface $item)
     {
-        if (!array_key_exists('options', $item->toArray())) {
+        if (! array_key_exists('options', $item->toArray())) {
             $item->options = [];
         }
 
@@ -299,13 +289,11 @@ class Basket
      * Check if a basket item has the required parameters.
      *
      * @param ItemInterface $item
-     *
-     * @return void
      */
     protected function checkArgs(ItemInterface $item)
     {
         foreach ($this->requiredParams as $param) {
-            if (!array_key_exists($param, $item->toArray())) {
+            if (! array_key_exists($param, $item->toArray())) {
                 throw new InvalidArgumentException("The '{$param}' field is required");
             }
         }

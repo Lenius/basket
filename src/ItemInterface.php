@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket;
@@ -25,8 +25,8 @@ namespace Lenius\Basket;
  *
  * @property string $id
  * @property string $identifier
- * @property int $quantity
- * @property array $options
+ * @property int    $quantity
+ * @property array  $options
  */
 interface ItemInterface
 {
@@ -74,8 +74,6 @@ interface ItemInterface
      *
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
      * @param mixed $value
-     *
-     * @return void
      */
     public function update($key, $value = null);
 

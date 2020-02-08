@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket\Storage;
@@ -29,7 +29,7 @@ use Lenius\Basket\StorageInterface;
  */
 class Runtime implements StorageInterface
 {
-    /** @var null|string $identifier */
+    /** @var string|null $identifier */
     protected $identifier;
 
     /** @var array $cart */
@@ -42,8 +42,6 @@ class Runtime implements StorageInterface
      * Add or update an item in the cart.
      *
      * @param ItemInterface $item The item to insert or update
-     *
-     * @return void
      */
     public function insertUpdate(ItemInterface $item)
     {
@@ -61,7 +59,7 @@ class Runtime implements StorageInterface
     {
         $cart = &static::$cart[$this->id];
 
-        if (!$asArray) {
+        if (! $asArray) {
             return $cart;
         }
 
@@ -136,8 +134,6 @@ class Runtime implements StorageInterface
      * Remove an item from the cart.
      *
      * @param mixed $id
-     *
-     * @return void
      */
     public function remove($id)
     {
@@ -146,8 +142,6 @@ class Runtime implements StorageInterface
 
     /**
      * Destroy the cart.
-     *
-     * @return void
      */
     public function destroy()
     {
@@ -160,14 +154,12 @@ class Runtime implements StorageInterface
      * @param string $id
      *
      * @internal param string $identifier
-     *
-     * @return void
      */
     public function setIdentifier($id)
     {
         $this->id = $id;
 
-        if (!array_key_exists($this->id, static::$cart)) {
+        if (! array_key_exists($this->id, static::$cart)) {
             static::$cart[$this->id] = [];
         }
     }
@@ -184,8 +176,6 @@ class Runtime implements StorageInterface
 
     /**
      * Restore the cart.
-     *
-     * @return void
      */
     public function restore()
     {

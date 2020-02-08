@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket;

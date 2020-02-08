@@ -58,4 +58,4 @@ jobs:
     before_script:
       - travis_retry composer require --dev phpstan/phpstan
     script:
-      - vendor/bin/phpstan analyse -l max src
+      - vendor/bin/phpstan analyse

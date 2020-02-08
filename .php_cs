@@ -6,8 +6,6 @@ $excluded_folders = [
 $finder = PhpCsFixer\Finder::create()
     ->exclude($excluded_folders)
     ->notName('AcceptanceTester.php')
-    ->notName('FunctionalTester.php')
-    ->notName('UnitTester.php')
     ->in(__DIR__);
 
 return PhpCsFixer\Config::create()
@@ -19,5 +17,6 @@ return PhpCsFixer\Config::create()
         'not_operator_with_successor_space' => true,
         'ordered_imports'                   => true,
         'phpdoc_order'                      => true,
+        'no_unused_imports'                 => true
     ])
     ->setFinder($finder);

@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket\Identifier;
@@ -60,8 +60,6 @@ class Runtime implements IdentifierInterface
 
     /**
      * Forget the identifier.
-     *
-     * @return void
      */
     public function forget()
     {

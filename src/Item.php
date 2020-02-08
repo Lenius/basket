@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket;
@@ -23,10 +23,10 @@ namespace Lenius\Basket;
 /**
  * Class Item.
  *
- * @property-read string $identifier
- * @property-read float $price
- * @property-read int $quantity
- * @property-read float $weight
+ * @property string $identifier
+ * @property float  $price
+ * @property int    $quantity
+ * @property float  $weight
  */
 class Item implements ItemInterface
 {
@@ -76,7 +76,7 @@ class Item implements ItemInterface
      */
     public function __get($param)
     {
-        return $param == 'identifier' ? $this->identifier : $this->data[$param];
+        return 'identifier' == $param ? $this->identifier : $this->data[$param];
     }
 
     /**
@@ -89,7 +89,7 @@ class Item implements ItemInterface
     {
         $this->data[$param] = $value;
 
-        if ($param == 'tax') {
+        if ('tax' == $param) {
             $this->tax = new Tax($value);
         }
     }
@@ -188,8 +188,6 @@ class Item implements ItemInterface
      *
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
      * @param mixed $value
-     *
-     * @return void
      */
     public function update($key, $value = null)
     {
@@ -198,7 +196,7 @@ class Item implements ItemInterface
                 $this->update($updateKey, $updateValue);
             }
         } else {
-            if ($key == 'tax' && is_numeric($value)) {
+            if ('tax' == $key && is_numeric($value)) {
                 $this->tax = new Tax(floatval($value));
             } else {
                 // update the item
@@ -214,7 +212,7 @@ class Item implements ItemInterface
      */
     public function hasOptions()
     {
-        return array_key_exists('options', $this->data) && !empty($this->data['options']);
+        return array_key_exists('options', $this->data) && ! empty($this->data['options']);
     }
 
     /**

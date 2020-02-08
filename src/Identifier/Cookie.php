@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket\Identifier;
@@ -57,8 +57,6 @@ class Cookie implements IdentifierInterface
 
     /**
      * Forget the identifier.
-     *
-     * @return void
      */
     public function forget()
     {

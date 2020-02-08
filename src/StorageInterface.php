@@ -15,7 +15,7 @@
  *
  * @version production
  *
- * @link https://github.com/lenius/basket
+ * @see https://github.com/lenius/basket
  */
 
 namespace Lenius\Basket;
@@ -29,8 +29,6 @@ interface StorageInterface
      * Add or update an item in the cart.
      *
      * @param ItemInterface $item The item to insert or update
-     *
-     * @return void
      */
     public function insertUpdate(ItemInterface $item);
 
@@ -74,22 +72,16 @@ interface StorageInterface
      * Remove an item from the cart.
      *
      * @param mixed $id
-     *
-     * @return void
      */
     public function remove($id);
 
     /**
      * Destroy the cart.
-     *
-     * @return void
      */
     public function destroy();
 
     /**
      * Restore the cart.
-     *
-     * @return void
      */
     public function restore();
 
