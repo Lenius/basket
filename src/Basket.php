@@ -272,7 +272,7 @@ class Basket
      */
     protected function createItemIdentifier(ItemInterface $item)
     {
-        if (! array_key_exists('options', $item->toArray())) {
+        if (!array_key_exists('options', $item->toArray())) {
             $item->options = [];
         }
 
@@ -293,7 +293,7 @@ class Basket
     protected function checkArgs(ItemInterface $item)
     {
         foreach ($this->requiredParams as $param) {
-            if (! array_key_exists($param, $item->toArray())) {
+            if (!array_key_exists($param, $item->toArray())) {
                 throw new InvalidArgumentException("The '{$param}' field is required");
             }
         }

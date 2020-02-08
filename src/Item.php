@@ -212,7 +212,7 @@ class Item implements ItemInterface
      */
     public function hasOptions()
     {
-        return array_key_exists('options', $this->data) && ! empty($this->data['options']);
+        return array_key_exists('options', $this->data) && !empty($this->data['options']);
     }
 
     /**

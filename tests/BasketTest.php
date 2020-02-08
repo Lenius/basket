@@ -255,7 +255,7 @@ class BasketTest extends TestCase
         $adding = rand(1, 200);
         $actualTotal = 0;
 
-        for ($i = 1; $i <= $adding; ++$i) {
+        for ($i = 1; $i <= $adding; $i++) {
             $quantity = rand(1, 20);
 
             $this->basket->insert(new Item([
