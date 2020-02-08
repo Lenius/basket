@@ -193,7 +193,7 @@ class Basket
             $total += $item->tax();
         }
 
-        return $total;
+        return (float) $total;
     }
 
     /**
@@ -210,7 +210,7 @@ class Basket
             $weight += $item->weight();
         }
 
-        return $weight;
+        return (float) $weight;
     }
 
     /**
