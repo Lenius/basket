@@ -5,8 +5,7 @@ php:
   - 7.2
   - 7.3
   - 7.4
-  - nightly
-
+  
 env:
   global:
   - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-suggest --prefer-source"
