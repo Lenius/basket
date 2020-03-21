@@ -50,7 +50,7 @@ class Cookie implements IdentifierInterface
     {
         $identifier = md5(uniqid('', true));
 
-        setcookie('cart_identifier', $identifier, 0, '/');
+        @setcookie('cart_identifier', $identifier, 0, '/');
 
         return $identifier;
     }
@@ -60,6 +60,6 @@ class Cookie implements IdentifierInterface
      */
     public function forget()
     {
-        setcookie('cart_identifier', '', time() - 3600);
+        @setcookie('cart_identifier', '', time() - 3600);
     }
 }
