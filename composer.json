@@ -20,6 +20,9 @@
         "php-coveralls/php-coveralls": "2.1.*",
         "phpstan/phpstan": "^0.12.0@dev"
     },
+    "config": {
+        "sort-packages": true
+    },
     "autoload": {
         "psr-4": {
             "Lenius\\Basket\\": "src/"
