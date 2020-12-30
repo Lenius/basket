@@ -81,7 +81,7 @@ class Item implements ItemInterface
      * Update data array using set magic method.
      *
      * @param string $param The key to set
-     * @param mixed  $value The value to set $param to
+     * @param mixed $value The value to set $param to
      */
     public function __set($param, $value)
     {
@@ -97,12 +97,12 @@ class Item implements ItemInterface
      *
      * @return float
      */
-    public function tax()
+    public function tax(): float
     {
         $price = $this->totalPrice();
         $quantity = $this->quantity;
 
-        return $this->tax->rate($price * $quantity);
+        return (float) $this->tax->rate($price * $quantity);
     }
 
     /**
@@ -110,7 +110,7 @@ class Item implements ItemInterface
      *
      * @return float
      */
-    private function totalPrice()
+    private function totalPrice(): float
     {
         $price = $this->price;
 
@@ -132,7 +132,7 @@ class Item implements ItemInterface
      *
      * @return float The total, as a float
      */
-    public function total($includeTax = true)
+    public function total($includeTax = true): float
     {
         $price = $this->totalPrice();
 
@@ -148,7 +148,7 @@ class Item implements ItemInterface
      *
      * @return float The weight, as a float
      */
-    public function weight()
+    public function weight(): float
     {
         $weight = $this->weight;
 
@@ -170,7 +170,7 @@ class Item implements ItemInterface
      *
      * @return float The total, as a float
      */
-    public function single($includeTax = true)
+    public function single($includeTax = true): float
     {
         $price = $this->totalPrice();
 
@@ -208,7 +208,7 @@ class Item implements ItemInterface
      *
      * @return bool Yes or no?
      */
-    public function hasOptions()
+    public function hasOptions(): bool
     {
         return array_key_exists('options', $this->data) && ! empty($this->data['options']);
     }
@@ -218,7 +218,7 @@ class Item implements ItemInterface
      *
      * @return array The item data
      */
-    public function toArray()
+    public function toArray(): array
     {
         return $this->data;
     }

@@ -83,9 +83,10 @@ class Basket
     /**
      * Insert an item into the basket.
      *
+     * @param ItemInterface $item
      * @return string A unique item identifier
      */
-    public function insert(ItemInterface $item)
+    public function insert(ItemInterface $item): string
     {
         $this->checkArgs($item);
 
@@ -109,15 +110,16 @@ class Basket
      * Update an item.
      *
      * @param string $itemIdentifier The unique item identifier
-     * @param mixed  $key            The key to update, or an array of key-value pairs
-     * @param mixed  $value          The value to set $key to
+     * @param mixed $key The key to update, or an array of key-value pairs
+     * @param mixed $value The value to set $key to
      */
-    public function update($itemIdentifier, $key, $value = null)
+    public function update(string $itemIdentifier, $key, $value = null)
     {
         /** @var Item $item */
         foreach ($this->contents() as $item) {
             if ($item->identifier == $itemIdentifier) {
                 $item->update($key, $value);
+
                 break;
             }
         }
@@ -128,7 +130,7 @@ class Basket
      *
      * @param string $identifier Unique item identifier
      */
-    public function remove($identifier)
+    public function remove(string $identifier)
     {
         $this->store->remove($identifier);
     }
@@ -148,7 +150,7 @@ class Basket
      *
      * @return bool Yes or no?
      */
-    public function has($itemIdentifier)
+    public function has(string $itemIdentifier): bool
     {
         return $this->store->has($itemIdentifier);
     }
@@ -160,7 +162,7 @@ class Basket
      *
      * @return Item|bool
      */
-    public function item($itemIdentifier)
+    public function item(string $itemIdentifier)
     {
         return $this->store->item($itemIdentifier);
     }
@@ -182,7 +184,7 @@ class Basket
      *
      * @return float The total tax value
      */
-    public function tax()
+    public function tax(): float
     {
         $total = 0;
 
@@ -199,7 +201,7 @@ class Basket
      *
      * @return float The total weight value
      */
-    public function weight()
+    public function weight(): float
     {
         $weight = 0;
 
@@ -218,7 +220,7 @@ class Basket
      *
      * @return float The total basket value
      */
-    public function total($includeTax = true)
+    public function total($includeTax = true): float
     {
         $total = 0;
 
@@ -237,7 +239,7 @@ class Basket
      *
      * @return int Total number of items
      */
-    public function totalItems($unique = false)
+    public function totalItems($unique = false): int
     {
         $total = 0;
 
@@ -256,7 +258,7 @@ class Basket
      *
      * @param string $identifier
      */
-    public function setIdentifier($identifier)
+    public function setIdentifier(string $identifier)
     {
         $this->store->setIdentifier($identifier);
     }
@@ -264,9 +266,10 @@ class Basket
     /**
      * Create a unique item identifier.
      *
+     * @param ItemInterface $item
      * @return string An md5 hash of item
      */
-    protected function createItemIdentifier(ItemInterface $item)
+    protected function createItemIdentifier(ItemInterface $item): string
     {
         if (! array_key_exists('options', $item->toArray())) {
             $item->options = [];
@@ -283,6 +286,7 @@ class Basket
 
     /**
      * Check if a basket item has the required parameters.
+     * @param ItemInterface $item
      */
     protected function checkArgs(ItemInterface $item)
     {

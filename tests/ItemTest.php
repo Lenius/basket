@@ -27,16 +27,16 @@ class ItemTest extends TestCase
 {
     private $item;
 
-    public function setUp()
+    public function setUp(): void
     {
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->item = null;
     }
 
-    public function testTaxUpdate()
+    public function testTaxUpdate(): void
     {
         $item = [
             'id'       => 'foo',
@@ -57,7 +57,7 @@ class ItemTest extends TestCase
         $this->assertEquals(100, $this->item->total(false));
     }
 
-    public function testWeight()
+    public function testWeight(): void
     {
         $weight = rand(200, 300);
         $quantity = rand(1, 10);
@@ -74,7 +74,7 @@ class ItemTest extends TestCase
         $this->assertEquals(($weight * $quantity), $this->item->weight());
     }
 
-    public function testWeightWithOption()
+    public function testWeightWithOption(): void
     {
         $weight = rand(200, 300);
         $weight_option_one = rand(50, 100);
@@ -107,7 +107,7 @@ class ItemTest extends TestCase
         $this->assertEquals(($weight + ($weight_option_one + $weight_option_two)) * $quantity, $this->item->weight());
     }
 
-    public function testHasOption()
+    public function testHasOption(): void
     {
         $item = [
             'id'       => 'foo',
@@ -129,7 +129,7 @@ class ItemTest extends TestCase
         $this->assertTrue($this->item->hasOptions());
     }
 
-    public function testHasNoOption()
+    public function testHasNoOption(): void
     {
         $item = [
             'id'       => 'foo',
@@ -143,7 +143,7 @@ class ItemTest extends TestCase
         $this->assertFalse($this->item->hasOptions());
     }
 
-    public function testItemTotalPrice()
+    public function testItemTotalPrice(): void
     {
         $item = [
             'id'       => 'foo',
@@ -158,7 +158,7 @@ class ItemTest extends TestCase
         $this->assertEquals(100, $this->item->single());
     }
 
-    public function testItemSetTax()
+    public function testItemSetTax(): void
     {
         $item = [
             'id'       => 'foo',
