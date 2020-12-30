@@ -30,19 +30,17 @@ namespace Lenius\Basket;
  */
 class Item implements ItemInterface
 {
-    /** @var string $identifier */
+    /** @var string */
     protected $identifier;
 
-    /** @var Tax $tax */
+    /** @var Tax */
     protected $tax;
 
-    /** @var array $data */
+    /** @var array */
     protected $data = [];
 
     /**
      * Construct the item.
-     *
-     * @param array $item
      */
     public function __construct(array $item)
     {
@@ -212,7 +210,7 @@ class Item implements ItemInterface
      */
     public function hasOptions()
     {
-        return array_key_exists('options', $this->data) && !empty($this->data['options']);
+        return array_key_exists('options', $this->data) && ! empty($this->data['options']);
     }
 
     /**

@@ -25,13 +25,13 @@ namespace Lenius\Basket;
  */
 class Tax
 {
-    /** @var float $percentage */
+    /** @var float */
     protected $percentage;
 
-    /** @var float $deductModifier */
+    /** @var float */
     protected $deductModifier;
 
-    /** @var float $addModifier */
+    /** @var float */
     protected $addModifier;
 
     /**

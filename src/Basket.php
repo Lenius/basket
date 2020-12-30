@@ -27,16 +27,16 @@ use InvalidArgumentException;
  */
 class Basket
 {
-    /** @var string $id */
+    /** @var string */
     protected $id;
 
-    /** @var IdentifierInterface $identifier */
+    /** @var IdentifierInterface */
     protected $identifier;
 
-    /** @var StorageInterface $store */
+    /** @var StorageInterface */
     protected $store;
 
-    /** @var array<string> $requiredParams */
+    /** @var array<string> */
     protected $requiredParams = [
         'id',
         'name',
@@ -82,8 +82,6 @@ class Basket
 
     /**
      * Insert an item into the basket.
-     *
-     * @param ItemInterface $item
      *
      * @return string A unique item identifier
      */
@@ -266,13 +264,11 @@ class Basket
     /**
      * Create a unique item identifier.
      *
-     * @param ItemInterface $item
-     *
      * @return string An md5 hash of item
      */
     protected function createItemIdentifier(ItemInterface $item)
     {
-        if (!array_key_exists('options', $item->toArray())) {
+        if (! array_key_exists('options', $item->toArray())) {
             $item->options = [];
         }
 
@@ -287,13 +283,11 @@ class Basket
 
     /**
      * Check if a basket item has the required parameters.
-     *
-     * @param ItemInterface $item
      */
     protected function checkArgs(ItemInterface $item)
     {
         foreach ($this->requiredParams as $param) {
-            if (!array_key_exists($param, $item->toArray())) {
+            if (! array_key_exists($param, $item->toArray())) {
                 throw new InvalidArgumentException("The '{$param}' field is required");
             }
         }

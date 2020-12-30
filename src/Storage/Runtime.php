@@ -29,13 +29,13 @@ use Lenius\Basket\StorageInterface;
  */
 class Runtime implements StorageInterface
 {
-    /** @var string|null $identifier */
+    /** @var string|null */
     protected $identifier;
 
-    /** @var array $cart */
+    /** @var array */
     protected static $cart = [];
 
-    /** @var string $id */
+    /** @var string */
     protected $id = 'basket';
 
     /**
@@ -59,7 +59,7 @@ class Runtime implements StorageInterface
     {
         $cart = &static::$cart[$this->id];
 
-        if (!$asArray) {
+        if (! $asArray) {
             return $cart;
         }
 
@@ -159,7 +159,7 @@ class Runtime implements StorageInterface
     {
         $this->id = $id;
 
-        if (!array_key_exists($this->id, static::$cart)) {
+        if (! array_key_exists($this->id, static::$cart)) {
             static::$cart[$this->id] = [];
         }
     }
