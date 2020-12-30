@@ -25,6 +25,11 @@
             "Lenius\\Basket\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Lenius\\Basket\\Tests\\": "tests"
+        }
+    },
     "scripts": {
         "test": [
             "XDEBUG_MODE=coverage vendor/bin/phpunit"

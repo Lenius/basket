@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests;
+namespace Lenius\Basket\Tests;
 
 /*
  * This file is part of Lenius Basket, a PHP package to handle
