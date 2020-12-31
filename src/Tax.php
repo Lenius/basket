@@ -26,13 +26,13 @@ namespace Lenius\Basket;
 class Tax
 {
     /** @var float */
-    protected $percentage;
+    public $percentage;
 
     /** @var float */
-    protected $deductModifier;
+    public $deductModifier;
 
     /** @var float */
-    protected $addModifier;
+    public $addModifier;
 
     /**
      * When constructing the tax class, you can either
@@ -62,7 +62,7 @@ class Tax
      *
      * @return float $price - tax
      */
-    public function deduct($price)
+    public function deduct(float $price): float
     {
         return (float) ($price * $this->deductModifier);
     }
@@ -74,7 +74,7 @@ class Tax
      *
      * @return float $price + tax
      */
-    public function add($price)
+    public function add(float $price): float
     {
         return (float) ($price * $this->addModifier);
     }
@@ -86,20 +86,8 @@ class Tax
      *
      * @return float The tax rate
      */
-    public function rate($price)
+    public function rate(float $price): float
     {
         return (float) ($price - $this->deduct($price));
-    }
-
-    /**
-     * Return the value of protected properties.
-     *
-     * @param mixed $property The property
-     *
-     * @return mixed The value of the property
-     */
-    public function __get($property)
-    {
-        return $this->$property;
     }
 }
