@@ -1,23 +1,20 @@
-<phpunit bootstrap="vendor/autoload.php" colors="true">
-    <testsuites>
-        <testsuite name="Lenius Test Suite">
-            <directory>./tests/</directory>
-        </testsuite>
-    </testsuites>
-    <logging>
-        <log type="coverage-clover" target="build/logs/clover.xml" charset="UTF-8"/>
-        <log type="coverage-html" target="build/logs/phpunit-html/" charset="UTF-8"/>
-    </logging>
-    <filter>
-        <whitelist>
-            <directory>./</directory>
-            <exclude>
-                <directory>./tests</directory>
-                <directory>./vendor</directory>
-                <file>./src/IdentifierInterface.php</file>
-                <file>./src/StorageInterface.php</file>
-                <file>./src/ItemInterface.php</file>
-            </exclude>
-        </whitelist>
-    </filter>
+<?xml version="1.0"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" bootstrap="vendor/autoload.php" colors="true" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
+  <coverage>
+    <include>
+      <directory>./</directory>
+    </include>
+    <exclude>
+      <directory>./tests</directory>
+      <directory>./vendor</directory>
+      <file>./src/IdentifierInterface.php</file>
+      <file>./src/StorageInterface.php</file>
+      <file>./src/ItemInterface.php</file>
+    </exclude>
+  </coverage>
+  <testsuites>
+    <testsuite name="Lenius Test Suite">
+      <directory>./tests/</directory>
+    </testsuite>
+  </testsuites>
 </phpunit>
