@@ -48,7 +48,7 @@ interface StorageInterface
      *
      * @return bool
      */
-    public function has($identifier);
+    public function has($identifier): bool;
 
     /**
      * Get a single cart item by id.
@@ -66,14 +66,14 @@ interface StorageInterface
      *
      * @return bool|Item
      */
-    public function find($id);
+    public function find(string $id);
 
     /**
      * Remove an item from the cart.
      *
-     * @param mixed $id
+     * @param string $id
      */
-    public function remove($id);
+    public function remove(string $id);
 
     /**
      * Destroy the cart.
@@ -90,7 +90,7 @@ interface StorageInterface
      *
      * @param string $identifier
      */
-    public function setIdentifier($identifier);
+    public function setIdentifier(string $identifier);
 
     /**
      * Return the current cart identifier.

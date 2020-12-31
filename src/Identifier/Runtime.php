@@ -35,7 +35,7 @@ class Runtime implements IdentifierInterface
      *
      * @return string The identifier
      */
-    public function get()
+    public function get(): string
     {
         if (isset(static::$identifier)) {
             return static::$identifier;
@@ -49,7 +49,7 @@ class Runtime implements IdentifierInterface
      *
      * @return string The identifier
      */
-    public function regenerate()
+    public function regenerate(): string
     {
         $identifier = md5(uniqid('', true));
 

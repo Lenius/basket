@@ -81,7 +81,7 @@ class Runtime implements StorageInterface
      *
      * @internal param mixed $id
      */
-    public function has($identifier)
+    public function has($identifier): bool
     {
         foreach (static::$cart[$this->id] as $item) {
             if ($item->identifier == $identifier) {
@@ -119,7 +119,7 @@ class Runtime implements StorageInterface
      *
      * @return bool|Item
      */
-    public function find($id)
+    public function find(string $id)
     {
         foreach (static::$cart[$this->id] as $item) {
             if ($item->id == $id) {
@@ -133,9 +133,9 @@ class Runtime implements StorageInterface
     /**
      * Remove an item from the cart.
      *
-     * @param mixed $id
+     * @param string $id
      */
-    public function remove($id)
+    public function remove(string $id)
     {
         unset(static::$cart[$this->id][$id]);
     }
@@ -151,13 +151,13 @@ class Runtime implements StorageInterface
     /**
      * Set the cart identifier.
      *
-     * @param string $id
+     * @param string $identifier
      *
      * @internal param string $identifier
      */
-    public function setIdentifier($id)
+    public function setIdentifier(string $identifier)
     {
-        $this->id = $id;
+        $this->id = $identifier;
 
         if (! array_key_exists($this->id, static::$cart)) {
             static::$cart[$this->id] = [];
@@ -169,7 +169,7 @@ class Runtime implements StorageInterface
      *
      * @return string The identifier
      */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return $this->id;
     }

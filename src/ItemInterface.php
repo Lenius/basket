@@ -42,7 +42,7 @@ interface ItemInterface
      *
      * @return float
      */
-    public function tax();
+    public function tax(): float;
 
     /**
      * Return the total price for this item.
@@ -51,14 +51,14 @@ interface ItemInterface
      *
      * @return float
      */
-    public function total($includeTax = true);
+    public function total($includeTax = true): float;
 
     /**
      * Return the total weight of the item.
      *
      * @return float
      */
-    public function weight();
+    public function weight(): float;
 
     /**
      * Return the total of the item, with or without tax.
@@ -67,7 +67,7 @@ interface ItemInterface
      *
      * @return float The total, as a float
      */
-    public function single($includeTax = true);
+    public function single($includeTax = true): float;
 
     /**
      * Update a single key for this item, or multiple.
@@ -82,14 +82,14 @@ interface ItemInterface
      *
      * @return bool Yes or no?
      */
-    public function hasOptions();
+    public function hasOptions(): bool;
 
     /**
      * Convert the item into an array.
      *
      * @return array The item data
      */
-    public function toArray();
+    public function toArray(): array;
 
     /**
      * Update data array using set magic method.
