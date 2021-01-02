@@ -3,8 +3,6 @@ dist: xenial
 language: php
 
 php:
-  - 7.2
-  - 7.3
   - 7.4
   - 8.0
 
@@ -43,17 +41,17 @@ script:
 jobs:
   include:
   - stage: Code coverage analysis
-    php: 7.2
+    php: 7.4
     # don't disable xdebug here
     env: COVERAGE=true
     after_success:
     - travis_retry php vendor/bin/php-coveralls -v
   - stage: Code style analysis
-    php: 7.2
+    php: 7.4
     script:
       - vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1 --standard=phpcs.xml
   - stage: phpstan
-    php: 7.2
+    php: 7.4
     before_script:
       - travis_retry composer require --dev phpstan/phpstan
     script:
