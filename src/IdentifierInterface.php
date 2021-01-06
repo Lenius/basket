@@ -30,14 +30,14 @@ interface IdentifierInterface
      *
      * @return string The identifier
      */
-    public function get();
+    public function get(): string;
 
     /**
      * Regenerate the identifier.
      *
      * @return string The identifier
      */
-    public function regenerate();
+    public function regenerate(): string;
 
     /**
      * Forget the identifier.

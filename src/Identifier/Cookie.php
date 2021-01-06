@@ -32,7 +32,7 @@ class Cookie implements IdentifierInterface
      *
      * @return string The identifier
      */
-    public function get()
+    public function get(): string
     {
         if (isset($_COOKIE['cart_identifier'])) {
             return $_COOKIE['cart_identifier'];
@@ -46,7 +46,7 @@ class Cookie implements IdentifierInterface
      *
      * @return string The identifier
      */
-    public function regenerate()
+    public function regenerate(): string
     {
         $identifier = md5(uniqid('', true));
 
