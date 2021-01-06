@@ -10,7 +10,8 @@ would like your basket data to be stored elsewhere.
 Using [composer](https://packagist.org/packages/lenius/basket):
 
 ```bash
-$ composer require lenius/basket
+$ composer require lenius/basket:^3.0
+$ composer require lenius/basket:^4.0 (PHP7.4)
 ```
 
 ## Usage
