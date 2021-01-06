@@ -35,7 +35,7 @@
     },
     "scripts": {
         "test": [
-            "XDEBUG_MODE=coverage vendor/bin/phpunit"
+            "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml --coverage-html build/logs/phpunit-html/"
         ],
         "stan": [
             "vendor/bin/phpstan analyse"
