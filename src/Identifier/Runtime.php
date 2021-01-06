@@ -60,8 +60,10 @@ class Runtime implements IdentifierInterface
 
     /**
      * Forget the identifier.
+     *
+     * @return void
      */
-    public function forget()
+    public function forget(): void
     {
         static::$identifier = '';
     }

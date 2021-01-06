@@ -57,8 +57,10 @@ class Cookie implements IdentifierInterface
 
     /**
      * Forget the identifier.
+     *
+     * @return void
      */
-    public function forget()
+    public function forget(): void
     {
         @setcookie('cart_identifier', '', time() - 3600);
     }
