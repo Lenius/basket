@@ -113,7 +113,7 @@ class Basket
      * @param mixed $key The key to update, or an array of key-value pairs
      * @param mixed $value The value to set $key to
      */
-    public function update(string $itemIdentifier, $key, $value = null)
+    public function update(string $itemIdentifier, $key, $value = null): void
     {
         /** @var Item $item */
         foreach ($this->contents() as $item) {
@@ -130,7 +130,7 @@ class Basket
      *
      * @param string $identifier Unique item identifier
      */
-    public function remove(string $identifier)
+    public function remove(string $identifier): void
     {
         $this->store->remove($identifier);
     }
@@ -138,7 +138,7 @@ class Basket
     /**
      * Destroy/empty the basket.
      */
-    public function destroy()
+    public function destroy(): void
     {
         $this->store->destroy();
     }
@@ -258,7 +258,7 @@ class Basket
      *
      * @param string $identifier
      */
-    public function setIdentifier(string $identifier)
+    public function setIdentifier(string $identifier): void
     {
         $this->store->setIdentifier($identifier);
     }
@@ -288,7 +288,7 @@ class Basket
      * Check if a basket item has the required parameters.
      * @param ItemInterface $item
      */
-    protected function checkArgs(ItemInterface $item)
+    protected function checkArgs(ItemInterface $item): void
     {
         foreach ($this->requiredParams as $param) {
             if (! array_key_exists($param, $item->toArray())) {

@@ -30,7 +30,7 @@ class Session extends Runtime implements StorageInterface
     /**
      * The Session store constructor.
      */
-    public function restore()
+    public function restore(): void
     {
         session_id() || session_start();
 

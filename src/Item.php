@@ -59,7 +59,7 @@ class Item implements ItemInterface
      *
      * @param string $identifier
      */
-    public function setIdentifier(string $identifier)
+    public function setIdentifier(string $identifier): void
     {
         $this->identifier = $identifier;
     }
@@ -82,7 +82,7 @@ class Item implements ItemInterface
      * @param mixed $param The key to set
      * @param mixed $value The value to set $param to
      */
-    public function __set($param, $value)
+    public function __set($param, $value): void
     {
         $this->data[$param] = $value;
 
@@ -186,7 +186,7 @@ class Item implements ItemInterface
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
      * @param mixed $value
      */
-    public function update($key, $value = null)
+    public function update($key, $value = null): void
     {
         if ($key instanceof ItemInterface) {
             foreach ($key->toArray() as $updateKey => $updateValue) {

@@ -43,7 +43,7 @@ class Runtime implements StorageInterface
      *
      * @param ItemInterface $item The item to insert or update
      */
-    public function insertUpdate(ItemInterface $item)
+    public function insertUpdate(ItemInterface $item): void
     {
         static::$cart[$this->id][$item->identifier] = $item;
     }
@@ -135,7 +135,7 @@ class Runtime implements StorageInterface
      *
      * @param string $id
      */
-    public function remove(string $id)
+    public function remove(string $id): void
     {
         unset(static::$cart[$this->id][$id]);
     }
@@ -143,7 +143,7 @@ class Runtime implements StorageInterface
     /**
      * Destroy the cart.
      */
-    public function destroy()
+    public function destroy(): void
     {
         static::$cart[$this->id] = [];
     }
@@ -155,7 +155,7 @@ class Runtime implements StorageInterface
      *
      * @internal param string $identifier
      */
-    public function setIdentifier(string $identifier)
+    public function setIdentifier(string $identifier): void
     {
         $this->id = $identifier;
 
@@ -177,7 +177,7 @@ class Runtime implements StorageInterface
     /**
      * Restore the cart.
      */
-    public function restore()
+    public function restore(): void
     {
         if (isset($_SESSION['cart'])) {
             static::$cart = unserialize($_SESSION['cart']);

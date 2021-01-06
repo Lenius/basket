@@ -33,7 +33,7 @@ interface ItemInterface
     /**
      * @param string $identifier
      */
-    public function setIdentifier(string $identifier);
+    public function setIdentifier(string $identifier): void;
 
     /**
      * Return the total tax for this item.
@@ -73,7 +73,7 @@ interface ItemInterface
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
      * @param mixed $value
      */
-    public function update($key, $value = null);
+    public function update($key, $value = null): void;
 
     /**
      * Check if this item has options.
@@ -95,7 +95,7 @@ interface ItemInterface
      * @param mixed $param
      * @param mixed $value
      */
-    public function __set($param, $value);
+    public function __set($param, $value): void;
 
     /**
      * Return the value of protected methods.

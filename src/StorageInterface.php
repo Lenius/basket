@@ -30,7 +30,7 @@ interface StorageInterface
      *
      * @param ItemInterface $item The item to insert or update
      */
-    public function insertUpdate(ItemInterface $item);
+    public function insertUpdate(ItemInterface $item): void;
 
     /**
      * Retrieve the cart data.
@@ -73,24 +73,24 @@ interface StorageInterface
      *
      * @param string $id
      */
-    public function remove(string $id);
+    public function remove(string $id): void;
 
     /**
      * Destroy the cart.
      */
-    public function destroy();
+    public function destroy(): void;
 
     /**
      * Restore the cart.
      */
-    public function restore();
+    public function restore(): void;
 
     /**
      * Set the cart identifier.
      *
      * @param string $identifier
      */
-    public function setIdentifier(string $identifier);
+    public function setIdentifier(string $identifier): void;
 
     /**
      * Return the current cart identifier.

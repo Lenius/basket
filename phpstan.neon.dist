@@ -5,13 +5,3 @@ parameters:
     reportUnmatchedIgnoredErrors: false
     checkGenericClassInNonGenericObjectType: false
     checkMissingIterableValueType: false
-    ignoreErrors:
-        - '#Method Lenius\\Basket\\Storage\\Session::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\Storage\\Runtime::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\StorageInterface::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\ItemInterface::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\IdentifierInterface::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\Item::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\Basket::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\Identifier\\Cookie::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
-        - '#Method Lenius\\Basket\\Identifier\\Runtime::[a-zA-Z0-9\\_]+\(\) has no return typehint specified.#'
