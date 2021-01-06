@@ -39,25 +39,25 @@ interface StorageInterface
      *
      * @return array
      */
-    public function &data($asArray = false);
+    public function &data($asArray = false): array;
 
     /**
      * Check if the item exists in the cart.
      *
-     * @param mixed $identifier
+     * @param string $identifier
      *
      * @return bool
      */
-    public function has($identifier): bool;
+    public function has(string $identifier): bool;
 
     /**
      * Get a single cart item by id.
      *
-     * @param mixed $identifier The item id
+     * @param string $identifier The item id
      *
      * @return bool|Item
      */
-    public function item($identifier);
+    public function item(string $identifier);
 
     /**
      * Returns the first occurance of an item with a given id.
@@ -97,5 +97,5 @@ interface StorageInterface
      *
      * @return string
      */
-    public function getIdentifier();
+    public function getIdentifier(): string;
 }

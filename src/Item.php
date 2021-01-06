@@ -31,16 +31,17 @@ namespace Lenius\Basket;
 class Item implements ItemInterface
 {
     /** @var string */
-    protected $identifier;
+    protected string $identifier;
 
     /** @var Tax */
-    protected $tax;
+    protected Tax $tax;
 
     /** @var array */
-    protected $data = [];
+    protected array $data = [];
 
     /**
      * Construct the item.
+     * @param array $item
      */
     public function __construct(array $item)
     {
@@ -56,11 +57,9 @@ class Item implements ItemInterface
     /**
      * Set identifier.
      *
-     * @param mixed $identifier
-     *
-     * @return mixed|void
+     * @param string $identifier
      */
-    public function setIdentifier($identifier)
+    public function setIdentifier(string $identifier)
     {
         $this->identifier = $identifier;
     }
@@ -68,19 +67,19 @@ class Item implements ItemInterface
     /**
      * Return the value of protected methods.
      *
-     * @param mixed $param
+     * @param string $param
      *
      * @return mixed
      */
-    public function __get($param)
+    public function __get(string $param)
     {
-        return 'identifier' == $param ? $this->identifier : $this->data[$param];
+        return 'identifier' === $param ? $this->identifier : $this->data[$param];
     }
 
     /**
      * Update data array using set magic method.
      *
-     * @param string $param The key to set
+     * @param mixed $param The key to set
      * @param mixed $value The value to set $param to
      */
     public function __set($param, $value)
@@ -195,7 +194,7 @@ class Item implements ItemInterface
             }
         } else {
             if ('tax' == $key && is_numeric($value)) {
-                $this->tax = new Tax(floatval($value));
+                $this->tax = new Tax((float)$value);
             } else {
                 // update the item
                 $this->data[$key] = $value;

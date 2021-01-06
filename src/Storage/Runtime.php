@@ -29,14 +29,14 @@ use Lenius\Basket\StorageInterface;
  */
 class Runtime implements StorageInterface
 {
-    /** @var string|null */
-    protected $identifier;
+    /** @var string */
+    protected string $identifier;
 
     /** @var array */
-    protected static $cart = [];
+    protected static array $cart = [];
 
     /** @var string */
-    protected $id = 'basket';
+    protected string $id = 'basket';
 
     /**
      * Add or update an item in the cart.
@@ -55,7 +55,7 @@ class Runtime implements StorageInterface
      *
      * @return array
      */
-    public function &data($asArray = false)
+    public function &data($asArray = false): array
     {
         $cart = &static::$cart[$this->id];
 
@@ -75,13 +75,13 @@ class Runtime implements StorageInterface
     /**
      * Check if the item exists in the cart.
      *
-     * @param mixed $identifier
+     * @param string $identifier
      *
      * @return bool
      *
      * @internal param mixed $id
      */
-    public function has($identifier): bool
+    public function has(string $identifier): bool
     {
         foreach (static::$cart[$this->id] as $item) {
             if ($item->identifier == $identifier) {
@@ -95,13 +95,13 @@ class Runtime implements StorageInterface
     /**
      * Get a single cart item by id.
      *
-     * @param mixed $identifier
+     * @param string $identifier
      *
      * @return bool|Item
      *
      * @internal param mixed $id The item id
      */
-    public function item($identifier)
+    public function item(string $identifier)
     {
         foreach (static::$cart[$this->id] as $item) {
             if ($item->identifier == $identifier) {

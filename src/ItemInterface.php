@@ -31,11 +31,9 @@ namespace Lenius\Basket;
 interface ItemInterface
 {
     /**
-     * @param mixed $identifier
-     *
-     * @return mixed
+     * @param string $identifier
      */
-    public function setIdentifier($identifier);
+    public function setIdentifier(string $identifier);
 
     /**
      * Return the total tax for this item.
@@ -80,14 +78,14 @@ interface ItemInterface
     /**
      * Check if this item has options.
      *
-     * @return bool Yes or no?
+     * @return bool
      */
     public function hasOptions(): bool;
 
     /**
      * Convert the item into an array.
      *
-     * @return array The item data
+     * @return array
      */
     public function toArray(): array;
 
@@ -102,9 +100,9 @@ interface ItemInterface
     /**
      * Return the value of protected methods.
      *
-     * @param mixed $param
+     * @param string $param
      *
      * @return mixed
      */
-    public function __get($param);
+    public function __get(string $param);
 }

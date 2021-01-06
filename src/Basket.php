@@ -28,16 +28,16 @@ use InvalidArgumentException;
 class Basket
 {
     /** @var string */
-    protected $id;
+    protected string $id;
 
     /** @var IdentifierInterface */
-    protected $identifier;
+    protected IdentifierInterface $identifier;
 
     /** @var StorageInterface */
-    protected $store;
+    protected StorageInterface $store;
 
     /** @var array<string> */
-    protected $requiredParams = [
+    protected array $requiredParams = [
         'id',
         'name',
         'quantity',
@@ -75,7 +75,7 @@ class Basket
      *
      * @return array An array of Item objects
      */
-    public function &contents($asArray = false)
+    public function &contents($asArray = false): array
     {
         return $this->store->data($asArray);
     }
@@ -174,7 +174,7 @@ class Basket
      *
      * @return bool|Item
      */
-    public function find($id)
+    public function find(string $id)
     {
         return $this->store->find($id);
     }
