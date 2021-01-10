@@ -41,18 +41,18 @@ class Tax
      * automatically.
      *
      * @param float $value The percentage of your tax (or price before tax)
-     * @param null $after The value after tax
+     * @param null|mixed $after The value after tax
      */
     public function __construct(float $value, $after = null)
     {
         $this->percentage = $value;
 
         if ($after != null && is_numeric($after)) {
-            $this->percentage = (($after - $value) / $value) * 100;
+            $this->percentage = (float) ((($after - $value) / $value) * 100);
         }
 
-        $this->deductModifier = 1 - ($this->percentage / 100);
-        $this->addModifier = 1 + ($this->percentage / 100);
+        $this->deductModifier = (1 - ($this->percentage / 100));
+        $this->addModifier = (1 + ($this->percentage / 100));
     }
 
     /**
@@ -64,7 +64,7 @@ class Tax
      */
     public function deduct(float $price): float
     {
-        return (float) ($price * $this->deductModifier);
+        return ($price * $this->deductModifier);
     }
 
     /**
@@ -76,7 +76,7 @@ class Tax
      */
     public function add(float $price): float
     {
-        return (float) ($price * $this->addModifier);
+        return ($price * $this->addModifier);
     }
 
     /**
@@ -88,6 +88,6 @@ class Tax
      */
     public function rate(float $price): float
     {
-        return (float) ($price - $this->deduct($price));
+        return ($price - $this->deduct($price));
     }
 }

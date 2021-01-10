@@ -101,7 +101,7 @@ class Item implements ItemInterface
         $price = $this->totalPrice();
         $quantity = $this->quantity;
 
-        return (float) $this->tax->rate($price * $quantity);
+        return $this->tax->rate($price * $quantity);
     }
 
     /**
@@ -121,7 +121,7 @@ class Item implements ItemInterface
             }
         }
 
-        return (float) $price;
+        return $price;
     }
 
     /**
@@ -139,7 +139,7 @@ class Item implements ItemInterface
             $price = $this->tax->add($price);
         }
 
-        return (float) ($price * $this->quantity);
+        return ($price * $this->quantity);
     }
 
     /**
@@ -177,7 +177,7 @@ class Item implements ItemInterface
             $price = $this->tax->add($price);
         }
 
-        return (float) $price;
+        return $price;
     }
 
     /**

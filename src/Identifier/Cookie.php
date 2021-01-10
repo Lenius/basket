@@ -34,7 +34,7 @@ class Cookie implements IdentifierInterface
      */
     public function get(): string
     {
-        if (isset($_COOKIE['cart_identifier'])) {
+        if (! empty($_COOKIE['cart_identifier'])) {
             return $_COOKIE['cart_identifier'];
         }
 

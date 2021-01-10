@@ -28,7 +28,7 @@ use Lenius\Basket\IdentifierInterface;
 class Runtime implements IdentifierInterface
 {
     /** @var string */
-    protected static $identifier;
+    protected static string $identifier = '';
 
     /**
      * Get the current or new unique identifier.
@@ -37,7 +37,7 @@ class Runtime implements IdentifierInterface
      */
     public function get(): string
     {
-        if (isset(static::$identifier)) {
+        if (! empty(static::$identifier)) {
             return static::$identifier;
         }
 

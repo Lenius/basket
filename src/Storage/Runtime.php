@@ -30,7 +30,7 @@ use Lenius\Basket\StorageInterface;
 class Runtime implements StorageInterface
 {
     /** @var string */
-    protected string $identifier;
+    protected string $identifier = '';
 
     /** @var array */
     protected static array $cart = [];
