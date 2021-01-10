@@ -1,58 +1,15 @@
-os: linux
-dist: xenial
 language: php
 
-php:
-  - 7.4
-  - 8.0
-
-env:
-  global:
-  - DEFAULT_COMPOSER_FLAGS="--no-interaction --no-suggest --prefer-source"
-  - XDEBUG="false"
-
-cache:
-  directories:
-  - ./vendor
-
-group: deprecated-2017Q3
-
 matrix:
-  fast_finish: true
-
-before_install:
-  # determine INI file
-  - export INI_DIR=~/.phpenv/versions/$(phpenv version-name)/etc/conf.d
-  - export INI=$INI_DIR/travis.ini
-  - if [[ "$XDEBUG" = 'false' && -f $INI_DIR/xdebug.ini ]]; then phpenv config-rm xdebug.ini; fi
-  - travis_retry composer self-update
-  - travis_retry composer clear-cache
-
-install:
- - travis_retry composer install
+  include:
+    - php: '7.4'
+      env: COMPOSER_FLAGS='--prefer-stable'
+    - php: '8.0'
+      env: COMPOSER_FLAGS='--prefer-stable'
 
 before_script:
-  - travis_retry composer install --dev
-  - mkdir -p build/logs
+  - travis_retry composer self-update
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
-  - composer test
-
-jobs:
-  include:
-  - stage: Code coverage analysis
-    php: 7.4
-    # don't disable xdebug here
-    env: COVERAGE=true
-    after_success:
-    - travis_retry php vendor/bin/php-coveralls -v
-  - stage: Code style analysis
-    php: 7.4
-    script:
-      - vendor/bin/phpcs --runtime-set ignore_warnings_on_exit 1 --standard=phpcs.xml
-  - stage: phpstan
-    php: 7.4
-    before_script:
-      - travis_retry composer require --dev phpstan/phpstan
-    script:
-      - vendor/bin/phpstan analyse
+  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
