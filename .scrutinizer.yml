@@ -1,15 +1,6 @@
 build:
-  environment:
-    php:
-      version: 7.4
-  tests:
-    override:
-      -
-        command: 'vendor/bin/phpunit --coverage-clover=clover.xml ./tests'
-        coverage:
-          file: 'clover.xml'
-          format: 'php-clover'
-checks:
-  php:
-    custom_coding_standard:
-      ruleset_path: 'phpcs.xml'
+  nodes:
+    analysis:
+      tests:
+        override:
+          - php-scrutinizer-run

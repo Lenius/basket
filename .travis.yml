@@ -12,4 +12,4 @@ before_script:
   - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
-  - vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
+  - XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-text --coverage-clover=coverage.clover
