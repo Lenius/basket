@@ -10,9 +10,19 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php: ['7.4', '8.0']
+        dependency-version: [prefer-stable]
+
+    name: P${{ matrix.php }} - ${{ matrix.dependency-version }}
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Check PHP Version
+      run: php -v
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -32,5 +42,5 @@ jobs:
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    # - name: Run test suite
-    #   run: composer run-script test
+    - name: Run test suite
+      run: composer test
