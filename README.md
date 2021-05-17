@@ -166,3 +166,26 @@ $item->weight();
 ```php
 $item->toArray();
 ```
+
+## Testing
+
+Run the tests with:
+
+``` bash
+composer psalm
+composer stan
+composer test
+```
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## Security
+
+If you discover any security-related issues, please email info@lenius.dk
+instead of using the issue tracker.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
