@@ -1,6 +1,11 @@
 # Shopping Basket Package
 
-[![Basket](https://github.com/Lenius/basket/actions/workflows/php.yml/badge.svg)](https://github.com/Lenius/basket/actions/workflows/php.yml) [![Build Status](https://travis-ci.org/Lenius/basket.svg)](https://travis-ci.org/Lenius/basket) [![Code Coverage](https://scrutinizer-ci.com/g/Lenius/basket/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Lenius/basket/?branch=master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Lenius/basket/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Lenius/basket/?branch=master) [![Latest Stable Version](https://poser.pugx.org/Lenius/basket/v/stable.svg)](https://packagist.org/packages/Lenius/basket) [![Total Downloads](https://poser.pugx.org/Lenius/basket/downloads.svg)](https://packagist.org/packages/Lenius/basket) [![License](https://poser.pugx.org/Lenius/basket/license.svg)](https://packagist.org/packages/Lenius/basket)
+[![Latest Stable Version](https://poser.pugx.org/Lenius/basket/v/stable.svg)](https://packagist.org/packages/Lenius/basket)
+[![Basket](https://github.com/Lenius/basket/actions/workflows/php.yml/badge.svg)](https://github.com/Lenius/basket/actions/workflows/php.yml) 
+[![Code Coverage](https://scrutinizer-ci.com/g/Lenius/basket/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/Lenius/basket/?branch=master) 
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/Lenius/basket/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/Lenius/basket/?branch=master) 
+[![Total Downloads](https://poser.pugx.org/Lenius/basket/downloads.svg)](https://packagist.org/packages/Lenius/basket) 
+[![License](https://poser.pugx.org/Lenius/basket/license.svg)](https://packagist.org/packages/Lenius/basket)
 
 The Lenius shopping basket composer package makes it easy to implement a shopping basket into your application and
 store the basket data using one of the numerous data stores provided. You can also inject your own data store if you
