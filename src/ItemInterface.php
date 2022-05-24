@@ -62,6 +62,7 @@ interface ItemInterface
      * Set the quantity of the item.
      *
      * @param int $quantity
+     *
      * @return void
      */
     public function setQuantity(int $quantity): void;
@@ -86,9 +87,9 @@ interface ItemInterface
      * Update a single key for this item, or multiple.
      *
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
-     * @param mixed $value
+     * @param mixed|null $value
      */
-    public function update($key, $value = null): void;
+    public function update(mixed $key, mixed $value = null): void;
 
     /**
      * Check if this item has options.
@@ -110,7 +111,7 @@ interface ItemInterface
      * @param mixed $param
      * @param mixed $value
      */
-    public function __set($param, $value): void;
+    public function __set(mixed $param, mixed $value): void;
 
     /**
      * Return the value of protected methods.

@@ -82,7 +82,7 @@ class Item implements ItemInterface
      * @param mixed $param The key to set
      * @param mixed $value The value to set $param to
      */
-    public function __set($param, $value): void
+    public function __set(mixed $param, mixed $value): void
     {
         $this->data[$param] = $value;
 
@@ -181,9 +181,9 @@ class Item implements ItemInterface
      * Update a single key for this item, or multiple.
      *
      * @param mixed $key   The array key to update, or an array of key-value pairs to update
-     * @param mixed $value
+     * @param mixed|null $value
      */
-    public function update($key, $value = null): void
+    public function update(mixed $key, mixed $value = null): void
     {
         if ($key instanceof ItemInterface) {
             foreach ($key->toArray() as $updateKey => $updateValue) {

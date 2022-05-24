@@ -64,7 +64,7 @@ class Tax
      */
     public function deduct(float $price): float
     {
-        return ($price * $this->deductModifier);
+        return $price * $this->deductModifier;
     }
 
     /**
@@ -76,7 +76,7 @@ class Tax
      */
     public function add(float $price): float
     {
-        return ($price * $this->addModifier);
+        return $price * $this->addModifier;
     }
 
     /**
@@ -88,6 +88,6 @@ class Tax
      */
     public function rate(float $price): float
     {
-        return ($price - $this->deduct($price));
+        return $price - $this->deduct($price);
     }
 }
