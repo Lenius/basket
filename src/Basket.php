@@ -48,8 +48,8 @@ class Basket
     /**
      * Basket constructor.
      *
-     * @param StorageInterface    $store      The interface for storing the cart data
-     * @param IdentifierInterface $identifier The interface for storing the identifier
+     * @param StorageInterface $store
+     * @param IdentifierInterface $identifier
      */
     public function __construct(StorageInterface $store, IdentifierInterface $identifier)
     {

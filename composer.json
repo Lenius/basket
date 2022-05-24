@@ -39,7 +39,8 @@
     "scripts": {
         "psalm": "vendor/bin/psalm --show-info=true",
         "fix": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
-        "test": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml --coverage-html build/logs/phpunit-html/",
+        "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml --coverage-html build/logs/phpunit-html/",
+        "test": "vendor/bin/phpunit",
         "stan": "vendor/bin/phpstan analyse"
     }
 }
