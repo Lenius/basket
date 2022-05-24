@@ -82,6 +82,7 @@ class Basket
      * Insert an item into the basket.
      *
      * @param ItemInterface $item
+     *
      * @return string A unique item identifier
      */
     public function insert(ItemInterface $item): string
@@ -107,9 +108,9 @@ class Basket
     /**
      * Update an item.
      *
-     * @param string $itemIdentifier The unique item identifier
-     * @param mixed $key The key to update, or an array of key-value pairs
-     * @param mixed $value The value to set $key to
+     * @param string $itemIdentifier
+     * @param mixed $key
+     * @param mixed $value
      */
     public function update(string $itemIdentifier, $key, $value = null): void
     {
@@ -265,7 +266,8 @@ class Basket
      * Create a unique item identifier.
      *
      * @param ItemInterface $item
-     * @return string An md5 hash of item
+     *
+     * @return string
      */
     protected function createItemIdentifier(ItemInterface $item): string
     {
