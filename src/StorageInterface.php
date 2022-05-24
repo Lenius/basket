@@ -39,7 +39,7 @@ interface StorageInterface
      *
      * @return array
      */
-    public function &data($asArray = false): array;
+    public function &data(bool $asArray = false): array;
 
     /**
      * Check if the item exists in the cart.
@@ -55,18 +55,18 @@ interface StorageInterface
      *
      * @param string $identifier The item id
      *
-     * @return bool|Item
+     * @return ItemInterface|bool
      */
-    public function item(string $identifier);
+    public function item(string $identifier): ItemInterface|bool;
 
     /**
      * Returns the first occurance of an item with a given id.
      *
      * @param string $id The item id
      *
-     * @return bool|Item
+     * @return ItemInterface|bool
      */
-    public function find(string $id);
+    public function find(string $id): ItemInterface|bool;
 
     /**
      * Remove an item from the cart.

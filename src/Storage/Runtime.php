@@ -55,7 +55,7 @@ class Runtime implements StorageInterface
      *
      * @return array
      */
-    public function &data($asArray = false): array
+    public function &data(bool $asArray = false): array
     {
         $cart = &static::$cart[$this->id];
 
@@ -97,11 +97,11 @@ class Runtime implements StorageInterface
      *
      * @param string $identifier
      *
-     * @return bool|Item
+     * @return ItemInterface|bool
      *
      * @internal param mixed $id The item id
      */
-    public function item(string $identifier)
+    public function item(string $identifier): ItemInterface|bool
     {
         foreach (static::$cart[$this->id] as $item) {
             if ($item->identifier == $identifier) {
@@ -117,9 +117,9 @@ class Runtime implements StorageInterface
      *
      * @param string $id The item id
      *
-     * @return bool|Item
+     * @return ItemInterface|bool
      */
-    public function find(string $id)
+    public function find(string $id): ItemInterface|bool
     {
         foreach (static::$cart[$this->id] as $item) {
             if ($item->id == $id) {

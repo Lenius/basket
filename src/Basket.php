@@ -159,21 +159,21 @@ class Basket
      *
      * @param string $itemIdentifier The unique item identifier
      *
-     * @return Item|bool
+     * @return ItemInterface|bool
      */
-    public function item(string $itemIdentifier)
+    public function item(string $itemIdentifier): ItemInterface|bool
     {
         return $this->store->item($itemIdentifier);
     }
 
     /**
-     * Returns the first occurance of an item with a given id.
+     * Returns the first occurrence of an item with a given id.
      *
      * @param string $id The item id
      *
-     * @return bool|Item
+     * @return bool|ItemInterface
      */
-    public function find(string $id)
+    public function find(string $id): ItemInterface|bool
     {
         return $this->store->find($id);
     }
