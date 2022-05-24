@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2017 Lenius.
+ * Copyright (c) 2022 Lenius.
  * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2017 Lenius.
+ * @copyright 2022 Lenius.
  *
  * @version production
  *
@@ -35,7 +35,7 @@ interface IdentifierInterface
     /**
      * Regenerate the identifier.
      *
-     * @return string The identifier
+     * @return string
      */
     public function regenerate(): string;
 

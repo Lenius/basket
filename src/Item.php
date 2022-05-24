@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2017 Lenius.
+ * Copyright (c) 2022 Lenius.
  * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2017 Lenius.
+ * @copyright 2022 Lenius.
  *
  * @version production
  *
@@ -41,6 +41,7 @@ class Item implements ItemInterface
 
     /**
      * Construct the item.
+     *
      * @param array $item
      */
     public function __construct(array $item)
@@ -79,8 +80,8 @@ class Item implements ItemInterface
     /**
      * Update data array using set magic method.
      *
-     * @param mixed $param The key to set
-     * @param mixed $value The value to set $param to
+     * @param mixed $param
+     * @param mixed $value
      */
     public function __set(mixed $param, mixed $value): void
     {
@@ -124,9 +125,9 @@ class Item implements ItemInterface
     /**
      * Return the total of the item, with or without tax.
      *
-     * @param bool $includeTax Whether or not to include tax
+     * @param bool $includeTax
      *
-     * @return float The total, as a float
+     * @return float
      */
     public function total(bool $includeTax = true): float
     {
@@ -142,7 +143,7 @@ class Item implements ItemInterface
     /**
      * Return the total weight of the item.
      *
-     * @return float The weight, as a float
+     * @return float
      */
     public function weight(): float
     {
@@ -162,9 +163,9 @@ class Item implements ItemInterface
     /**
      * Return the total of the item, with or without tax.
      *
-     * @param bool $includeTax Whether or not to include tax
+     * @param bool $includeTax
      *
-     * @return float The total, as a float
+     * @return float
      */
     public function single(bool $includeTax = true): float
     {
@@ -180,7 +181,7 @@ class Item implements ItemInterface
     /**
      * Update a single key for this item, or multiple.
      *
-     * @param mixed $key   The array key to update, or an array of key-value pairs to update
+     * @param mixed $key
      * @param mixed|null $value
      */
     public function update(mixed $key, mixed $value = null): void
@@ -202,7 +203,7 @@ class Item implements ItemInterface
     /**
      * Check if this item has options.
      *
-     * @return bool Yes or no?
+     * @return bool
      */
     public function hasOptions(): bool
     {
@@ -212,7 +213,7 @@ class Item implements ItemInterface
     /**
      * Convert the item into an array.
      *
-     * @return array The item data
+     * @return array
      */
     public function toArray(): array
     {

@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2017 Lenius.
+ * Copyright (c) 2022 Lenius.
  * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2017 Lenius.
+ * @copyright 2022 Lenius.
  *
  * @version production
  *
@@ -71,7 +71,7 @@ class Basket
      *
      * @param bool $asArray
      *
-     * @return array An array of Item objects
+     * @return array
      */
     public function &contents(bool $asArray = false): array
     {
@@ -83,7 +83,7 @@ class Basket
      *
      * @param ItemInterface $item
      *
-     * @return string A unique item identifier
+     * @return string
      */
     public function insert(ItemInterface $item): string
     {
@@ -127,7 +127,7 @@ class Basket
     /**
      * Remove an item from the basket.
      *
-     * @param string $identifier Unique item identifier
+     * @param string $identifier
      */
     public function remove(string $identifier): void
     {
@@ -145,9 +145,9 @@ class Basket
     /**
      * Check if the basket has a specific item.
      *
-     * @param string $itemIdentifier The unique item identifier
+     * @param string $itemIdentifier
      *
-     * @return bool Yes or no?
+     * @return bool
      */
     public function has(string $itemIdentifier): bool
     {
@@ -157,7 +157,7 @@ class Basket
     /**
      * Return a specific item object by identifier.
      *
-     * @param string $itemIdentifier The unique item identifier
+     * @param string $itemIdentifier
      *
      * @return ItemInterface|bool
      */
@@ -169,7 +169,7 @@ class Basket
     /**
      * Returns the first occurrence of an item with a given id.
      *
-     * @param string $id The item id
+     * @param string $id
      *
      * @return bool|ItemInterface
      */
@@ -181,7 +181,7 @@ class Basket
     /**
      * The total tax value for the basket.
      *
-     * @return float The total tax value
+     * @return float
      */
     public function tax(): float
     {
@@ -198,7 +198,7 @@ class Basket
     /**
      * The total weight value for the basket.
      *
-     * @return float The total weight value
+     * @return float
      */
     public function weight(): float
     {
@@ -215,9 +215,9 @@ class Basket
     /**
      * The total value of the basket.
      *
-     * @param bool $includeTax Include tax on the total?
+     * @param bool $includeTax
      *
-     * @return float The total basket value
+     * @return float
      */
     public function total(bool $includeTax = true): float
     {
@@ -234,9 +234,9 @@ class Basket
     /**
      * The total number of items in the basket.
      *
-     * @param bool $unique Just return unique items?
+     * @param bool $unique
      *
-     * @return int Total number of items
+     * @return int
      */
     public function totalItems(bool $unique = false): int
     {

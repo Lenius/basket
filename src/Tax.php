@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2017 Lenius.
+ * Copyright (c) 2022 Lenius.
  * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2017 Lenius.
+ * @copyright 2022 Lenius.
  *
  * @version production
  *
@@ -40,8 +40,8 @@ class Tax
      * tax and have the library work out the tax rate
      * automatically.
      *
-     * @param float $value The percentage of your tax (or price before tax)
-     * @param mixed|null $after The value after tax
+     * @param float $value
+     * @param mixed|null $after
      */
     public function __construct(float $value, mixed $after = null)
     {
@@ -58,9 +58,9 @@ class Tax
     /**
      * Deduct tax from a specified price.
      *
-     * @param float $price The price you want to deduct tax from
+     * @param float $price
      *
-     * @return float $price - tax
+     * @return float
      */
     public function deduct(float $price): float
     {
@@ -70,9 +70,9 @@ class Tax
     /**
      * Add tax to a specified price.
      *
-     * @param float $price The value you want to add tax to
+     * @param float $price
      *
-     * @return float $price + tax
+     * @return float
      */
     public function add(float $price): float
     {
@@ -82,9 +82,9 @@ class Tax
     /**
      * Calculate the tax rate from a price.
      *
-     * @param float $price The price (after tax)
+     * @param float $price
      *
-     * @return float The tax rate
+     * @return float
      */
     public function rate(float $price): float
     {
