@@ -108,7 +108,7 @@ class Item implements ItemInterface
      */
     private function totalPrice(): float
     {
-        $price = $this->price;
+        $price = $this->data['price'];
 
         if ($this->hasOptions()) {
             foreach ($this->data['options'] as $item) {
@@ -146,7 +146,7 @@ class Item implements ItemInterface
      */
     public function weight(): float
     {
-        $weight = $this->weight;
+        $weight = $this->data['weight'];
 
         if ($this->hasOptions()) {
             foreach ($this->data['options'] as $item) {
@@ -226,7 +226,7 @@ class Item implements ItemInterface
      */
     public function getQuantity(): int
     {
-        return $this->quantity;
+        return $this->data['quantity'];
     }
 
     /**
@@ -238,6 +238,6 @@ class Item implements ItemInterface
      */
     public function setQuantity(int $quantity): void
     {
-        $this->quantity = $quantity;
+        $this->data['quantity'] = $quantity;
     }
 }
