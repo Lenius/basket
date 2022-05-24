@@ -49,7 +49,22 @@ interface ItemInterface
      *
      * @return float
      */
-    public function total($includeTax = true): float;
+    public function total(bool $includeTax = true): float;
+
+    /**
+     * Return the quantity of the item.
+     *
+     * @return int
+     */
+    public function getQuantity(): int;
+
+    /**
+     * Set the quantity of the item.
+     *
+     * @param int $quantity
+     * @return void
+     */
+    public function setQuantity(int $quantity): void;
 
     /**
      * Return the total weight of the item.
@@ -65,7 +80,7 @@ interface ItemInterface
      *
      * @return float The total, as a float
      */
-    public function single($includeTax = true): float;
+    public function single(bool $includeTax = true): float;
 
     /**
      * Update a single key for this item, or multiple.

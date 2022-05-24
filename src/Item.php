@@ -49,7 +49,7 @@ class Item implements ItemInterface
             $this->data[$key] = $value;
         }
 
-        $item['tax'] = isset($item['tax']) ? $item['tax'] : 0;
+        $item['tax'] = $item['tax'] ?? 0;
 
         $this->tax = new Tax($item['tax']);
     }
@@ -87,7 +87,7 @@ class Item implements ItemInterface
         $this->data[$param] = $value;
 
         if ('tax' == $param) {
-            $this->tax = new Tax($value);
+            $this->tax = new Tax(floatval($value));
         }
     }
 
@@ -98,10 +98,7 @@ class Item implements ItemInterface
      */
     public function tax(): float
     {
-        $price = $this->totalPrice();
-        $quantity = $this->quantity;
-
-        return $this->tax->rate($price * $quantity);
+        return $this->tax->rate($this->totalPrice() * $this->getQuantity());
     }
 
     /**
@@ -131,7 +128,7 @@ class Item implements ItemInterface
      *
      * @return float The total, as a float
      */
-    public function total($includeTax = true): float
+    public function total(bool $includeTax = true): float
     {
         $price = $this->totalPrice();
 
@@ -139,7 +136,7 @@ class Item implements ItemInterface
             $price = $this->tax->add($price);
         }
 
-        return ($price * $this->quantity);
+        return ($price * $this->getQuantity());
     }
 
     /**
@@ -159,7 +156,7 @@ class Item implements ItemInterface
             }
         }
 
-        return (float) ($weight * $this->quantity);
+        return (float) ($weight * $this->getQuantity());
     }
 
     /**
@@ -169,7 +166,7 @@ class Item implements ItemInterface
      *
      * @return float The total, as a float
      */
-    public function single($includeTax = true): float
+    public function single(bool $includeTax = true): float
     {
         $price = $this->totalPrice();
 
@@ -220,5 +217,27 @@ class Item implements ItemInterface
     public function toArray(): array
     {
         return $this->data;
+    }
+
+    /**
+     * Return quantity
+     *
+     * @return int
+     */
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param int $quantity
+     *
+     * @return void
+     */
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
     }
 }

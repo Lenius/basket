@@ -35,7 +35,7 @@ class Session extends Runtime implements StorageInterface
         session_id() || session_start();
 
         if (isset($_SESSION['cart'])) {
-            static::$cart = unserialize($_SESSION['cart']);
+            static::$cart = (array) unserialize($_SESSION['cart']);
         }
     }
 

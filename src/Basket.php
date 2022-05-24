@@ -73,7 +73,7 @@ class Basket
      *
      * @return array An array of Item objects
      */
-    public function &contents($asArray = false): array
+    public function &contents(bool $asArray = false): array
     {
         return $this->store->data($asArray);
     }
@@ -91,7 +91,7 @@ class Basket
         $itemIdentifier = $this->createItemIdentifier($item);
 
         if ($this->has($itemIdentifier) && $this->item($itemIdentifier) instanceof ItemInterface) {
-            $item->quantity = $this->item($itemIdentifier)->quantity + $item->quantity;
+            $item->setQuantity($this->item($itemIdentifier)->getQuantity() + $item->getQuantity());
             $this->update($itemIdentifier, $item);
 
             return $itemIdentifier;
@@ -113,7 +113,7 @@ class Basket
      */
     public function update(string $itemIdentifier, $key, $value = null): void
     {
-        /** @var Item $item */
+        /** @var ItemInterface $item */
         foreach ($this->contents() as $item) {
             if ($item->identifier == $itemIdentifier) {
                 $item->update($key, $value);
@@ -218,7 +218,7 @@ class Basket
      *
      * @return float The total basket value
      */
-    public function total($includeTax = true): float
+    public function total(bool $includeTax = true): float
     {
         $total = 0;
 
@@ -237,13 +237,13 @@ class Basket
      *
      * @return int Total number of items
      */
-    public function totalItems($unique = false): int
+    public function totalItems(bool $unique = false): int
     {
         $total = 0;
 
         /** @var Item $item */
         foreach ($this->contents() as $item) {
-            $total += $unique ? 1 : $item->quantity;
+            $total += $unique ? 1 : $item->getQuantity();
         }
 
         return $total;

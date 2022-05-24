@@ -180,7 +180,7 @@ class Runtime implements StorageInterface
     public function restore(): void
     {
         if (isset($_SESSION['cart'])) {
-            static::$cart = unserialize($_SESSION['cart']);
+            static::$cart = (array) unserialize($_SESSION['cart']);
         }
     }
 }
