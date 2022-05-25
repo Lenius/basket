@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2017 Lenius.
+ * Copyright (c) 2022 Lenius.
  * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2017 Lenius.
+ * @copyright 2022 Lenius.
  *
  * @version production
  *
@@ -28,7 +28,7 @@ interface StorageInterface
     /**
      * Add or update an item in the cart.
      *
-     * @param ItemInterface $item The item to insert or update
+     * @param ItemInterface $item
      */
     public function insertUpdate(ItemInterface $item): void;
 
@@ -39,7 +39,7 @@ interface StorageInterface
      *
      * @return array
      */
-    public function &data($asArray = false): array;
+    public function &data(bool $asArray = false): array;
 
     /**
      * Check if the item exists in the cart.
@@ -53,20 +53,20 @@ interface StorageInterface
     /**
      * Get a single cart item by id.
      *
-     * @param string $identifier The item id
+     * @param string $identifier
      *
-     * @return bool|Item
+     * @return ItemInterface|bool
      */
-    public function item(string $identifier);
+    public function item(string $identifier): ItemInterface|bool;
 
     /**
-     * Returns the first occurance of an item with a given id.
+     * Returns the first occurrence of an item with a given id.
      *
-     * @param string $id The item id
+     * @param string $id
      *
-     * @return bool|Item
+     * @return ItemInterface|bool
      */
-    public function find(string $id);
+    public function find(string $id): ItemInterface|bool;
 
     /**
      * Remove an item from the cart.

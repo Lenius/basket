@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2017 Lenius.
+ * Copyright (c) 2022 Lenius.
  * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2017 Lenius.
+ * @copyright 2022 Lenius.
  *
  * @version production
  *
@@ -41,6 +41,7 @@ class Item implements ItemInterface
 
     /**
      * Construct the item.
+     *
      * @param array $item
      */
     public function __construct(array $item)
@@ -49,7 +50,7 @@ class Item implements ItemInterface
             $this->data[$key] = $value;
         }
 
-        $item['tax'] = isset($item['tax']) ? $item['tax'] : 0;
+        $item['tax'] = $item['tax'] ?? 0;
 
         $this->tax = new Tax($item['tax']);
     }
@@ -79,15 +80,15 @@ class Item implements ItemInterface
     /**
      * Update data array using set magic method.
      *
-     * @param mixed $param The key to set
-     * @param mixed $value The value to set $param to
+     * @param mixed $param
+     * @param mixed $value
      */
-    public function __set($param, $value): void
+    public function __set(mixed $param, mixed $value): void
     {
         $this->data[$param] = $value;
 
         if ('tax' == $param) {
-            $this->tax = new Tax($value);
+            $this->tax = new Tax(floatval($value));
         }
     }
 
@@ -98,10 +99,7 @@ class Item implements ItemInterface
      */
     public function tax(): float
     {
-        $price = $this->totalPrice();
-        $quantity = $this->quantity;
-
-        return $this->tax->rate($price * $quantity);
+        return $this->tax->rate($this->totalPrice() * $this->getQuantity());
     }
 
     /**
@@ -111,7 +109,7 @@ class Item implements ItemInterface
      */
     private function totalPrice(): float
     {
-        $price = $this->price;
+        $price = $this->data['price'];
 
         if ($this->hasOptions()) {
             foreach ($this->data['options'] as $item) {
@@ -127,11 +125,11 @@ class Item implements ItemInterface
     /**
      * Return the total of the item, with or without tax.
      *
-     * @param bool $includeTax Whether or not to include tax
+     * @param bool $includeTax
      *
-     * @return float The total, as a float
+     * @return float
      */
-    public function total($includeTax = true): float
+    public function total(bool $includeTax = true): float
     {
         $price = $this->totalPrice();
 
@@ -139,17 +137,17 @@ class Item implements ItemInterface
             $price = $this->tax->add($price);
         }
 
-        return ($price * $this->quantity);
+        return ($price * $this->getQuantity());
     }
 
     /**
      * Return the total weight of the item.
      *
-     * @return float The weight, as a float
+     * @return float
      */
     public function weight(): float
     {
-        $weight = $this->weight;
+        $weight = $this->data['weight'];
 
         if ($this->hasOptions()) {
             foreach ($this->data['options'] as $item) {
@@ -159,17 +157,17 @@ class Item implements ItemInterface
             }
         }
 
-        return (float) ($weight * $this->quantity);
+        return (float) ($weight * $this->getQuantity());
     }
 
     /**
      * Return the total of the item, with or without tax.
      *
-     * @param bool $includeTax Whether or not to include tax
+     * @param bool $includeTax
      *
-     * @return float The total, as a float
+     * @return float
      */
-    public function single($includeTax = true): float
+    public function single(bool $includeTax = true): float
     {
         $price = $this->totalPrice();
 
@@ -183,10 +181,10 @@ class Item implements ItemInterface
     /**
      * Update a single key for this item, or multiple.
      *
-     * @param mixed $key   The array key to update, or an array of key-value pairs to update
-     * @param mixed $value
+     * @param mixed $key
+     * @param mixed|null $value
      */
-    public function update($key, $value = null): void
+    public function update(mixed $key, mixed $value = null): void
     {
         if ($key instanceof ItemInterface) {
             foreach ($key->toArray() as $updateKey => $updateValue) {
@@ -205,7 +203,7 @@ class Item implements ItemInterface
     /**
      * Check if this item has options.
      *
-     * @return bool Yes or no?
+     * @return bool
      */
     public function hasOptions(): bool
     {
@@ -215,10 +213,32 @@ class Item implements ItemInterface
     /**
      * Convert the item into an array.
      *
-     * @return array The item data
+     * @return array
      */
     public function toArray(): array
     {
         return $this->data;
+    }
+
+    /**
+     * Return quantity
+     *
+     * @return int
+     */
+    public function getQuantity(): int
+    {
+        return $this->data['quantity'];
+    }
+
+    /**
+     * Set quantity
+     *
+     * @param int $quantity
+     *
+     * @return void
+     */
+    public function setQuantity(int $quantity): void
+    {
+        $this->data['quantity'] = $quantity;
     }
 }

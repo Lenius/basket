@@ -74,6 +74,26 @@ class ItemTest extends TestCase
         $this->assertEquals(($weight * $quantity), $this->item->weight());
     }
 
+    public function testQuantity(): void
+    {
+        $weight = rand(200, 300);
+        $quantity = rand(1, 10);
+
+        $item = [
+            'id'       => 'foo',
+            'name'     => 'bar',
+            'price'    => 100,
+            'quantity' => $quantity,
+            'weight'   => $weight,
+        ];
+
+        $this->item = new Item($item);
+        $this->assertEquals($quantity, $this->item->getQuantity());
+
+        $this->item->setQuantity(12);
+        $this->assertEquals(12, $this->item->getQuantity());
+    }
+
     public function testWeightWithOption(): void
     {
         $weight = rand(200, 300);

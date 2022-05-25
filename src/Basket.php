@@ -4,14 +4,14 @@
  * This file is part of Lenius Basket, a PHP package to handle
  * your shopping basket.
  *
- * Copyright (c) 2017 Lenius.
+ * Copyright (c) 2022 Lenius.
  * https://github.com/lenius/basket
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
  *
  * @author Carsten Jonstrup<info@lenius.dk>
- * @copyright 2017 Lenius.
+ * @copyright 2022 Lenius.
  *
  * @version production
  *
@@ -48,8 +48,8 @@ class Basket
     /**
      * Basket constructor.
      *
-     * @param StorageInterface    $store      The interface for storing the cart data
-     * @param IdentifierInterface $identifier The interface for storing the identifier
+     * @param StorageInterface $store
+     * @param IdentifierInterface $identifier
      */
     public function __construct(StorageInterface $store, IdentifierInterface $identifier)
     {
@@ -71,9 +71,9 @@ class Basket
      *
      * @param bool $asArray
      *
-     * @return array An array of Item objects
+     * @return array
      */
-    public function &contents($asArray = false): array
+    public function &contents(bool $asArray = false): array
     {
         return $this->store->data($asArray);
     }
@@ -82,7 +82,8 @@ class Basket
      * Insert an item into the basket.
      *
      * @param ItemInterface $item
-     * @return string A unique item identifier
+     *
+     * @return string
      */
     public function insert(ItemInterface $item): string
     {
@@ -91,7 +92,7 @@ class Basket
         $itemIdentifier = $this->createItemIdentifier($item);
 
         if ($this->has($itemIdentifier) && $this->item($itemIdentifier) instanceof ItemInterface) {
-            $item->quantity = $this->item($itemIdentifier)->quantity + $item->quantity;
+            $item->setQuantity($this->item($itemIdentifier)->getQuantity() + $item->getQuantity());
             $this->update($itemIdentifier, $item);
 
             return $itemIdentifier;
@@ -107,13 +108,13 @@ class Basket
     /**
      * Update an item.
      *
-     * @param string $itemIdentifier The unique item identifier
-     * @param mixed $key The key to update, or an array of key-value pairs
-     * @param mixed $value The value to set $key to
+     * @param string $itemIdentifier
+     * @param mixed $key
+     * @param mixed $value
      */
     public function update(string $itemIdentifier, $key, $value = null): void
     {
-        /** @var Item $item */
+        /** @var ItemInterface $item */
         foreach ($this->contents() as $item) {
             if ($item->identifier == $itemIdentifier) {
                 $item->update($key, $value);
@@ -126,7 +127,7 @@ class Basket
     /**
      * Remove an item from the basket.
      *
-     * @param string $identifier Unique item identifier
+     * @param string $identifier
      */
     public function remove(string $identifier): void
     {
@@ -144,9 +145,9 @@ class Basket
     /**
      * Check if the basket has a specific item.
      *
-     * @param string $itemIdentifier The unique item identifier
+     * @param string $itemIdentifier
      *
-     * @return bool Yes or no?
+     * @return bool
      */
     public function has(string $itemIdentifier): bool
     {
@@ -156,23 +157,23 @@ class Basket
     /**
      * Return a specific item object by identifier.
      *
-     * @param string $itemIdentifier The unique item identifier
+     * @param string $itemIdentifier
      *
-     * @return Item|bool
+     * @return ItemInterface|bool
      */
-    public function item(string $itemIdentifier)
+    public function item(string $itemIdentifier): ItemInterface|bool
     {
         return $this->store->item($itemIdentifier);
     }
 
     /**
-     * Returns the first occurance of an item with a given id.
+     * Returns the first occurrence of an item with a given id.
      *
-     * @param string $id The item id
+     * @param string $id
      *
-     * @return bool|Item
+     * @return bool|ItemInterface
      */
-    public function find(string $id)
+    public function find(string $id): ItemInterface|bool
     {
         return $this->store->find($id);
     }
@@ -180,7 +181,7 @@ class Basket
     /**
      * The total tax value for the basket.
      *
-     * @return float The total tax value
+     * @return float
      */
     public function tax(): float
     {
@@ -197,7 +198,7 @@ class Basket
     /**
      * The total weight value for the basket.
      *
-     * @return float The total weight value
+     * @return float
      */
     public function weight(): float
     {
@@ -214,11 +215,11 @@ class Basket
     /**
      * The total value of the basket.
      *
-     * @param bool $includeTax Include tax on the total?
+     * @param bool $includeTax
      *
-     * @return float The total basket value
+     * @return float
      */
-    public function total($includeTax = true): float
+    public function total(bool $includeTax = true): float
     {
         $total = 0;
 
@@ -233,17 +234,17 @@ class Basket
     /**
      * The total number of items in the basket.
      *
-     * @param bool $unique Just return unique items?
+     * @param bool $unique
      *
-     * @return int Total number of items
+     * @return int
      */
-    public function totalItems($unique = false): int
+    public function totalItems(bool $unique = false): int
     {
         $total = 0;
 
         /** @var Item $item */
         foreach ($this->contents() as $item) {
-            $total += $unique ? 1 : $item->quantity;
+            $total += $unique ? 1 : $item->getQuantity();
         }
 
         return $total;
@@ -265,7 +266,8 @@ class Basket
      * Create a unique item identifier.
      *
      * @param ItemInterface $item
-     * @return string An md5 hash of item
+     *
+     * @return string
      */
     protected function createItemIdentifier(ItemInterface $item): string
     {
