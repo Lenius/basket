@@ -110,9 +110,9 @@ class Basket
      *
      * @param string $itemIdentifier
      * @param mixed $key
-     * @param mixed $value
+     * @param mixed|null $value
      */
-    public function update(string $itemIdentifier, $key, $value = null): void
+    public function update(string $itemIdentifier, mixed $key, mixed $value = null): void
     {
         /** @var ItemInterface $item */
         foreach ($this->contents() as $item) {
