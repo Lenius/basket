@@ -241,4 +241,14 @@ class Item implements ItemInterface
     {
         $this->data['quantity'] = $quantity;
     }
+
+    /**
+     * Get itemIdentifier
+     *
+     * @return string
+     */
+    public function getItemIdentifier(): string
+    {
+        return '';
+    }
 }

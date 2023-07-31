@@ -271,6 +271,10 @@ class Basket
      */
     protected function createItemIdentifier(ItemInterface $item): string
     {
+        if(! empty($item->getItemIdentifier())) {
+            return $item->getItemIdentifier();
+        }
+
         if (! array_key_exists('options', $item->toArray())) {
             $item->options = [];
         }

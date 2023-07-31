@@ -36,6 +36,13 @@ interface ItemInterface
     public function setIdentifier(string $identifier): void;
 
     /**
+     * Return itemIdentifier.
+     *
+     * @return string
+     */
+    public function getItemIdentifier(): string;
+
+    /**
      * Return the total tax for this item.
      *
      * @return float
