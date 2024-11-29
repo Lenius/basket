@@ -20,8 +20,7 @@
         "php-coveralls/php-coveralls": "^2.7",
         "phpstan/phpstan": "^2.0",
         "phpunit/phpunit": "^9.0",
-        "squizlabs/php_codesniffer": "^3.11",
-        "vimeo/psalm": "^5.26"
+        "squizlabs/php_codesniffer": "^3.11"
     },
     "config": {
         "sort-packages": true
@@ -37,7 +36,6 @@
         }
     },
     "scripts": {
-        "psalm": "vendor/bin/psalm --show-info=true",
         "fix": "vendor/bin/php-cs-fixer fix --allow-risky=yes",
         "test-coverage": "XDEBUG_MODE=coverage vendor/bin/phpunit --coverage-clover build/logs/clover.xml --coverage-html build/logs/phpunit-html/",
         "test": "vendor/bin/phpunit",
