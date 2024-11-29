@@ -116,7 +116,7 @@ class Basket
     {
         /** @var ItemInterface $item */
         foreach ($this->contents() as $item) {
-            if ($item->identifier == $itemIdentifier) {
+            if ($item->identifier === $itemIdentifier) {
                 $item->update($key, $value);
 
                 break;
@@ -271,7 +271,7 @@ class Basket
      */
     protected function createItemIdentifier(ItemInterface $item): string
     {
-        if(! empty($item->getItemIdentifier())) {
+        if (! empty($item->getItemIdentifier())) {
             return $item->getItemIdentifier();
         }
 
@@ -285,7 +285,7 @@ class Basket
 
         $item->options = $options;
 
-        return md5($item->id.serialize($item->options));
+        return md5($item->id.json_encode($item->options));
     }
 
     /**

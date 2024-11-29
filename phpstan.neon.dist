@@ -3,7 +3,5 @@ parameters:
     paths:
         - src
     reportUnmatchedIgnoredErrors: false
-    checkGenericClassInNonGenericObjectType: false
-    checkMissingIterableValueType: false
     excludePaths:
         - './vendor'

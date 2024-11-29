@@ -50,7 +50,7 @@ class BasketTest extends TestCase
             'weight'   => 200,
         ]));
 
-        $identifier = md5('foo'.serialize([]));
+        $identifier = md5('foo'.json_encode([]));
 
         $this->assertEquals($identifier, $actualId);
     }
@@ -389,7 +389,7 @@ class BasketTest extends TestCase
             'weight'   => 200,
         ]));
 
-        $identifier = md5('foo'.serialize([]));
+        $identifier = md5('foo'.json_encode([]));
 
         /** @var Item $item */
         $item = $this->basket->item($identifier);

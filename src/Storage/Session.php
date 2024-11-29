@@ -32,11 +32,25 @@ class Session extends Runtime implements StorageInterface
      */
     public function restore(): void
     {
-        session_id() || session_start();
-
-        if (isset($_SESSION['cart'])) {
-            static::$cart = (array) unserialize($_SESSION['cart']);
+        // Start session if not already started
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
         }
+
+        // Check if 'cart' exists in session and is a valid string
+        if (isset($_SESSION['cart']) && is_string($_SESSION['cart'])) {
+            $decodedCart = json_decode($_SESSION['cart'], true);
+
+            // Validate the decoded JSON and ensure it's an array
+            if (is_array($decodedCart)) {
+                static::$cart = $decodedCart;
+
+                return;
+            }
+        }
+
+        // Fallback to an empty array if no valid cart data exists
+        static::$cart = [];
     }
 
     /**
@@ -44,6 +58,8 @@ class Session extends Runtime implements StorageInterface
      */
     public function __destruct()
     {
-        $_SESSION['cart'] = serialize(static::$cart);
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $_SESSION['cart'] = json_encode(static::$cart);
+        }
     }
 }
