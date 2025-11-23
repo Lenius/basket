@@ -45,6 +45,9 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
+    - name: Configure Composer to use GitHub token
+      run: composer config --global github-oauth.github.com ${{ secrets.GITHUB_TOKEN }}
+
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
 
